@@ -1,0 +1,40 @@
+/* RTL Styles */
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] h1, 
+[dir="rtl"] h2, 
+[dir="rtl"] h3, 
+[dir="rtl"] h4, 
+[dir="rtl"] h5, 
+[dir="rtl"] h6,
+[dir="rtl"] p {
+    text-align: center; /* Per requirements: ALL headings center, ALL content center */
+}
+
+[dir="rtl"] .header-left {
+    order: 3;
+}
+
+[dir="rtl"] .header-center {
+    order: 2;
+}
+
+[dir="rtl"] .header-right {
+    order: 1;
+}
+
+[dir="rtl"] .mobile-nav {
+    left: auto;
+    right: -100%;
+}
+
+[dir="rtl"] .mobile-nav.active {
+    right: 0;
+}
+
+[dir="rtl"] .btn i {
+    margin-left: 8px;
+    margin-right: 0;
+}

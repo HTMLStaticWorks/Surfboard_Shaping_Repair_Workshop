@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surfboard | Custom Shaping & Repair Workshop</title>
+    <meta name="description"
+        content="Premium surfboard shaping and repair workshop. Custom boards, ding repair, and professional glassing services.">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <div class="logo-container" style="display: flex; align-items: center; gap: 12px;">
+                <img src="https://icon2.cleanpng.com/lnd/20240507/kuj/avocms720.webp" alt="Surfboard Logo" class="logo">
+                <span class="brand-name">SURFBOARD</span>
+            </div>
+        </div>
+
+        <nav class="header-center">
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="home2.html" class="nav-link">Home 2</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+            <button class="icon-btn" id="rtl-toggle" title="Toggle RTL"><i class="fas fa-language"></i></button>
+            <button class="icon-btn" id="theme-toggle" title="Toggle Theme"><i
+                    class="fas fa-moon theme-icon"></i></button>
+            <a href="login.html" class="btn btn-primary btn-login">Login</a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="overlay"></div>
+    <div class="mobile-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home2.html" class="nav-link">Home 2</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <hr>
+        <button class="icon-btn" id="mobile-rtl-toggle"><i class="fas fa-language"></i> RTL Support</button>
+        <button class="icon-btn" id="mobile-theme-toggle"><i class="fas fa-moon theme-icon"></i> Theme Switch</button>
+        <a href="login.html" class="btn btn-primary">Login</a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- 1. Hero Section -->
+        <section class="hero">
+            <h1 class="fade-in">Crafting the Perfect Wave</h1>
+            <p class="fade-in">Premium custom shaping and expert repair services for every surfer.</p>
+            <div class="hero-btns fade-in">
+                <a href="services.html" class="btn btn-primary">Our Services</a>
+                <a href="contact.html" class="btn btn-outline" style="color: white; border-color: white;">Book
+                    Consultation</a>
+            </div>
+        </section>
+
+        <!-- 2. Services Section -->
+        <section id="services">
+            <h2>Our Specialized Services</h2>
+            <p>From custom shapes to precision repairs, we handle every board with artisan care.</p>
+            <div class="card-grid">
+                <div class="card fade-in">
+                    <img src="https://images.unsplash.com/photo-1502680399488-2a65701a5002?auto=format&fit=crop&q=80&w=600"
+                        alt="Custom Shaping">
+                    <h3>Custom Shaping</h3>
+                    <p>Tailored dimensions and curves designed specifically for your style and local breaks.</p>
+                </div>
+                <div class="card fade-in">
+                    <img src="https://images.unsplash.com/photo-1530870110042-98b2cb110834?auto=format&fit=crop&q=80&w=600"
+                        alt="Ding Repair">
+                    <h3>Ding Repair</h3>
+                    <p>Professional resin work and color matching to get your board back in the water fast.</p>
+                </div>
+                <div class="card fade-in">
+                    <img src="https://images.unsplash.com/photo-1516571748831-5d81767b788d?auto=format&fit=crop&q=80&w=600"
+                        alt="Glassing">
+                    <h3>Glassing Services</h3>
+                    <p>High-quality fiberglass and resin application for durability and performance.</p>
+                </div>
+                <div class="card fade-in">
+                    <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&q=80&w=600"
+                        alt="Fin Install">
+                    <h3>Fin Box Install</h3>
+                    <p>Precision installation of all major fin systems (FCS II, Futures, Single Fin).</p>
+                </div>
+                <div class="card fade-in">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=600"
+                        alt="Restoration">
+                    <h3>Full Restoration</h3>
+                    <p>Breathe new life into vintage boards with our comprehensive refurbishment process.</p>
+                </div>
+                <div class="card fade-in">
+                    <img src="https://images.unsplash.com/photo-1455264745730-cb3b76250ae8?auto=format&fit=crop&q=80&w=600"
+                        alt="Consultation">
+                    <h3>Board Design Consult</h3>
+                    <p>Sit down with a master shaper to map out your perfect board dimensions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. About Section -->
+        <section id="about" style="background-color: var(--secondary);">
+            <h2>Heritage of Craftsmanship</h2>
+            <div class="about-content"
+                style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: center;">
+                <div style="flex: 1; min-width: 300px;">
+                    <img src="https://images.unsplash.com/photo-1502680399488-2a65701a5002?auto=format&fit=crop&q=80&w=800"
+                        alt="Shaping Workshop" style="border-radius: var(--radius); box-shadow: var(--shadow);">
+                </div>
+                <div style="flex: 1; min-width: 300px; text-align: center;">
+                    <h3>Born from the Ocean</h3>
+                    <p>Founded in 1998, Surfboard has been at the forefront of shaping innovation. We believe every
+                        board has a soul, and every ding tells a story.</p>
+                    <a href="about.html" class="btn btn-primary">Read Our Story</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Features Section -->
+        <section id="features">
+            <h2>Why Choose Surfboard?</h2>
+            <div class="card-grid">
+                <div class="card fade-in">
+                    <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&q=80&w=600"
+                        alt="Tools">
+                    <h3>Precision Tools</h3>
+                    <p>Combining traditional hand-shaping with modern CNC precision for perfect results.</p>
+                </div>
+                <div class="card fade-in">
+                    <img src="https://images.unsplash.com/photo-1509914398892-963f53e6e2f1?auto=format&fit=crop&q=80&w=600"
+                        alt="Blanks">
+                    <h3>Eco-Friendly Blanks</h3>
+                    <p>We source sustainable foam blanks to reduce our environmental impact.</p>
+                </div>
+                <div class="card fade-in">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=600"
+                        alt="Fast">
+                    <h3>Fast Turnaround</h3>
+                    <p>Don't miss a swell. Our repair team works efficiently to meet your timeline.</p>
+                </div>
+                <div class="card fade-in">
+                    <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&q=80&w=600"
+                        alt="Quality">
+                    <h3>Lifetime Guarantee</h3>
+                    <p>We stand by our work. Every repair comes with a lifetime craftsmanship guarantee.</p>
+                </div>
+                <div class="card fade-in">
+                    <img src="https://images.unsplash.com/photo-1516571748831-5d81767b788d?auto=format&fit=crop&q=80&w=600"
+                        alt="Expert">
+                    <h3>Expert Shapers</h3>
+                    <p>Our team has over 50 years of combined experience in board design.</p>
+                </div>
+                <div class="card fade-in">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=600"
+                        alt="Service">
+                    <h3>Mobile Pick-up</h3>
+                    <p>We can pick up your damaged board from local beaches and return it to your door.</p>
+                </div>
+            </div>
+                <!-- 4. Gallery Preview -->
+        <section id="gallery-preview" class="animate-on-scroll">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2>Finished Shapes</h2>
+                <p>A glimpse into our workshop's latest master-crafted boards.</p>
+            </div>
+            <div class="card-grid">
+                <div class="card fade-in">
+                    <img src="https://images.unsplash.com/photo-1502680399488-2a65701a5002?auto=format&fit=crop&q=80&w=600" alt="Shape 1">
+                    <h4 style="margin-top: 12px; text-align: center;">Classic Longboard</h4>
+                </div>
+                <div class="card fade-in">
+                    <img src="https://images.unsplash.com/photo-1530870110042-98b2cb110834?auto=format&fit=crop&q=80&w=600" alt="Shape 2">
+                    <h4 style="margin-top: 12px; text-align: center;">Performance Thruster</h4>
+                </div>
+                <div class="card fade-in">
+                    <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&q=80&w=600" alt="Shape 3">
+                    <h4 style="margin-top: 12px; text-align: center;">Big Wave Gun</h4>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="home2.html#gallery" class="btn btn-outline">View Full Gallery</a>
+            </div>
+        </section>
+
+        <!-- 5. Blank Selection Guide -->
+        <section style="background: var(--secondary);" class="animate-on-scroll">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2>Blank Selection</h2>
+                <p>Choosing the right foundation for your performance.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 48px; align-items: center;">
+                <div class="fade-in">
+                    <h3>Polyurethane (PU)</h3>
+                    <p>The industry standard for decades. Familiar flex, organic feel, and excellent glassing properties. Perfect for those who love the traditional surfing experience.</p>
+                    <h3 style="margin-top: 24px;">Expanded Polystyrene (EPS)</h3>
+                    <p>Lightweight and highly buoyant. EPS blanks combined with epoxy resin create a fast, responsive board ideal for progressive maneuvers and small wave performance.</p>
+                    <a href="home2.html#blanks" class="btn btn-primary" style="margin-top: 32px;">Read Selection Guide</a>
+                </div>
+                <div class="fade-in">
+                    <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&q=80&w=800" alt="Blanks" style="width: 100%; border-radius: var(--radius); box-shadow: var(--shadow);">
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Testimonials Section -->
+        <section id="testimonials" style="background-color: var(--bg-light);">
+            <h2>What Surfers Say</h2>
+            <div class="card-grid">
+                <div class="card fade-in">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User"
+                        style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 20px;">
+                    <p>"The best repair shop in town. They matched the color of my vintage board perfectly!"</p>
+                    <h4>- Alex Johnson</h4>
+                </div>
+                <div class="card fade-in">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User"
+                        style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 20px;">
+                    <p>"My custom longboard is a dream. It paddles like a boat and turns on a dime."</p>
+                    <h4>- Sarah Miller</h4>
+                </div>
+                <div class="card fade-in">
+                    <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="User"
+                        style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 20px;">
+                    <p>"Quick, reliable, and incredibly professional. The only shop I trust with my guns."</p>
+                    <h4>- Mike Peters</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CTA Section -->
+        <section id="cta" style="background: var(--primary); color: var(--white);">
+            <h2 style="color: var(--white);">Ready for Your Next Session?</h2>
+            <p style="color: var(--white);">Get a quote for your repair or start designing your dream board today.</p>
+            <div style="display: flex; gap: 20px; justify-content: center; margin-top: 30px;">
+                <a href="contact.html" class="btn btn-primary">Contact Us</a>
+                <a href="services.html" class="btn btn-outline"
+                    style="color: var(--white); border-color: var(--white);">View Pricing</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                    <img src="https://icon2.cleanpng.com/lnd/20240507/kuj/avocms720.webp" alt="Logo" class="logo"
+                        style="filter: brightness(0) invert(1);">
+                    <span class="brand-name" style="color: var(--white);">SURFBOARD</span>
+                </div>
+                <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 24px;">Crafting excellence for the ocean since
+                    1998. Your destination for premium shapes and expert repairs.</p>
+                <div class="social-links" style="display: flex; gap: 15px; justify-content: center;">
+                    <a href="#" class="social-link" style="color: white; font-size: 1.2rem;"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" style="color: white; font-size: 1.2rem;"><i
+                            class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link" style="color: white; font-size: 1.2rem;"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" style="color: white; font-size: 1.2rem;"><i
+                            class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="blog.html">Workshop Blog</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Newsletter</h4>
+                <p style="font-size: 0.85rem; color: #ccc; margin-bottom: 16px;">Subscribe for shaping tips and workshop
+                    updates.</p>
+                <form action="#" style="display: flex; flex-direction: column; gap: 10px;">
+                    <input type="email" placeholder="Your Email"
+                        style="padding: 10px; border-radius: 8px; border: none; outline: none;">
+                    <button class="btn btn-primary" style="padding: 10px; font-size: 0.9rem;">Subscribe</button>
+                </form>
+            </div>
+            <div class="footer-links">
+                <h4>Contact Us</h4>
+                <p style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> 123 Ocean
+                    Drive, Malibu, CA</p>
+                <p style="font-size: 0.9rem;"><i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                    info@surfboard.com</p>
+                <p style="font-size: 0.9rem;"><i class="fas fa-phone" style="margin-right: 8px;"></i> (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Surfboard Shaping & Repair. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>
+
+

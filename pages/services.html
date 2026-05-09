@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | Surfboard – Shaping, Repair & Glassing</title>
+  <meta name="description" content="Explore Surfboard's full range of services: custom board shaping, professional ding repair, expert glassing, and consultation booking.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <style>
+    .page-hero {
+      min-height:55vh; display:flex; flex-direction:column; align-items:center;
+      justify-content:center; text-align:center; padding:120px 5% 80px;
+      background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+        url('https://images.unsplash.com/photo-1530870110042-98b2cb110834?auto=format&fit=crop&q=80&w=1600') center/cover;
+      color:#fff;
+    }
+    .page-hero h1 { color:#fff; font-size:clamp(2.2rem,5vw,3.8rem); }
+    .breadcrumb { display:flex; gap:8px; align-items:center; justify-content:center; margin-top:16px; font-size:.9rem; opacity:.8; }
+    .breadcrumb a { color:var(--secondary); }
+
+    /* Service Cards */
+    .service-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:32px; margin-top:48px; }
+    .service-card { background:#fff; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:var(--transition); }
+    .service-card:hover { transform:translateY(-8px); }
+    .service-card img { width:100%; height:220px; object-fit:cover; }
+    .service-body { padding:32px; text-align:center; }
+    .service-body i { font-size:2rem; color:var(--accent); margin-bottom:16px; }
+
+    /* Case Studies */
+    .case-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:36px; margin-top:48px; }
+    .case-card { background:#fff; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
+    .case-images { display:grid; grid-template-columns:1fr 1fr; }
+    .case-images img { width:100%; height:180px; object-fit:cover; }
+    .case-label { text-align:center; font-size:.75rem; font-weight:700; padding:6px; background:var(--accent); color:#fff; }
+    .case-body { padding:28px; text-align:center; }
+
+    /* Calculator */
+    .calc-box { max-width:600px; margin:48px auto 0; background:#fff; border-radius:var(--radius); padding:48px; box-shadow:var(--shadow); }
+    .form-group { margin-bottom:24px; text-align:left; }
+    .form-group label { display:block; font-weight:600; margin-bottom:8px; }
+    .form-group select, .form-group input { width:100%; padding:14px; border:2px solid #eee; border-radius:8px; font-size:1rem; transition:var(--transition); }
+    .form-group select:focus, .form-group input:focus { outline:none; border-color:var(--accent); }
+    .calc-result { background:var(--accent); color:#fff; border-radius:var(--radius); padding:24px; text-align:center; margin-top:24px; }
+    .calc-result .price { font-size:3rem; font-weight:700; }
+
+    /* Booking Placeholder */
+    .booking-box { max-width:700px; margin:48px auto 0; background:#fff; border-radius:var(--radius); padding:48px; box-shadow:var(--shadow); text-align:center; }
+    .calendar-placeholder { border:2px dashed var(--accent); border-radius:var(--radius); padding:60px; margin:28px 0; background:#faf8f5; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <div class="logo-container" style="display: flex; align-items: center; gap: 12px;">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0M0N0EyQyI+PHBhdGggZD0iTTEyIDJDOCAyIDUgOCA1IDE2QzUgMTkgNyAyMiAxMSAyMkgxM0MxNyAyMiAxOSAxOSAxOSAxNkMxOSA4IDE2IDIgMTIgMlpNMTEuNSAyMEM5LjUgMjAgNyAxOC41IDcgMTZDNyAxMSAxMCA0IDEyIDRDMTQgNCAxNyAxMSAxNyAxNkMxNyAxOC41IDE0LjUgMjAgMTIuNSAyMEgxMS41WiIvPjwvc3ZnPg==" alt="Surfboard Logo" class="logo">
+        <span class="brand-name">SURFBOARD</span>
+      </div>
+    </div>
+    <nav class="header-center">
+      <ul class="nav-menu">
+        <li><a href="index.html"    class="nav-link">Home</a></li>
+        <li><a href="home2.html"    class="nav-link">Home 2</a></li>
+        <li><a href="services.html" class="nav-link active">Services</a></li>
+        <li><a href="blog.html"     class="nav-link">Blog</a></li>
+        <li><a href="contact.html"  class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-right">
+      <button class="icon-btn" id="rtl-toggle"><i class="fas fa-language"></i></button>
+      <button class="icon-btn" id="theme-toggle"><i class="fas fa-moon theme-icon"></i></button>
+      <a href="login.html" class="btn btn-primary btn-login">Login</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="overlay"></div>
+  <div class="mobile-nav">
+    <a href="index.html"    class="nav-link"><i class="fas fa-home"></i> Home</a>
+    <a href="home2.html"    class="nav-link"><i class="fas fa-layer-group"></i> Home 2</a>
+    <a href="services.html" class="nav-link"><i class="fas fa-wrench"></i> Services</a>
+    <a href="blog.html"     class="nav-link"><i class="fas fa-blog"></i> Blog</a>
+    <a href="contact.html"  class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+    <hr style="border-color:rgba(255,255,255,.15);">
+    <button class="icon-btn" id="mobile-rtl-toggle"><i class="fas fa-language"></i> RTL</button>
+    <button class="icon-btn" id="mobile-theme-toggle"><i class="fas fa-moon theme-icon"></i> Theme</button>
+    <a href="login.html" class="btn btn-primary" style="margin-top:8px;">Login</a>
+  </div>
+
+  <main>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <h1>Our Services</h1>
+      <p style="color: white; margin-top: 15px; font-size: 1.1rem; opacity: 0.9;">Crafting Performance. Fixing Perfection. Every board handled with artisan care.</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>Services</span>
+      </div>
+    </div>
+
+    <!-- Service Offerings -->
+    <section class="animate-on-scroll">
+      <h2>What We Do Best</h2>
+      <p>From a first board to a competition gun — every service delivered with master-level craft.</p>
+      <div class="service-grid">
+        <div class="service-card fade-in">
+          <img src="https://images.unsplash.com/photo-1502680399488-2a65701a5002?auto=format&fit=crop&q=80&w=800" alt="Custom Board Shaping">
+          <div class="service-body">
+            <i class="fas fa-pencil-ruler"></i>
+            <h3>Custom Board Shaping</h3>
+            <p>Work with our shapers to design a board tailored to your surf style, weight, and local break. Starting from $600.</p>
+            <a href="contact.html" class="btn btn-primary" style="margin-top:16px;">Start a Custom Build</a>
+          </div>
+        </div>
+        <div class="service-card fade-in">
+          <img src="https://images.unsplash.com/photo-1530870110042-98b2cb110834?auto=format&fit=crop&q=80&w=800" alt="Ding Repair">
+          <div class="service-body">
+            <i class="fas fa-hammer"></i>
+            <h3>Ding Repair</h3>
+            <p>Fast, expert ding repair with precision color matching. Minor repairs from $45. Board back in 48 hours.</p>
+            <a href="contact.html" class="btn btn-primary" style="margin-top:16px;">Book a Repair</a>
+          </div>
+        </div>
+        <div class="service-card fade-in">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800" alt="Glassing Services">
+          <div class="service-body">
+            <i class="fas fa-layer-group"></i>
+            <h3>Glassing Services</h3>
+            <p>Professional fiberglass lamination, hotcoat, and glosscoat for new builds and re-glass jobs. From $200.</p>
+            <a href="contact.html" class="btn btn-primary" style="margin-top:16px;">Get a Quote</a>
+          </div>
+        </div>
+        <div class="service-card fade-in">
+          <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&q=80&w=800" alt="Blank Selection">
+          <div class="service-body">
+            <i class="fas fa-cube"></i>
+            <h3>Blank Consultation</h3>
+            <p>Not sure which blank to choose? Our experts will walk you through PU, EPS, and bio-epoxy options.</p>
+            <a href="contact.html" class="btn btn-outline" style="margin-top:16px;">Book Consult</a>
+          </div>
+        </div>
+        <div class="service-card fade-in">
+          <img src="https://images.unsplash.com/photo-1516571748831-5d81767b788d?auto=format&fit=crop&q=80&w=800" alt="Fin Box Install">
+          <div class="service-body">
+            <i class="fas fa-cog"></i>
+            <h3>Fin Box Installation</h3>
+            <p>Single, twin, thruster, or quad — we install all fin systems with precision. From $80 per set.</p>
+            <a href="contact.html" class="btn btn-outline" style="margin-top:16px;">Book Service</a>
+          </div>
+        </div>
+        <div class="service-card fade-in">
+          <img src="https://images.unsplash.com/photo-1455264745730-cb3b76250ae8?auto=format&fit=crop&q=80&w=800" alt="Board Consultation">
+          <div class="service-body">
+            <i class="fas fa-comments"></i>
+            <h3>Board Consultation</h3>
+            <p>In-person or virtual consultation with a master shaper. 1-hour session, $50 (credited toward your build).</p>
+            <a href="contact.html" class="btn btn-outline" style="margin-top:16px;">Book Session</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section style="background:var(--secondary);" class="animate-on-scroll">
+      <h2>Case Studies</h2>
+      <p>Real boards, real surfers, real results. See what we've built for our clients.</p>
+      <div class="case-grid">
+        <div class="case-card fade-in">
+          <div class="case-images">
+            <div>
+              <img src="https://images.unsplash.com/photo-1509914398892-963f53e6e2f1?auto=format&fit=crop&q=80&w=600" alt="Before repair">
+              <div class="case-label">BEFORE</div>
+            </div>
+            <div>
+              <img src="https://images.unsplash.com/photo-1502680399488-2a65701a5002?auto=format&fit=crop&q=80&w=600" alt="After repair">
+              <div class="case-label">AFTER</div>
+            </div>
+          </div>
+          <div class="case-body">
+            <h3>Vintage Longboard Restoration</h3>
+            <p>A 1970s single-fin that came in with major deck delamination — left looking brand new.</p>
+          </div>
+        </div>
+        <div class="case-card fade-in">
+          <div class="case-images">
+            <div>
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=600" alt="Before custom build">
+              <div class="case-label">BEFORE</div>
+            </div>
+            <div>
+              <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&q=80&w=600" alt="After custom build">
+              <div class="case-label">AFTER</div>
+            </div>
+          </div>
+          <div class="case-body">
+            <h3>Competition Shortboard Build</h3>
+            <p>Custom 6'0" EPS thruster built for a competitive surfer heading to regionals.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Price Calculator -->
+    <section class="animate-on-scroll">
+      <h2>Estimate Your Cost</h2>
+      <p>Select your board type and service to get an instant price estimate.</p>
+      <div class="calc-box fade-in">
+        <form id="price-calc">
+          <div class="form-group">
+            <label for="board-type">Board Type</label>
+            <select id="board-type">
+              <option value="">-- Select Board --</option>
+              <option value="shortboard">Shortboard (< 7'0")</option>
+              <option value="longboard">Longboard (> 8'0")</option>
+              <option value="fish">Fish / Funboard</option>
+              <option value="gun">Big Wave Gun</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="repair-type">Service Type</label>
+            <select id="repair-type">
+              <option value="">-- Select Service --</option>
+              <option value="ding">Minor Ding Repair</option>
+              <option value="fin">Fin Box Repair</option>
+              <option value="glassing">Full Glassing Job</option>
+              <option value="custom">Custom Shape (New Board)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="extra">Add-ons</label>
+            <select id="extra">
+              <option value="">-- None --</option>
+              <option value="tint">Color Tint (+$60)</option>
+              <option value="logo">Custom Logo (+$40)</option>
+              <option value="rush">Rush Job / 24hr (+$80)</option>
+            </select>
+          </div>
+        </form>
+        <div class="calc-result">
+          <div>Estimated Total</div>
+          <div class="price" id="calc-result">$0</div>
+          <div style="font-size:.85rem;opacity:.85;">Final quote provided after in-person inspection.</div>
+        </div>
+        <a href="contact.html" class="btn btn-primary" style="width:100%;margin-top:16px;">Request Full Quote</a>
+      </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section style="background:var(--secondary);" class="animate-on-scroll">
+      <h2>Book a Consultation</h2>
+      <p>Schedule time with one of our expert shapers to discuss your board project.</p>
+      <div class="booking-box fade-in">
+        <div class="calendar-placeholder">
+          <i class="fas fa-calendar-alt" style="font-size:3rem;color:var(--accent);margin-bottom:16px;display:block;"></i>
+          <h3>Calendar Integration</h3>
+          <p style="color:var(--gray);">Calendly / Acuity Scheduling integration point. Replace this block with your booking embed code.</p>
+          <a href="contact.html" class="btn btn-primary" style="margin-top:16px;">Contact Us to Book</a>
+        </div>
+        <!-- Stripe/PayPal Placeholder -->
+        <div style="border:2px dashed #ccc;border-radius:var(--radius);padding:32px;margin-top:24px;">
+          <h4>Secure Payment Options</h4>
+          <p style="color:var(--gray);font-size:.9rem;">Stripe / PayPal integration point. Consultation deposit of $50 required at booking.</p>
+          <div style="display:flex;gap:16px;justify-content:center;margin-top:16px;flex-wrap:wrap;">
+            <button class="btn btn-primary"><i class="fab fa-stripe-s"></i> Pay with Stripe</button>
+            <button class="btn btn-outline"><i class="fab fa-paypal"></i> Pay with PayPal</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-logo">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0M0N0EyQyI+PHBhdGggZD0iTTEyIDJDOCAyIDUgOCA1IDE2QzUgMTkgNyAyMiAxMSAyMkgxM0MxNyAyMiAxOSAxOSAxOSAxNkMxOSA4IDE2IDIgMTIgMlpNMTEuNSAyMEM5LjUgMjAgNyAxOC41IDcgMTZDNyAxMSAxMCA0IDEyIDRDMTQgNCAxNyAxMSAxNyAxNkMxNyAxOC41IDE0LjUgMjAgMTIuNSAyMEgxMS41WiIvPjwvc3ZnPg==" alt="Logo" class="logo" style="filter: brightness(0) invert(1);">
+          <span class="brand-name" style="color: var(--white);">SURFBOARD</span>
+        </div>
+        <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 24px;">Crafting excellence for the ocean since 1998. Your destination for premium shapes and expert repairs.</p>
+        <div class="social-links" style="display: flex; gap: 15px; justify-content: center;">
+            <a href="#" class="social-link" style="color: white; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-link" style="color: white; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link" style="color: white; font-size: 1.2rem;"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Our Services</a></li>
+          <li><a href="blog.html">Workshop Blog</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Newsletter</h4>
+        <p style="font-size: 0.85rem; color: #ccc; margin-bottom: 16px;">Subscribe for shaping tips and workshop updates.</p>
+        <form action="#" style="display: flex; flex-direction: column; gap: 10px;">
+            <input type="email" placeholder="Your Email" style="padding: 10px; border-radius: 8px; border: none; outline: none;">
+            <button class="btn btn-primary" style="padding: 10px; font-size: 0.9rem;">Subscribe</button>
+        </form>
+      </div>
+      <div class="footer-links">
+        <h4>Contact Us</h4>
+        <p style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> 123 Ocean Drive, Malibu, CA</p>
+        <p style="font-size: 0.9rem;"><i class="fas fa-envelope" style="margin-right: 8px;"></i> info@surfboard.com</p>
+        <p style="font-size: 0.9rem;"><i class="fas fa-phone" style="margin-right: 8px;"></i> (555) 123-4567</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Surfboard Shaping & Repair. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // Extended calculator with extras
+    const calc = document.getElementById('price-calc');
+    if(calc) {
+      const updatePrice = () => {
+        const board = document.getElementById('board-type').value;
+        const repair = document.getElementById('repair-type').value;
+        const extra = document.getElementById('extra').value;
+        let price = 0;
+        if(board === 'shortboard') price += 30;
+        if(board === 'longboard')  price += 50;
+        if(board === 'fish')       price += 35;
+        if(board === 'gun')        price += 70;
+        if(repair === 'ding')      price += 45;
+        if(repair === 'fin')       price += 80;
+        if(repair === 'glassing')  price += 200;
+        if(repair === 'custom')    price += 600;
+        if(extra === 'tint')       price += 60;
+        if(extra === 'logo')       price += 40;
+        if(extra === 'rush')       price += 80;
+        document.getElementById('calc-result').textContent = '$' + price;
+      };
+      calc.addEventListener('change', updatePrice);
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
