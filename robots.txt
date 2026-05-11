@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://surfboard-workshop.com/sitemap.xml
