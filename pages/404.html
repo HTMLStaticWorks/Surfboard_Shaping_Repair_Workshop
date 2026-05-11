@@ -59,9 +59,10 @@
     <!-- Header -->
     <header>
         <div class="header-left">
-            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
-            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0M0N0EyQyI+PHBhdGggZD0iTTEyIDJDOCAyIDUgOCA1IDE2QzUgMTkgNyAyMiAxMSAyMkgxM0MxNyAyMiAxOSAxOSAxOSAxNkMxOSA4IDE2IDIgMTIgMlpNMTEuNSAyMEM5LjUgMjAgNyAxOC41IDcgMTZDNyAxMSAxMCA0IDEyIDRDMTQgNCAxNyAxMSAxNyAxNkMxNyAxOC41IDE0LjUgMjAgMTIuNSAyMEgxMS41WiIvPjwvc3ZnPg==" alt="Surfboard Logo" class="logo">
-            <span class="brand-name">SURFBOARD</span>
+            <a href="index.html" class="logo-container" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0M0N0EyQyI+PHBhdGggZD0iTTEyIDJDOCAyIDUgOCA1IDE2QzUgMTkgNyAyMiAxMSAyMkgxM0MxNyAyMiAxOSAxOSAxOSAxNkMxOSA4IDE2IDIgMTIgMlpNMTEuNSAyMEM5LjUgMjAgNyAxOC41IDcgMTZDNyAxMSAxMCA0IDEyIDRDMTQgNCAxNyAxMSAxNyAxNkMxNyAxOC41IDE0LjUgMjAgMTIuNSAyMEgxMS41WiIvPjwvc3ZnPg==" alt="Surfboard Logo" class="logo">
+                <span class="brand-name">SURFBOARD</span>
+            </a>
         </div>
         <nav class="header-center">
             <ul class="nav-menu">
@@ -76,6 +77,11 @@
             <button class="icon-btn" id="rtl-toggle"><i class="fas fa-language"></i></button>
             <button class="icon-btn" id="theme-toggle"><i class="fas fa-moon theme-icon"></i></button>
             <a href="login.html" class="btn btn-primary btn-login">Login</a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
@@ -91,7 +97,7 @@
         <button class="icon-btn" id="mobile-theme-toggle"><i class="fas fa-moon theme-icon"></i> Theme Switch</button>
     </div>
 
-    <main class="error-page">
+    <main class="error-page" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1502680399488-2a65701a5002?auto=format&fit=crop&q=80&w=1600');">
         <div class="error-code">404</div>
         <h1 class="error-message">Wipeout! Page Not Found</h1>
         <p class="error-desc">Looks like you've been caught in the impact zone. The page you're looking for has been washed away or never existed in the first place.</p>
@@ -104,10 +110,10 @@
     <!-- Footer -->
     <footer>
         <div class="footer-grid">
-            <div class="footer-logo">
+            <a href="index.html" class="footer-logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; margin-bottom: 20px;">
                 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0M0N0EyQyI+PHBhdGggZD0iTTEyIDJDOCAyIDUgOCA1IDE2QzUgMTkgNyAyMiAxMSAyMkgxM0MxNyAyMiAxOSAxOSAxOSAxNkMxOSA4IDE2IDIgMTIgMlpNMTEuNSAyMEM5LjUgMjAgNyAxOC41IDcgMTZDNyAxMSAxMCA0IDEyIDRDMTQgNCAxNyAxMSAxNyAxNkMxNyAxOC41IDE0LjUgMjAgMTIuNSAyMEgxMS41WiIvPjwvc3ZnPg==" alt="Logo" class="logo" style="filter: brightness(0) invert(1);">
                 <span class="brand-name" style="color: var(--white);">SURFBOARD</span>
-            </div>
+            </a>
             <div class="footer-links">
                 <h4>Quick Links</h4>
                 <ul>

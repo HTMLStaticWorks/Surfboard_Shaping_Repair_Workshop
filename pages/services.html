@@ -1,79 +1,393 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services | Surfboard – Shaping, Repair & Glassing</title>
-  <meta name="description" content="Explore Surfboard's full range of services: custom board shaping, professional ding repair, expert glassing, and consultation booking.">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <meta name="description"
+    content="Explore Surfboard's full range of services: custom board shaping, professional ding repair, expert glassing, and consultation booking.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/dark-mode.css">
   <link rel="stylesheet" href="../assets/css/rtl.css">
   <style>
-    .page-hero {
-      min-height:55vh; display:flex; flex-direction:column; align-items:center;
-      justify-content:center; text-align:center; padding:120px 5% 80px;
-      background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
-        url('https://images.unsplash.com/photo-1530870110042-98b2cb110834?auto=format&fit=crop&q=80&w=1600') center/cover;
-      color:#fff;
-    }
-    .page-hero h1 { color:#fff; font-size:clamp(2.2rem,5vw,3.8rem); }
-    .breadcrumb { display:flex; gap:8px; align-items:center; justify-content:center; margin-top:16px; font-size:.9rem; opacity:.8; }
-    .breadcrumb a { color:var(--secondary); }
-
     /* Service Cards */
-    .service-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:32px; margin-top:48px; }
-    .service-card { background:#fff; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:var(--transition); }
-    .service-card:hover { transform:translateY(-8px); }
-    .service-card img { width:100%; height:220px; object-fit:cover; }
-    .service-body { padding:32px; text-align:center; }
-    .service-body i { font-size:2rem; color:var(--accent); margin-bottom:16px; }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .service-body {
+      padding: 32px;
+      text-align: center;
+    }
+
+    .service-body i {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
 
     /* Case Studies */
-    .case-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:36px; margin-top:48px; }
-    .case-card { background:#fff; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
-    .case-images { display:grid; grid-template-columns:1fr 1fr; }
-    .case-images img { width:100%; height:180px; object-fit:cover; }
-    .case-label { text-align:center; font-size:.75rem; font-weight:700; padding:6px; background:var(--accent); color:#fff; }
-    .case-body { padding:28px; text-align:center; }
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 36px;
+      margin-top: 48px;
+    }
+
+    .case-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .case-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .case-images img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .case-label {
+      text-align: center;
+      font-size: .75rem;
+      font-weight: 700;
+      padding: 6px;
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .case-body {
+      padding: 28px;
+      text-align: center;
+    }
 
     /* Calculator */
-    .calc-box { max-width:600px; margin:48px auto 0; background:#fff; border-radius:var(--radius); padding:48px; box-shadow:var(--shadow); }
-    .form-group { margin-bottom:24px; text-align:left; }
-    .form-group label { display:block; font-weight:600; margin-bottom:8px; }
-    .form-group select, .form-group input { width:100%; padding:14px; border:2px solid #eee; border-radius:8px; font-size:1rem; transition:var(--transition); }
-    .form-group select:focus, .form-group input:focus { outline:none; border-color:var(--accent); }
-    .calc-result { background:var(--accent); color:#fff; border-radius:var(--radius); padding:24px; text-align:center; margin-top:24px; }
-    .calc-result .price { font-size:3rem; font-weight:700; }
+    .calc-box {
+      max-width: 600px;
+      margin: 48px auto 0;
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 48px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .form-group select,
+    .form-group input {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #eee;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .form-group select:focus,
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .calc-result {
+      background: var(--accent);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    .calc-result .price {
+      font-size: 3rem;
+      font-weight: 700;
+    }
 
     /* Booking Placeholder */
-    .booking-box { max-width:700px; margin:48px auto 0; background:#fff; border-radius:var(--radius); padding:48px; box-shadow:var(--shadow); text-align:center; }
-    .calendar-placeholder { border:2px dashed var(--accent); border-radius:var(--radius); padding:60px; margin:28px 0; background:#faf8f5; }
+    .booking-box {
+      max-width: 700px;
+      margin: 48px auto 0;
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 48px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .calendar-placeholder {
+      border: 2px dashed var(--accent);
+      border-radius: var(--radius);
+      padding: 60px;
+      margin: 28px 0;
+      background: #faf8f5;
+    }
+
+    @media (max-width: 480px) {
+      .booking-box {
+        padding: 32px 16px;
+      }
+
+      .calendar-placeholder {
+        padding: 32px 12px;
+      }
+
+      .case-grid {
+        grid-template-columns: 1fr;
+        margin-right: 0;
+      }
+    }
+
+    /* Calendar Integration */
+    .calendar-wrapper {
+      display: flex;
+      gap: 40px;
+      text-align: left;
+      flex-wrap: wrap;
+    }
+
+    .calendar-sidebar {
+      flex: 1;
+      min-width: 280px;
+      padding: 24px;
+      background: #faf8f5;
+      border-radius: 15px;
+      border: 1px solid #eee;
+    }
+
+    .calendar-sidebar h3 {
+      text-align: center;
+      margin-bottom: 8px;
+      font-size: 1.5rem;
+    }
+
+    .calendar-sidebar p {
+      text-align: center;
+      margin: 0 0 24px;
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    .selected-info {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .selected-info div {
+      padding: 12px;
+      background: #fff;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .selected-info i {
+      color: var(--accent);
+    }
+
+    .calendar-main {
+      flex: 2;
+      min-width: 300px;
+    }
+
+    .calendar-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .calendar-nav h4 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .calendar-grid-header {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: var(--gray);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .calendar-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+
+    .day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 10px;
+      font-weight: 500;
+      transition: var(--transition);
+      font-size: 0.95rem;
+      border: 1px solid transparent;
+    }
+
+    .day:hover:not(.empty):not(.disabled) {
+      background: rgba(196, 122, 44, 0.1);
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .day.active {
+      background: var(--accent) !important;
+      color: #fff !important;
+    }
+
+    .day.today {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    .day.disabled {
+      color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .day.empty {
+      cursor: default;
+    }
+
+    .time-selection {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid #eee;
+      animation: calendarFadeIn 0.4s ease-out;
+    }
+
+    .time-selection h5 {
+      text-align: left;
+      margin-bottom: 16px;
+      font-size: 1.1rem;
+    }
+
+    .time-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 12px;
+    }
+
+    .time-slot {
+      padding: 10px;
+      border: 1px solid #eee;
+      background: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: var(--transition);
+      text-align: center;
+      color: var(--primary);
+    }
+
+    .time-slot:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .time-slot.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    @keyframes calendarFadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .calendar-wrapper {
+        flex-direction: column;
+      }
+      .calendar-sidebar {
+        order: 2;
+      }
+      .calendar-main {
+        order: 1;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <!-- Header -->
   <header>
     <div class="header-left">
-      <div class="logo-container" style="display: flex; align-items: center; gap: 12px;">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0M0N0EyQyI+PHBhdGggZD0iTTEyIDJDOCAyIDUgOCA1IDE2QzUgMTkgNyAyMiAxMSAyMkgxM0MxNyAyMiAxOSAxOSAxOSAxNkMxOSA4IDE2IDIgMTIgMlpNMTEuNSAyMEM5LjUgMjAgNyAxOC41IDcgMTZDNyAxMSAxMCA0IDEyIDRDMTQgNCAxNyAxMSAxNyAxNkMxNyAxOC41IDE0LjUgMjAgMTIuNSAyMEgxMS41WiIvPjwvc3ZnPg==" alt="Surfboard Logo" class="logo">
+      <a href="index.html" class="logo-container"
+        style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+        <img src="https://icon2.cleanpng.com/lnd/20240507/kuj/avocms720.webp" alt="Surfboard Logo" class="logo">
         <span class="brand-name">SURFBOARD</span>
-      </div>
+      </a>
     </div>
     <nav class="header-center">
       <ul class="nav-menu">
-        <li><a href="index.html"    class="nav-link">Home</a></li>
-        <li><a href="home2.html"    class="nav-link">Home 2</a></li>
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="home2.html" class="nav-link">Home 2</a></li>
         <li><a href="services.html" class="nav-link active">Services</a></li>
-        <li><a href="blog.html"     class="nav-link">Blog</a></li>
-        <li><a href="contact.html"  class="nav-link">Contact</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
     </nav>
     <div class="header-right">
-      <button class="icon-btn" id="rtl-toggle"><i class="fas fa-language"></i></button>
-      <button class="icon-btn" id="theme-toggle"><i class="fas fa-moon theme-icon"></i></button>
+      <button class="icon-btn" id="rtl-toggle" title="Toggle RTL">RTL</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle Theme"><i class="fas fa-moon theme-icon"></i></button>
       <a href="login.html" class="btn btn-primary btn-login">Login</a>
       <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
     </div>
@@ -81,28 +395,25 @@
 
   <div class="overlay"></div>
   <div class="mobile-nav">
-    <a href="index.html"    class="nav-link"><i class="fas fa-home"></i> Home</a>
-    <a href="home2.html"    class="nav-link"><i class="fas fa-layer-group"></i> Home 2</a>
-    <a href="services.html" class="nav-link"><i class="fas fa-wrench"></i> Services</a>
-    <a href="blog.html"     class="nav-link"><i class="fas fa-blog"></i> Blog</a>
-    <a href="contact.html"  class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="home2.html" class="nav-link">Home 2</a>
+    <a href="services.html" class="nav-link active">Services</a>
+    <a href="blog.html" class="nav-link">Blog</a>
+    <a href="contact.html" class="nav-link">Contact</a>
     <hr style="border-color:rgba(255,255,255,.15);">
-    <button class="icon-btn" id="mobile-rtl-toggle"><i class="fas fa-language"></i> RTL</button>
-    <button class="icon-btn" id="mobile-theme-toggle"><i class="fas fa-moon theme-icon"></i> Theme</button>
+    <button class="icon-btn" id="mobile-rtl-toggle">RTL</button>
+    <button class="icon-btn" id="mobile-theme-toggle"><i class="fas fa-moon theme-icon"></i></button>
     <a href="login.html" class="btn btn-primary" style="margin-top:8px;">Login</a>
   </div>
 
   <main>
 
     <!-- Page Hero -->
-    <div class="page-hero">
+    <div class="page-hero services"
+      style="background-image: linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)), url('https://images.squarespace-cdn.com/content/v1/50b3bdc5e4b05036d3b1aa97/1519430134589-HD1OLKQ5172WRM17SI15/112A4497.jpg?format=2500w');">
       <h1>Our Services</h1>
-      <p style="color: white; margin-top: 15px; font-size: 1.1rem; opacity: 0.9;">Crafting Performance. Fixing Perfection. Every board handled with artisan care.</p>
-      <div class="breadcrumb">
-        <a href="index.html">Home</a>
-        <i class="fas fa-chevron-right"></i>
-        <span>Services</span>
-      </div>
+      <p>Crafting Performance. Fixing Perfection. Every board handled with artisan care.</p>
+
     </div>
 
     <!-- Service Offerings -->
@@ -111,34 +422,43 @@
       <p>From a first board to a competition gun — every service delivered with master-level craft.</p>
       <div class="service-grid">
         <div class="service-card fade-in">
-          <img src="https://images.unsplash.com/photo-1502680399488-2a65701a5002?auto=format&fit=crop&q=80&w=800" alt="Custom Board Shaping">
+          <img
+            src="https://static.wixstatic.com/media/abd183_7d977354a0a34d259d220e5daf1f6212~mv2.jpg/v1/fill/w_568,h_440,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/abd183_7d977354a0a34d259d220e5daf1f6212~mv2.jpg"
+            alt="Custom Board Shaping">
           <div class="service-body">
             <i class="fas fa-pencil-ruler"></i>
             <h3>Custom Board Shaping</h3>
-            <p>Work with our shapers to design a board tailored to your surf style, weight, and local break. Starting from $600.</p>
+            <p>Work with our shapers to design a board tailored to your surf style, weight, and local break. Starting
+              from $600.</p>
             <a href="contact.html" class="btn btn-primary" style="margin-top:16px;">Start a Custom Build</a>
           </div>
         </div>
         <div class="service-card fade-in">
-          <img src="https://images.unsplash.com/photo-1530870110042-98b2cb110834?auto=format&fit=crop&q=80&w=800" alt="Ding Repair">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/5759b8fb20c64730ca99910f/1514698054260-AJG5AEXP2BDOO2230K44/fullsizeoutput_3b05.jpeg"
+            alt="Ding Repair">
           <div class="service-body">
             <i class="fas fa-hammer"></i>
-            <h3>Ding Repair</h3>
-            <p>Fast, expert ding repair with precision color matching. Minor repairs from $45. Board back in 48 hours.</p>
+            <h3>Surfboard Repair</h3>
+            <p>Fast, expert ding repair with precision color matching. Minor repairs from $45. Board back in 48 hours.
+            </p>
             <a href="contact.html" class="btn btn-primary" style="margin-top:16px;">Book a Repair</a>
           </div>
         </div>
         <div class="service-card fade-in">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800" alt="Glassing Services">
+          <img src="https://cdn.shopify.com/s/files/1/0395/8151/5939/files/The_Surfboard_Studio_-_Contract_Glassing.jpg?v=1631598167"
+            alt="Glassing Services">
           <div class="service-body">
             <i class="fas fa-layer-group"></i>
             <h3>Glassing Services</h3>
-            <p>Professional fiberglass lamination, hotcoat, and glosscoat for new builds and re-glass jobs. From $200.</p>
+            <p>Professional fiberglass lamination, hotcoat, and glosscoat for new builds and re-glass jobs. From $200.
+            </p>
             <a href="contact.html" class="btn btn-primary" style="margin-top:16px;">Get a Quote</a>
           </div>
         </div>
         <div class="service-card fade-in">
-          <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&q=80&w=800" alt="Blank Selection">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiTnt9rpSkjiiEBkchVcmjh-kjDojn5mMz5A&s"
+            alt="Blank Selection">
           <div class="service-body">
             <i class="fas fa-cube"></i>
             <h3>Blank Consultation</h3>
@@ -147,20 +467,23 @@
           </div>
         </div>
         <div class="service-card fade-in">
-          <img src="https://images.unsplash.com/photo-1516571748831-5d81767b788d?auto=format&fit=crop&q=80&w=800" alt="Fin Box Install">
+          <img src="https://www.thesurfboardwarehouse.com.au/cdn/shop/files/bottom-fins.png?v=1696318287"
+            alt="Fin Box Install">
           <div class="service-body">
             <i class="fas fa-cog"></i>
-            <h3>Fin Box Installation</h3>
+            <h3>Fin Installation</h3>
             <p>Single, twin, thruster, or quad — we install all fin systems with precision. From $80 per set.</p>
             <a href="contact.html" class="btn btn-outline" style="margin-top:16px;">Book Service</a>
           </div>
         </div>
         <div class="service-card fade-in">
-          <img src="https://images.unsplash.com/photo-1455264745730-cb3b76250ae8?auto=format&fit=crop&q=80&w=800" alt="Board Consultation">
+          <img src="https://www.swellwake.com/cdn/shop/articles/swell_choosing_the_right_wakesurf_board_for_beginners.webp?v=1673892717"
+            alt="Consultation">
           <div class="service-body">
             <i class="fas fa-comments"></i>
             <h3>Board Consultation</h3>
-            <p>In-person or virtual consultation with a master shaper. 1-hour session, $50 (credited toward your build).</p>
+            <p>In-person or virtual consultation with a master shaper. 1-hour session, $50 (credited toward your build).
+            </p>
             <a href="contact.html" class="btn btn-outline" style="margin-top:16px;">Book Session</a>
           </div>
         </div>
@@ -175,11 +498,11 @@
         <div class="case-card fade-in">
           <div class="case-images">
             <div>
-              <img src="https://images.unsplash.com/photo-1509914398892-963f53e6e2f1?auto=format&fit=crop&q=80&w=600" alt="Before repair">
+              <img src="https://s3.ca-central-1.amazonaws.com/oc-bodhisurfyoga.com/wp-content/uploads/2024/10/02171350/Photo-2-1024x576.jpg" alt="Before repair">
               <div class="case-label">BEFORE</div>
             </div>
             <div>
-              <img src="https://images.unsplash.com/photo-1502680399488-2a65701a5002?auto=format&fit=crop&q=80&w=600" alt="After repair">
+              <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjR20fHr1jfJUCDQ6HGj8DkEva-xk2MepUll7DuNs1bUJzTqxMr49GCsUBHxCtIj1aSEOVNKLZUb_p01BD82pWpLQqOhdeqZ-6QZOZmfQF1yFpiHhEozKM6HFX1SQoEOFrTpCN5CL60nA4d/s1600/DSCF1881.JPG" alt="After repair">
               <div class="case-label">AFTER</div>
             </div>
           </div>
@@ -191,11 +514,13 @@
         <div class="case-card fade-in">
           <div class="case-images">
             <div>
-              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=600" alt="Before custom build">
+              <img src="https://i.redd.it/1960s-96-hobie-honolulu-surfboard-restoration-v0-k271s9fvmung1.jpg?width=3024&format=pjpg&auto=webp&s=195c01d7446f7318d25e3ff5cf7617718dfc036c"
+                alt="Before custom build">
               <div class="case-label">BEFORE</div>
             </div>
             <div>
-              <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&q=80&w=600" alt="After custom build">
+              <img src="https://3.bp.blogspot.com/_yjGk1sOquOE/Sbc7GtEbB7I/AAAAAAAACrk/uIjXRAnS7FA/s640/DK_deck.jpg"
+                alt="After custom build">
               <div class="case-label">AFTER</div>
             </div>
           </div>
@@ -257,19 +582,39 @@
       <h2>Book a Consultation</h2>
       <p>Schedule time with one of our expert shapers to discuss your board project.</p>
       <div class="booking-box fade-in">
-        <div class="calendar-placeholder">
-          <i class="fas fa-calendar-alt" style="font-size:3rem;color:var(--accent);margin-bottom:16px;display:block;"></i>
-          <h3>Calendar Integration</h3>
-          <p style="color:var(--gray);">Calendly / Acuity Scheduling integration point. Replace this block with your booking embed code.</p>
-          <a href="contact.html" class="btn btn-primary" style="margin-top:16px;">Contact Us to Book</a>
-        </div>
-        <!-- Stripe/PayPal Placeholder -->
-        <div style="border:2px dashed #ccc;border-radius:var(--radius);padding:32px;margin-top:24px;">
-          <h4>Secure Payment Options</h4>
-          <p style="color:var(--gray);font-size:.9rem;">Stripe / PayPal integration point. Consultation deposit of $50 required at booking.</p>
-          <div style="display:flex;gap:16px;justify-content:center;margin-top:16px;flex-wrap:wrap;">
-            <button class="btn btn-primary"><i class="fab fa-stripe-s"></i> Pay with Stripe</button>
-            <button class="btn btn-outline"><i class="fab fa-paypal"></i> Pay with PayPal</button>
+        <div class="calendar-wrapper">
+          <div class="calendar-sidebar">
+            <h3>Book Consultation</h3>
+            <p>Schedule a 1-on-1 session with our master shapers to discuss your project.</p>
+            <div class="selected-info">
+              <div id="display-date"><i class="far fa-calendar"></i> Select a date</div>
+              <div id="display-time"><i class="far fa-clock"></i> Select a time</div>
+            </div>
+            <button id="confirm-booking" class="btn btn-primary" disabled style="width: 100%; margin-top: 24px;">Confirm Booking</button>
+            <p style="font-size: 0.75rem; margin-top: 16px; color: var(--gray);">* $50 deposit required to secure your spot.</p>
+          </div>
+          <div class="calendar-main">
+            <div class="calendar-nav">
+              <button id="prev-month" class="icon-btn"><i class="fas fa-chevron-left"></i></button>
+              <h4 id="month-display">May 2026</h4>
+              <button id="next-month" class="icon-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="calendar-grid-header">
+              <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+            </div>
+            <div id="calendar-days" class="calendar-days">
+              <!-- Days injected by JS -->
+            </div>
+            <div id="time-selection" class="time-selection" style="display: none;">
+              <h5>Available Time Slots</h5>
+              <div class="time-grid">
+                <button class="time-slot">09:00 AM</button>
+                <button class="time-slot">10:30 AM</button>
+                <button class="time-slot">01:00 PM</button>
+                <button class="time-slot">02:30 PM</button>
+                <button class="time-slot">04:00 PM</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -280,16 +625,18 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-logo">
-        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0M0N0EyQyI+PHBhdGggZD0iTTEyIDJDOCAyIDUgOCA1IDE2QzUgMTkgNyAyMiAxMSAyMkgxM0MxNyAyMiAxOSAxOSAxOSAxNkMxOSA4IDE2IDIgMTIgMlpNMTEuNSAyMEM5LjUgMjAgNyAxOC41IDcgMTZDNyAxMSAxMCA0IDEyIDRDMTQgNCAxNyAxMSAxNyAxNkMxNyAxOC41IDE0LjUgMjAgMTIuNSAyMEgxMS41WiIvPjwvc3ZnPg==" alt="Logo" class="logo" style="filter: brightness(0) invert(1);">
-          <span class="brand-name" style="color: var(--white);">SURFBOARD</span>
-        </div>
-        <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 24px;">Crafting excellence for the ocean since 1998. Your destination for premium shapes and expert repairs.</p>
-        <div class="social-links" style="display: flex; gap: 15px; justify-content: center;">
-            <a href="#" class="social-link" style="color: white; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-link" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="social-link" style="color: white; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-link" style="color: white; font-size: 1.2rem;"><i class="fab fa-youtube"></i></a>
+        <a href="index.html"
+          style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; text-decoration: none;">
+          <img src="https://icon2.cleanpng.com/lnd/20240507/kuj/avocms720.webp" alt="Logo" class="logo">
+          <span class="brand-name">SURFBOARD</span>
+        </a>
+        <p style="font-size: 0.9rem; margin-bottom: 24px;">Crafting excellence for the ocean since
+          1998. Your destination for premium shapes and expert repairs.</p>
+        <div class="social-links" style="display: flex; gap: 15px;">
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
       <div class="footer-links">
@@ -304,16 +651,20 @@
       </div>
       <div class="footer-links">
         <h4>Newsletter</h4>
-        <p style="font-size: 0.85rem; color: #ccc; margin-bottom: 16px;">Subscribe for shaping tips and workshop updates.</p>
+        <p style="font-size: 0.85rem; margin-bottom: 16px;">Subscribe for shaping tips and workshop
+          updates.</p>
         <form action="#" style="display: flex; flex-direction: column; gap: 10px;">
-            <input type="email" placeholder="Your Email" style="padding: 10px; border-radius: 8px; border: none; outline: none;">
-            <button class="btn btn-primary" style="padding: 10px; font-size: 0.9rem;">Subscribe</button>
+          <input type="email" placeholder="Your Email"
+            style="padding: 10px; border-radius: 8px; border: none; outline: none;">
+          <button class="btn btn-primary" style="padding: 10px; font-size: 0.9rem;">Subscribe</button>
         </form>
       </div>
       <div class="footer-links">
         <h4>Contact Us</h4>
-        <p style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> 123 Ocean Drive, Malibu, CA</p>
-        <p style="font-size: 0.9rem;"><i class="fas fa-envelope" style="margin-right: 8px;"></i> info@surfboard.com</p>
+        <p style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> 123 Ocean
+          Drive, Malibu, CA</p>
+        <p style="font-size: 0.9rem;"><i class="fas fa-envelope" style="margin-right: 8px;"></i>
+          info@surfboard.com</p>
         <p style="font-size: 0.9rem;"><i class="fas fa-phone" style="margin-right: 8px;"></i> (555) 123-4567</p>
       </div>
     </div>
@@ -326,33 +677,182 @@
   <script>
     // Extended calculator with extras
     const calc = document.getElementById('price-calc');
-    if(calc) {
+    if (calc) {
       const updatePrice = () => {
         const board = document.getElementById('board-type').value;
         const repair = document.getElementById('repair-type').value;
         const extra = document.getElementById('extra').value;
         let price = 0;
-        if(board === 'shortboard') price += 30;
-        if(board === 'longboard')  price += 50;
-        if(board === 'fish')       price += 35;
-        if(board === 'gun')        price += 70;
-        if(repair === 'ding')      price += 45;
-        if(repair === 'fin')       price += 80;
-        if(repair === 'glassing')  price += 200;
-        if(repair === 'custom')    price += 600;
-        if(extra === 'tint')       price += 60;
-        if(extra === 'logo')       price += 40;
-        if(extra === 'rush')       price += 80;
+        if (board === 'shortboard') price += 30;
+        if (board === 'longboard') price += 50;
+        if (board === 'fish') price += 35;
+        if (board === 'gun') price += 70;
+        if (repair === 'ding') price += 45;
+        if (repair === 'fin') price += 80;
+        if (repair === 'glassing') price += 200;
+        if (repair === 'custom') price += 600;
+        if (extra === 'tint') price += 60;
+        if (extra === 'logo') price += 40;
+        if (extra === 'rush') price += 80;
         document.getElementById('calc-result').textContent = '$' + price;
       };
       calc.addEventListener('change', updatePrice);
     }
+
+    // Calendar Logic
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"];
+    
+    let currentDate = new Date();
+    let selectedDate = null;
+    let selectedTime = null;
+
+    const renderCalendar = () => {
+      const year = currentDate.getFullYear();
+      const month = currentDate.getMonth();
+      
+      const monthDisplay = document.getElementById('month-display');
+      if (!monthDisplay) return;
+
+      monthDisplay.textContent = `${monthNames[month]} ${year}`;
+      
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      
+      const calendarDays = document.getElementById('calendar-days');
+      calendarDays.innerHTML = '';
+      
+      // Empty slots for previous month
+      for (let i = 0; i < firstDay; i++) {
+        const emptyDiv = document.createElement('div');
+        emptyDiv.classList.add('day', 'empty');
+        calendarDays.appendChild(emptyDiv);
+      }
+      
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      
+      for (let i = 1; i <= daysInMonth; i++) {
+        const dayDiv = document.createElement('div');
+        dayDiv.classList.add('day');
+        dayDiv.textContent = i;
+        
+        const dateObj = new Date(year, month, i);
+        
+        if (dateObj < today) {
+          dayDiv.classList.add('disabled');
+        } else {
+          if (dateObj.toDateString() === today.toDateString()) {
+            dayDiv.classList.add('today');
+          }
+          
+          if (selectedDate && dateObj.toDateString() === selectedDate.toDateString()) {
+            dayDiv.classList.add('active');
+          }
+          
+          dayDiv.addEventListener('click', () => {
+            selectedDate = dateObj;
+            renderCalendar();
+            showTimeSlots();
+            updateBookingInfo();
+          });
+        }
+        
+        calendarDays.appendChild(dayDiv);
+      }
+    };
+
+    const showTimeSlots = () => {
+      const timeSelection = document.getElementById('time-selection');
+      const calendarDays = document.getElementById('calendar-days');
+      const calendarNav = document.querySelector('.calendar-nav');
+      const calendarHeader = document.querySelector('.calendar-grid-header');
+      
+      if (!timeSelection) return;
+      
+      // Hide calendar parts to show "only" the time selection
+      if (calendarDays) calendarDays.style.display = 'none';
+      if (calendarNav) calendarNav.style.display = 'none';
+      if (calendarHeader) calendarHeader.style.display = 'none';
+      
+      timeSelection.style.display = 'block';
+      
+      // Add a back button if it doesn't exist
+      if (!document.getElementById('back-to-calendar')) {
+        const backBtn = document.createElement('button');
+        backBtn.id = 'back-to-calendar';
+        backBtn.className = 'btn btn-outline';
+        backBtn.style.marginBottom = '20px';
+        backBtn.style.width = '100%';
+        backBtn.innerHTML = '<i class="fas fa-chevron-left"></i> Change Date';
+        backBtn.onclick = () => {
+          timeSelection.style.display = 'none';
+          if (calendarDays) calendarDays.style.display = 'grid';
+          if (calendarNav) calendarNav.style.display = 'flex';
+          if (calendarHeader) calendarHeader.style.display = 'grid';
+        };
+        timeSelection.insertBefore(backBtn, timeSelection.firstChild);
+      }
+
+      const slots = document.querySelectorAll('.time-slot');
+      slots.forEach(slot => {
+        slot.classList.remove('active');
+        if (selectedTime && slot.textContent === selectedTime) {
+          slot.classList.add('active');
+        }
+        
+        slot.onclick = () => {
+          slots.forEach(s => s.classList.remove('active'));
+          slot.classList.add('active');
+          selectedTime = slot.textContent;
+          updateBookingInfo();
+        };
+      });
+    };
+
+    const updateBookingInfo = () => {
+      const displayDate = document.getElementById('display-date');
+      const displayTime = document.getElementById('display-time');
+      const confirmBtn = document.getElementById('confirm-booking');
+      
+      if (selectedDate) {
+        displayDate.innerHTML = `<i class="far fa-calendar"></i> ${selectedDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`;
+      }
+      
+      if (selectedTime) {
+        displayTime.innerHTML = `<i class="far fa-clock"></i> ${selectedTime}`;
+        confirmBtn.disabled = false;
+        confirmBtn.innerHTML = `Confirm for ${selectedTime}`;
+      }
+    };
+
+    const prevBtn = document.getElementById('prev-month');
+    const nextBtn = document.getElementById('next-month');
+
+    if (prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar();
+      });
+    }
+
+    renderCalendar();
+
+    // Confirm Booking Action
+    const confirmBtn = document.getElementById('confirm-booking');
+    if (confirmBtn) {
+      confirmBtn.addEventListener('click', () => {
+        const dateStr = selectedDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        alert(`Booking Confirmed!\nDate: ${dateStr}\nTime: ${selectedTime}\n\nYou will be redirected to the payment gateway.`);
+        window.location.href = 'contact.html';
+      });
+    }
   </script>
 </body>
+
 </html>
-
-
-
-
-
-

@@ -14,73 +14,27 @@
   <link rel="stylesheet" href="../assets/css/dark-mode.css">
   <link rel="stylesheet" href="../assets/css/rtl.css">
   <style>
-    /* ─── Diagonal Hero ─── */
-    .hero2 {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 120px 5% 80px;
-      background: linear-gradient(135deg, #0a0a0a 50%, #1a1a1a 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero2::before {
-      content: '';
-      position: absolute;
-      bottom: -60px;
-      left: 0;
-      width: 100%;
-      height: 120px;
-      background: var(--bg-light);
-      clip-path: polygon(0 60px, 100% 0, 100% 100%, 0 100%);
-    }
-
-    .hero2 h1 {
-      color: #fff;
-      font-size: clamp(2.2rem, 5vw, 4.5rem);
-      line-height: 1.2;
-    }
-
-    .hero2 p {
-      color: var(--secondary);
-      font-size: 1.15rem;
-      max-width: 650px;
-    }
-
-    .wave-badge {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      padding: 6px 20px;
-      border-radius: 50px;
-      font-size: .85rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      margin-bottom: 24px;
-    }
 
     /* ─── Gallery Grid ─── */
     .gallery-masonry {
-      columns: 3;
-      column-gap: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
       margin-top: 48px;
     }
 
     .gallery-item {
-      break-inside: avoid;
-      margin-bottom: 24px;
       border-radius: var(--radius);
       overflow: hidden;
       position: relative;
       cursor: pointer;
+      aspect-ratio: 1 / 1;
     }
 
     .gallery-item img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
       transition: transform .4s ease;
     }
@@ -103,20 +57,20 @@
 
     @media(max-width:768px) {
       .gallery-masonry {
-        columns: 2;
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media(max-width:480px) {
       .gallery-masonry {
-        columns: 1;
+        grid-template-columns: 1fr;
       }
     }
 
     /* ─── Pricing Table ─── */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 32px;
       margin-top: 48px;
     }
@@ -134,6 +88,12 @@
       border: 2px solid transparent;
     }
 
+    .pricing-card h3,
+    .pricing-card .price,
+    .pricing-card .pricing-features li {
+      color: var(--primary);
+    }
+
     .pricing-card.featured {
       border-color: var(--accent);
       transform: translateY(-10px);
@@ -142,6 +102,27 @@
     .pricing-card:hover {
       transform: translateY(-8px);
       border-color: var(--accent);
+    }
+
+    @media(max-width:768px) {
+      .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .pricing-grid .pricing-card:last-child {
+        grid-column: 1 / span 2;
+        justify-self: center;
+        width: calc(50% - 16px);
+      }
+    }
+
+    @media(max-width:480px) {
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+      .pricing-grid .pricing-card:last-child {
+        grid-column: auto;
+        width: 100%;
+      }
     }
 
     .price {
@@ -176,7 +157,7 @@
     /* ─── Blank Selection ─── */
     .blank-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 28px;
       margin-top: 48px;
     }
@@ -214,6 +195,27 @@
       margin-bottom: 12px;
     }
 
+    @media(max-width:768px) {
+      .blank-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .blank-grid .blank-card:last-child {
+        grid-column: 1 / span 2;
+        justify-self: center;
+        width: calc(50% - 14px);
+      }
+    }
+
+    @media(max-width:480px) {
+      .blank-grid {
+        grid-template-columns: 1fr;
+      }
+      .blank-grid .blank-card:last-child {
+        grid-column: auto;
+        width: 100%;
+      }
+    }
+
     /* ─── Process Timeline ─── */
     .timeline {
       position: relative;
@@ -224,25 +226,21 @@
     .timeline::before {
       content: '';
       position: absolute;
-      left: 50%;
+      left: 24px;
       top: 0;
       bottom: 0;
       width: 3px;
       background: var(--secondary);
-      transform: translateX(-50%);
     }
 
     .tl-item {
       display: flex;
-      gap: 40px;
+      gap: 32px;
       align-items: flex-start;
-      margin-bottom: 48px;
+      margin-bottom: 40px;
     }
 
-    .tl-item:nth-child(even) {
-      flex-direction: row-reverse;
-    }
-
+    /* Numbers always stay on the left */
     .tl-dot {
       width: 48px;
       height: 48px;
@@ -264,18 +262,21 @@
       padding: 28px;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      text-align: center;
+      text-align: left;
     }
 
-    @media(max-width:640px) {
-      .timeline::before {
-        left: 24px;
-      }
+    .tl-content h3 { text-align: left; }
+    .tl-content p  { text-align: left; margin: 0; max-width: none; }
 
-      .tl-item,
-      .tl-item:nth-child(even) {
+    @media(max-width:360px) {
+      .tl-item {
         flex-direction: column;
+        align-items: center;
       }
+      .tl-content {
+        text-align: center;
+      }
+      .tl-content h3, .tl-content p { text-align: center; }
     }
 
     /* ─── Stats Strip ─── */
@@ -305,30 +306,18 @@
 
     /* ─── CTA2 ─── */
     .cta2 {
-      background: url('https://images.unsplash.com/photo-1516571748831-5d81767b788d?auto=format&fit=crop&q=80&w=1600') center/cover;
-      position: relative;
+      background: var(--bg-light);
       text-align: center;
-      padding: 120px 5%;
-    }
-
-    .cta2::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, .6);
-    }
-
-    .cta2>* {
-      position: relative;
-      z-index: 1;
+      padding: 100px 5%;
+      transition: var(--transition);
     }
 
     .cta2 h2 {
-      color: #fff;
+      color: var(--primary);
     }
 
     .cta2 p {
-      color: var(--secondary);
+      color: var(--text-light);
     }
   </style>
 </head>
@@ -338,22 +327,24 @@
   <!-- ═══ HEADER ═══ -->
   <header>
     <div class="header-left">
-      <div class="logo-container" style="display: flex; align-items: center; gap: 12px;">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0M0N0EyQyI+PHBhdGggZD0iTTEyIDJDOCAyIDUgOCA1IDE2QzUgMTkgNyAyMiAxMSAyMkgxM0MxNyAyMiAxOSAxOSAxOSAxNkMxOSA4IDE2IDIgMTIgMlpNMTEuNSAyMEM5LjUgMjAgNyAxOC41IDcgMTZDNyAxMSAxMCA0IDEyIDRDMTQgNCAxNyAxMSAxNyAxNkMxNyAxOC41IDE0LjUgMjAgMTIuNSAyMEgxMS41WiIvPjwvc3ZnPg==" alt="Surfboard Logo" class="logo">
+      <a href="index.html" class="logo-container" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+        <img src="https://icon2.cleanpng.com/lnd/20240507/kuj/avocms720.webp" alt="Surfboard Logo" class="logo">
         <span class="brand-name">SURFBOARD</span>
-      </div>
+      </a>
     </div>
     <nav class="header-center">
       <ul class="nav-menu">
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="home2.html" class="nav-link active">Home 2</a></li>
         <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+
         <li><a href="blog.html" class="nav-link">Blog</a></li>
         <li><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
     </nav>
     <div class="header-right">
-      <button class="icon-btn" id="rtl-toggle" title="Toggle RTL"><i class="fas fa-language"></i></button>
+      <button class="icon-btn" id="rtl-toggle" title="Toggle RTL">RTL</button>
       <button class="icon-btn" id="theme-toggle" title="Toggle Theme"><i class="fas fa-moon theme-icon"></i></button>
       <a href="login.html" class="btn btn-primary btn-login">Login</a>
       <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
@@ -364,27 +355,27 @@
   <div class="overlay"></div>
   <div class="mobile-nav">
     <a href="index.html" class="nav-link">Home</a>
-    <a href="home2.html" class="nav-link">Home 2</a>
+    <a href="home2.html" class="nav-link active">Home 2</a>
     <a href="services.html" class="nav-link">Services</a>
     <a href="blog.html" class="nav-link">Blog</a>
     <a href="contact.html" class="nav-link">Contact</a>
     <hr>
-    <button class="icon-btn" id="mobile-rtl-toggle"><i class="fas fa-language"></i> RTL Support</button>
-    <button class="icon-btn" id="mobile-theme-toggle"><i class="fas fa-moon theme-icon"></i> Theme Switch</button>
+    <button class="icon-btn" id="mobile-rtl-toggle">RTL</button>
+    <button class="icon-btn" id="mobile-theme-toggle"><i class="fas fa-moon theme-icon"></i></button>
     <a href="login.html" class="btn btn-primary">Login</a>
   </div>
 
   <main>
 
     <!-- ── SECTION 1 · HERO ── -->
-    <section class="hero2">
+    <section class="hero2" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1455729552865-3658a5d39692?auto=format&fit=crop&q=80&w=1920');">
       <div class="wave-badge">GALLERY EDITION</div>
-      <h1 class="fade-in">Boards Built for<br><span style="color:var(--accent);">Legends</span></h1>
+      <h1 class="fade-in">Boards Built for <br class="hero-br"><span style="color:var(--accent);">Legends</span></h1>
       <p class="fade-in">Every curve, every layer of glass — shaped by hands that have ridden every break on the planet.
       </p>
-      <div class="hero-btns fade-in" style="margin-top:32px;">
+      <div class="hero-btns fade-in">
         <a href="#gallery" class="btn btn-primary">View Gallery</a>
-        <a href="#pricing" class="btn btn-outline" style="border-color:#fff;color:#fff;">See Pricing</a>
+        <a href="#pricing" class="btn btn-outline">See Pricing</a>
       </div>
     </section>
 
@@ -394,47 +385,47 @@
       <p>Hand-crafted boards that prove performance and beauty are never mutually exclusive.</p>
       <div class="gallery-masonry">
         <div class="gallery-item fade-in">
-          <img src="https://images.unsplash.com/photo-1502680399488-2a65701a5002?auto=format&fit=crop&q=80&w=600"
+          <img src="https://www.newsofthearea.com.au/wp-content/uploads/2024/10/SPORT_longboard_AB_PY.jpg"
             alt="Custom Longboard">
           <div class="gallery-caption">Classic Longboard · EPS Blank</div>
         </div>
         <div class="gallery-item fade-in">
-          <img src="https://images.unsplash.com/photo-1530870110042-98b2cb110834?auto=format&fit=crop&q=80&w=600"
+          <img src="https://i.ytimg.com/vi/vdaBEXeiefo/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBt_mTnWsEPvGhcAJw6tHTXLqliRw"
             alt="Performance Shortboard">
           <div class="gallery-caption">Performance Shortboard</div>
         </div>
         <div class="gallery-item fade-in">
-          <img src="https://images.unsplash.com/photo-1516571748831-5d81767b788d?auto=format&fit=crop&q=80&w=600"
+          <img src="https://i.ytimg.com/vi/a-VRhh7R8Zs/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDLHxDE8UUXm3LSOtAYQJSNkVs-mQ"
             alt="Vintage Fish">
           <div class="gallery-caption">Retro Fish · Teal Tint</div>
         </div>
         <div class="gallery-item fade-in">
-          <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&q=80&w=600"
+          <img src="https://lostsurfboards.com.au/cdn/shop/articles/proformance-cover.jpg?v=1638312581"
             alt="Gun Board">
           <div class="gallery-caption">Big-Wave Gun</div>
         </div>
         <div class="gallery-item fade-in">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=600"
+          <img src="https://www.viral-surf.com/9288-large_default/surfboards-polyurethane-pu-5-10-fish-arctic-foam.jpg"
             alt="Egg Board">
           <div class="gallery-caption">Egg Hybrid · PU Blank</div>
         </div>
         <div class="gallery-item fade-in">
-          <img src="https://images.unsplash.com/photo-1455264745730-cb3b76250ae8?auto=format&fit=crop&q=80&w=600"
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW7DKwmHDQj__cPvpeQQUF-SfA-2n2Dam6-Q&s"
             alt="Mid-Length">
           <div class="gallery-caption">Mid-Length · Single Fin</div>
         </div>
         <div class="gallery-item fade-in">
-          <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&q=80&w=600"
+          <img src="https://i.ytimg.com/vi/aEn8kENXQzE/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB8_x59hAkbtKccobJsUWqEiV2o4Q"
             alt="Shortboard">
           <div class="gallery-caption">Pro Model · Carbon Fiber</div>
         </div>
         <div class="gallery-item fade-in">
-          <img src="https://images.unsplash.com/photo-1509914398892-963f53e6e2f1?auto=format&fit=crop&q=80&w=600"
+          <img src="https://static.vecteezy.com/system/resources/thumbnails/039/902/054/small/young-surfer-having-fun-enjoying-a-surf-day-at-sunset-time-extreme-sport-lifestyle-people-concept-photo.jpg"
             alt="Funboard">
           <div class="gallery-caption">The Minimalist · Wood Inlay</div>
         </div>
         <div class="gallery-item fade-in">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=600"
+          <img src="https://i0.wp.com/texasartandsoul.com/wp-content/uploads/2021/06/Featured-Photo-For-Blog-6.png?resize=1080%2C675&ssl=1"
             alt="Custom">
           <div class="gallery-caption">Art Edition · Hand Painted</div>
         </div>
@@ -442,12 +433,12 @@
     </section>
 
     <!-- ── SECTION 3 · PRICING ── -->
-    <section id="pricing" style="background:var(--secondary);">
+    <section id="pricing" class="bg-secondary">
       <h2>Ding Repair Pricing</h2>
       <p>Transparent rates with no surprises. Minor dings to major refurbishments, we've got you covered.</p>
       <div class="pricing-grid">
         <div class="pricing-card fade-in">
-          <img src="https://images.unsplash.com/photo-1516571748831-5d81767b788d?auto=format&fit=crop&q=80&w=600"
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpcgJprrsaHCpCn7YrbzBTVxiI8whL-cXbPQ&s"
             alt="Repair"
             style="width: 100%; height: 150px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
           <h3>Minor Ding</h3>
@@ -461,7 +452,7 @@
         </div>
         <div class="pricing-card featured fade-in">
           <div class="wave-badge">POPULAR</div>
-          <img src="https://images.unsplash.com/photo-1455264745730-cb3b76250ae8?auto=format&fit=crop&q=80&w=600"
+          <img src="https://rustysurfboards.me/cdn/shop/articles/wax-it-up-blog_2048x2048_337554a0-e8ad-49c7-ac6d-0efe789ffe78.jpg?v=1633719419"
             alt="Restoration"
             style="width: 100%; height: 150px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
           <h3>Full Restoration</h3>
@@ -474,7 +465,7 @@
           <a href="contact.html" class="btn btn-primary" style="width:100%;">Get Started</a>
         </div>
         <div class="pricing-card fade-in">
-          <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&q=80&w=600"
+          <img src="https://www.boardcave.com.au/wp-content/uploads/2016/02/glassing-finish-asilda-photography.jpg"
             alt="Glass"
             style="width: 100%; height: 150px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
           <h3>Custom Glass Job</h3>
@@ -495,7 +486,7 @@
       <p>The right blank determines everything about your board's flex, weight, and durability.</p>
       <div class="blank-grid">
         <div class="blank-card fade-in">
-          <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&q=80&w=600"
+          <img src="https://www.woodstockshop.com/cdn/shop/articles/blog-pu-epoxy.jpg?v=1777035284"
             alt="PU Blank">
           <div class="blank-info">
             <div class="blank-tag">Traditional</div>
@@ -504,7 +495,7 @@
           </div>
         </div>
         <div class="blank-card fade-in">
-          <img src="https://images.unsplash.com/photo-1509914398892-963f53e6e2f1?auto=format&fit=crop&q=80&w=600"
+          <img src="https://surfnshow.com/cdn/shop/products/construction_pu_pe_1333_1946x.jpg?v=1488444044"
             alt="EPS Blank">
           <div class="blank-info">
             <div class="blank-tag">Performance</div>
@@ -513,7 +504,7 @@
           </div>
         </div>
         <div class="blank-card fade-in">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=600"
+          <img src="https://cdn.shopify.com/s/files/1/0000/5597/files/Screenshot2026-03-31at10.37.49AM.png?v=1774967888"
             alt="Tuna Blank">
           <div class="blank-info">
             <div class="blank-tag">Eco</div>
@@ -525,7 +516,7 @@
     </section>
 
     <!-- ── SECTION 5 · PROCESS TIMELINE ── -->
-    <section id="process" style="background:var(--secondary);">
+    <section id="process" class="bg-secondary">
       <h2>How We Build Your Board</h2>
       <p>From blank selection to final polish, here's every step of your board's journey.</p>
       <div class="timeline">
@@ -578,7 +569,7 @@
       <p>Tell us your dream board — we'll make it a reality.</p>
       <div style="display:flex;gap:20px;justify-content:center;margin-top:32px;flex-wrap:wrap;">
         <a href="contact.html" class="btn btn-primary">Book Consultation</a>
-        <a href="services.html" class="btn btn-outline" style="color:#fff;border-color:#fff;">Explore Services</a>
+        <a href="serivces.html" class="btn btn-primary">Explore Services</a>
       </div>
     </section>
 
@@ -586,53 +577,54 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-grid">
-      <div class="footer-logo">
-        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0M0N0EyQyI+PHBhdGggZD0iTTEyIDJDOCAyIDUgOCA1IDE2QzUgMTkgNyAyMiAxMSAyMkgxM0MxNyAyMiAxOSAxOSAxOSAxNkMxOSA4IDE2IDIgMTIgMlpNMTEuNSAyMEM5LjUgMjAgNyAxOC41IDcgMTZDNyAxMSAxMCA0IDEyIDRDMTQgNCAxNyAxMSAxNyAxNkMxNyAxOC41IDE0LjUgMjAgMTIuNSAyMEgxMS41WiIvPjwvc3ZnPg==" alt="Logo" class="logo" style="filter: brightness(0) invert(1);">
-          <span class="brand-name" style="color: var(--white);">SURFBOARD</span>
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; text-decoration: none;">
+                    <img src="https://icon2.cleanpng.com/lnd/20240507/kuj/avocms720.webp" alt="Logo" class="logo">
+                    <span class="brand-name">SURFBOARD</span>
+                </a>
+                <p style="font-size: 0.9rem; margin-bottom: 24px;">Crafting excellence for the ocean since
+                    1998. Your destination for premium shapes and expert repairs.</p>
+                <div class="social-links" style="display: flex; gap: 15px;">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="blog.html">Workshop Blog</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Newsletter</h4>
+                <p style="font-size: 0.85rem; margin-bottom: 16px;">Subscribe for shaping tips and workshop
+                    updates.</p>
+                <form action="#" style="display: flex; flex-direction: column; gap: 10px;">
+                    <input type="email" placeholder="Your Email"
+                        style="padding: 10px; border-radius: 8px; border: none; outline: none;">
+                    <button class="btn btn-primary" style="padding: 10px; font-size: 0.9rem;">Subscribe</button>
+                </form>
+            </div>
+            <div class="footer-links">
+                <h4>Contact Us</h4>
+                <p style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> 123 Ocean
+                    Drive, Malibu, CA</p>
+                <p style="font-size: 0.9rem;"><i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                    info@surfboard.com</p>
+                <p style="font-size: 0.9rem;"><i class="fas fa-phone" style="margin-right: 8px;"></i> (555) 123-4567</p>
+            </div>
         </div>
-        <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 24px;">Crafting excellence for the ocean since 1998.
-          Your destination for premium shapes and expert repairs.</p>
-        <div class="social-links" style="display: flex; gap: 15px; justify-content: center;">
-          <a href="#" class="social-link" style="color: white; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="social-link" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook"></i></a>
-          <a href="#" class="social-link" style="color: white; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-link" style="color: white; font-size: 1.2rem;"><i class="fab fa-youtube"></i></a>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Surfboard Shaping & Repair. All rights reserved.</p>
         </div>
-      </div>
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="services.html">Our Services</a></li>
-          <li><a href="blog.html">Workshop Blog</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-      </div>
-      <div class="footer-links">
-        <h4>Newsletter</h4>
-        <p style="font-size: 0.85rem; color: #ccc; margin-bottom: 16px;">Subscribe for shaping tips and workshop
-          updates.</p>
-        <form action="#" style="display: flex; flex-direction: column; gap: 10px;">
-          <input type="email" placeholder="Your Email"
-            style="padding: 10px; border-radius: 8px; border: none; outline: none;">
-          <button class="btn btn-primary" style="padding: 10px; font-size: 0.9rem;">Subscribe</button>
-        </form>
-      </div>
-      <div class="footer-links">
-        <h4>Contact Us</h4>
-        <p style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> 123 Ocean Drive,
-          Malibu, CA</p>
-        <p style="font-size: 0.9rem;"><i class="fas fa-envelope" style="margin-right: 8px;"></i> info@surfboard.com</p>
-        <p style="font-size: 0.9rem;"><i class="fas fa-phone" style="margin-right: 8px;"></i> (555) 123-4567</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Surfboard Shaping & Repair. All rights reserved.</p>
-    </div>
-  </footer>
+    </footer>
 
   <script src="../assets/js/main.js"></script>
 </body>
