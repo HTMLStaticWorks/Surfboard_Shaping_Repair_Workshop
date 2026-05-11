@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - Wipeout | Surfboard Workshop</title>
     <meta name="description" content="Looks like you've wiped out. The page you're looking for doesn't exist.">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Custom CSS -->
@@ -19,6 +22,7 @@
             flex-direction: column;
             min-height: 100vh;
         }
+
         .error-page {
             flex: 1;
             display: flex;
@@ -27,40 +31,47 @@
             justify-content: center;
             text-align: center;
             padding: 40px 20px;
-            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1502680399488-2a65701a5002?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('https://images.unsplash.com/photo-1502680399488-2a65701a5002?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
             color: var(--white);
         }
+
         .error-code {
             font-size: 8rem;
             font-weight: 700;
             line-height: 1;
             margin-bottom: 20px;
             color: var(--accent);
-            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
+
         .error-message {
             font-size: 2rem;
             margin-bottom: 30px;
         }
+
         .error-desc {
             max-width: 600px;
             margin-bottom: 40px;
             font-size: 1.1rem;
             opacity: 0.9;
         }
+
         .error-btns {
             display: flex;
             gap: 20px;
         }
     </style>
 </head>
+
 <body>
 
     <!-- Header -->
     <header>
         <div class="header-left">
-            <a href="index.html" class="logo-container" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0M0N0EyQyI+PHBhdGggZD0iTTEyIDJDOCAyIDUgOCA1IDE2QzUgMTkgNyAyMiAxMSAyMkgxM0MxNyAyMiAxOSAxOSAxOSAxNkMxOSA4IDE2IDIgMTIgMlpNMTEuNSAyMEM5LjUgMjAgNyAxOC41IDcgMTZDNyAxMSAxMCA0IDEyIDRDMTQgNCAxNyAxMSAxNyAxNkMxNyAxOC41IDE0LjUgMjAgMTIuNSAyMEgxMS41WiIvPjwvc3ZnPg==" alt="Surfboard Logo" class="logo">
+            <a href="index.html" class="logo-container"
+                style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0M0N0EyQyI+PHBhdGggZD0iTTEyIDJDOCAyIDUgOCA1IDE2QzUgMTkgNyAyMiAxMSAyMkgxM0MxNyAyMiAxOSAxOSAxOSAxNkMxOSA4IDE2IDIgMTIgMlpNMTEuNSAyMEM5LjUgMjAgNyAxOC41IDcgMTZDNyAxMSAxMCA0IDEyIDRDMTQgNCAxNyAxMSAxNyAxNkMxNyAxOC41IDE0LjUgMjAgMTIuNSAyMEgxMS41WiIvPjwvc3ZnPg=="
+                    alt="Surfboard Logo" class="logo">
                 <span class="brand-name">SURFBOARD</span>
             </a>
         </div>
@@ -97,10 +108,12 @@
         <button class="icon-btn" id="mobile-theme-toggle"><i class="fas fa-moon theme-icon"></i> Theme Switch</button>
     </div>
 
-    <main class="error-page" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1502680399488-2a65701a5002?auto=format&fit=crop&q=80&w=1600');">
+    <main class="error-page"
+        style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1502680399488-2a65701a5002?auto=format&fit=crop&q=80&w=1600');">
         <div class="error-code">404</div>
         <h1 class="error-message">Wipeout! Page Not Found</h1>
-        <p class="error-desc">Looks like you've been caught in the impact zone. The page you're looking for has been washed away or never existed in the first place.</p>
+        <p class="error-desc">Looks like you've been caught in the impact zone. The page you're looking for has been
+            washed away or never existed in the first place.</p>
         <div class="error-btns">
             <a href="index.html" class="btn btn-primary">Back to Shore (Home)</a>
             <a href="contact.html" class="btn btn-outline" style="color: white; border-color: white;">Report Issue</a>
@@ -110,8 +123,10 @@
     <!-- Footer -->
     <footer>
         <div class="footer-grid">
-            <a href="index.html" class="footer-logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; margin-bottom: 20px;">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0M0N0EyQyI+PHBhdGggZD0iTTEyIDJDOCAyIDUgOCA1IDE2QzUgMTkgNyAyMiAxMSAyMkgxM0MxNyAyMiAxOSAxOSAxOSAxNkMxOSA4IDE2IDIgMTIgMlpNMTEuNSAyMEM5LjUgMjAgNyAxOC41IDcgMTZDNyAxMSAxMCA0IDEyIDRDMTQgNCAxNyAxMSAxNyAxNkMxNyAxOC41IDE0LjUgMjAgMTIuNSAyMEgxMS41WiIvPjwvc3ZnPg==" alt="Logo" class="logo" style="filter: brightness(0) invert(1);">
+            <a href="index.html" class="footer-logo"
+                style="display: flex; align-items: center; gap: 12px; text-decoration: none; margin-bottom: 20px;">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0M0N0EyQyI+PHBhdGggZD0iTTEyIDJDOCAyIDUgOCA1IDE2QzUgMTkgNyAyMiAxMSAyMkgxM0MxNyAyMiAxOSAxOSAxOSAxNkMxOSA4IDE2IDIgMTIgMlpNMTEuNSAyMEM5LjUgMjAgNyAxOC41IDcgMTZDNyAxMSAxMCA0IDEyIDRDMTQgNCAxNyAxMSAxNyAxNkMxNyAxOC41IDE0LjUgMjAgMTIuNSAyMEgxMS41WiIvPjwvc3ZnPg=="
+                    alt="Logo" class="logo" style="filter: brightness(0) invert(1);">
                 <span class="brand-name" style="color: var(--white);">SURFBOARD</span>
             </a>
             <div class="footer-links">
@@ -132,10 +147,3 @@
     <script src="assets/js/main.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
