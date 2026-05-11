@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Surfboard Workshop</title>
+  <meta name="description"
+    content="Sign in to your Surfboard Workshop account to manage bookings and track your board orders.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <style>
+    /* ── Auth Page Layout ── */
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a1a0a 100%);
+      position: relative;
+    }
+
+    /* Top-right controls (outside card) */
+    .auth-controls {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      display: flex;
+      gap: 12px;
+      z-index: 100;
+    }
+
+    .auth-controls .icon-btn {
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, .15);
+      border-radius: 8px;
+      min-width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .auth-controls .icon-btn:hover {
+      background: var(--accent);
+    }
+
+    /* Auth Card */
+    .auth-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 52px 48px;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .4);
+      margin: 20px;
+    }
+
+    .auth-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 36px;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .auth-brand:hover {
+      opacity: 0.8;
+    }
+
+    .auth-brand img {
+      width: 44px;
+    }
+
+    .auth-brand span {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--primary);
+      letter-spacing: 1px;
+    }
+
+    .auth-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+
+    .auth-sub {
+      text-align: center;
+      color: var(--gray);
+      font-size: .95rem;
+      margin-bottom: 32px;
+    }
+
+    /* Auth Options (Remember Me + Forgot) */
+    .auth-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      font-size: 0.9rem;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: var(--gray);
+      font-weight: 500;
+    }
+
+    .remember-me input {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      accent-color: var(--accent);
+    }
+
+    .forgot-link {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .forgot-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Dark Mode Auth Overrides */
+    body.dark-mode .auth-card {
+      background: #1a1a1a;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    body.dark-mode .auth-brand span,
+    body.dark-mode .auth-title {
+      color: var(--white);
+    }
+
+    body.dark-mode .auth-brand img {
+      filter: brightness(0) invert(1);
+    }
+
+    body.dark-mode .form-group label,
+    body.dark-mode .remember-me,
+    body.dark-mode .auth-sub,
+    body.dark-mode .auth-footer,
+    body.dark-mode .divider {
+      color: #aaa;
+    }
+
+    body.dark-mode .form-group input {
+      background: #2a2a2a;
+      border-color: #333;
+      color: #fff;
+    }
+
+    body.dark-mode .btn-social {
+      background: #2a2a2a;
+      border-color: #333;
+      color: #fff;
+    }
+
+    body.dark-mode .btn-social:hover {
+      background: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: .9rem;
+      margin-bottom: 8px;
+    }
+
+    .form-group .input-wrap {
+      position: relative;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 14px 44px 14px 14px;
+      border: 2px solid #eee;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: var(--font-body);
+      transition: var(--transition);
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .input-icon {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray);
+    }
+
+    .toggle-pw {
+      cursor: pointer;
+    }
+
+    .error-msg {
+      color: #e53e3e;
+      font-size: .8rem;
+      margin-top: 6px;
+      display: none;
+    }
+
+    .invalid input {
+      border-color: #e53e3e;
+    }
+
+    .invalid .error-msg {
+      display: block;
+    }
+
+    .btn-auth {
+      width: 100%;
+      padding: 15px;
+      font-size: 1rem;
+      border-radius: 10px;
+      margin-top: 8px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 24px 0;
+      color: var(--gray);
+      font-size: .88rem;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #eee;
+    }
+
+    .btn-social {
+      width: 100%;
+      padding: 13px;
+      border-radius: 10px;
+      border: 2px solid #eee;
+      background: #fff;
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: var(--transition);
+      margin-bottom: 12px;
+    }
+
+    .btn-social:hover {
+      border-color: var(--accent);
+      background: #faf8f5;
+    }
+
+    .btn-social img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .auth-footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: .9rem;
+      color: var(--gray);
+    }
+
+    .auth-footer a {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .forgot {
+      text-align: right;
+      font-size: .85rem;
+    }
+
+    @media(max-width:480px) {
+      .auth-card {
+        padding: 36px 24px;
+        margin-top: 80px;
+      }
+
+      .auth-controls {
+        top: 15px;
+        right: 15px;
+        gap: 8px;
+      }
+    }
+
+    @media(max-width:380px) {
+      .auth-options {
+        font-size: 0.8rem;
+        gap: 5px;
+      }
+      .auth-brand span {
+        font-size: 1.3rem;
+      }
+    }
+
+    @media(max-width:360px) {
+      .auth-controls {
+        position: absolute;
+      }
+      .auth-card {
+        margin-top: 100px;
+        margin-bottom: 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top-right controls (RTL + Theme – outside card) -->
+  <div class="auth-controls">
+    <button class="icon-btn" id="rtl-toggle" title="Toggle RTL">RTL</button>
+    <button class="icon-btn" id="theme-toggle" title="Toggle Theme"><i class="fas fa-moon theme-icon"></i></button>
+  </div>
+
+  <!-- Auth Card -->
+  <div class="auth-card">
+
+    <!-- Brand Logo & Name (inside card, at top) -->
+    <a href="index.html" class="auth-brand">
+      <img src="https://icon2.cleanpng.com/lnd/20240507/kuj/avocms720.webp" alt="Surfboard Logo">
+      <span>SURFBOARD</span>
+    </a>
+
+    <h1 class="auth-title">Welcome Back</h1>
+    <p class="auth-sub">Sign in to your Surfboard account</p>
+
+    <form id="login-form" novalidate>
+      <div class="form-group" id="grp-email">
+        <label for="email">Email Address</label>
+        <div class="input-wrap">
+          <input type="email" id="email" name="email" placeholder="you@example.com">
+          <i class="fas fa-envelope input-icon"></i>
+        </div>
+        <div class="error-msg">Enter a valid email address.</div>
+      </div>
+
+      <div class="form-group" id="grp-pw">
+        <label for="password">Password</label>
+        <div class="input-wrap">
+          <input type="password" id="password" name="password" placeholder="••••••••">
+          <i class="fas fa-eye input-icon toggle-pw" id="toggle-pw"></i>
+        </div>
+        <div class="error-msg">Password must be at least 6 characters.</div>
+      </div>
+
+      <div class="auth-options">
+        <label class="remember-me">
+          <input type="checkbox" name="remember">
+          Remember me
+        </label>
+        <a href="#" class="forgot-link">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-auth" style="margin-top:20px;">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </button>
+    </form>
+
+    <div class="divider">or continue with</div>
+
+    <button class="btn-social">
+      <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Google">
+      Continue with Google
+    </button>
+    <button class="btn-social">
+      <img src="https://cdn-icons-png.flaticon.com/512/0/747.png" alt="Apple">
+      Continue with Apple
+    </button>
+
+    <div class="auth-footer">
+      Don't have an account? <a href="register.html">Create one</a>
+    </div>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // Password visibility toggle
+    document.getElementById('toggle-pw').addEventListener('click', function () {
+      const pw = document.getElementById('password');
+      pw.type = pw.type === 'password' ? 'text' : 'password';
+      this.className = pw.type === 'password' ? 'fas fa-eye input-icon toggle-pw' : 'fas fa-eye-slash input-icon toggle-pw';
+    });
+    // Login validation
+    document.getElementById('login-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      let ok = true;
+      const email = document.getElementById('email');
+      const pw = document.getElementById('password');
+      const gE = document.getElementById('grp-email');
+      const gP = document.getElementById('grp-pw');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { gE.classList.add('invalid'); ok = false; } else gE.classList.remove('invalid');
+      if (pw.value.length < 6) { gP.classList.add('invalid'); ok = false; } else gP.classList.remove('invalid');
+      if (ok) alert('Login successful! Redirecting...');
+    });
+  </script>
+</body>
+
+</html>

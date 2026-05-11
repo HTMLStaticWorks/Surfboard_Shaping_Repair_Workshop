@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Surfboard – Our Story & Mission</title>
+  <meta name="description" content="Learn the history of Surfboard Workshop — 25+ years crafting custom boards by master shapers who live and breathe the ocean.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <style>
+    /* Page Hero */
+
+    /* Story Split */
+    .story-split { display:flex; flex-wrap:wrap; gap:60px; align-items:center; justify-content:center; }
+    .story-split img { flex:1; min-width:280px; max-width:500px; border-radius:var(--radius); box-shadow:var(--shadow); object-fit:cover; height:400px; }
+    .story-text { flex:1; min-width:280px; max-width:580px; text-align:center; }
+    .story-text h2 { text-align:center; }
+
+    /* Values */
+    .values-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:32px; margin-top:48px; }
+    .value-card { background:#fff; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); text-align:center; transition:var(--transition); }
+    .value-card:hover { transform:translateY(-6px); }
+    .value-card img { width:100%; height:180px; object-fit:cover; }
+    .value-card-content { padding:32px 24px; }
+    .value-card i { font-size:2.5rem; color:var(--accent); margin-bottom:16px; }
+
+    /* Team */
+    .team-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:32px; margin-top:48px; }
+    .team-card { background:#fff; border-radius:var(--radius); box-shadow:var(--shadow); text-align:center; overflow:hidden; transition:var(--transition); display:flex; flex-direction:column; }
+    .team-card:hover { transform:translateY(-8px); }
+    .team-card img { width:100%; height:350px; object-fit:cover; display:block; margin:0; }
+    .team-info { padding:28px; flex:1; display:flex; flex-direction:column; justify-content:center; }
+    .team-role { color:var(--accent); font-weight:600; font-size:.9rem; }
+
+    /* Milestones */
+    .milestone-section { background:var(--bg-light); transition:var(--transition); }
+    .milestones { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; margin-top:48px; }
+    .milestone { background:var(--accent); color:#fff; border-radius:var(--radius); padding:28px 40px; text-align:center; flex:1; min-width:180px; }
+    .milestone-num { font-size:2.8rem; font-weight:700; }
+    .milestone-label { font-size:.9rem; opacity:.9; }
+
+    /* Responsive Adjustments */
+    @media (min-width: 1201px) {
+      .values-grid {
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: center;
+      }
+      .value-card:nth-child(4) {
+        grid-column: 2;
+      }
+    }
+
+    @media (min-width: 901px) and (max-width: 1200px) {
+      .values-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        max-width: 800px; 
+        margin: 48px auto 0; 
+      }
+    }
+
+    @media (min-width: 601px) and (max-width: 900px) {
+      .team-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        max-width: 800px; 
+        margin: 48px auto 0; 
+      }
+      .team-grid .team-card:last-child { 
+        grid-column: 1 / span 2; 
+        justify-self: center; 
+        width: calc(50% - 16px); 
+      }
+    }
+
+    @media (max-width: 600px) {
+      .values-grid, .team-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (min-width: 768px) {
+      .cta-btns .btn { min-width: 250px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <a href="index.html" class="logo-container" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+        <img src="https://icon2.cleanpng.com/lnd/20240507/kuj/avocms720.webp" alt="Surfboard Logo" class="logo">
+        <span class="brand-name">SURFBOARD</span>
+      </a>
+    </div>
+    <nav class="header-center">
+      <ul class="nav-menu">
+        <li><a href="index.html"    class="nav-link">Home</a></li>
+        <li><a href="home2.html"    class="nav-link">Home 2</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="about.html"    class="nav-link active">About</a></li>
+        <li><a href="blog.html"     class="nav-link">Blog</a></li>
+        <li><a href="contact.html"  class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-right">
+      <button class="icon-btn" id="rtl-toggle" title="Toggle RTL">RTL</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle Theme"><i class="fas fa-moon theme-icon"></i></button>
+      <a href="login.html" class="btn btn-primary btn-login">Login</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="overlay"></div>
+  <div class="mobile-nav">
+    <a href="index.html"    class="nav-link">Home</a>
+    <a href="home2.html"    class="nav-link">Home 2</a>
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="about.html"    class="nav-link active">About</a>
+    <a href="blog.html"     class="nav-link">Blog</a>
+    <a href="contact.html"  class="nav-link">Contact</a>
+    <hr style="border-color:rgba(255,255,255,.15);">
+    <button class="icon-btn" id="mobile-rtl-toggle">RTL</button>
+    <button class="icon-btn" id="mobile-theme-toggle"><i class="fas fa-moon theme-icon"></i></button>
+    <a href="login.html" class="btn btn-primary" style="margin-top:8px;">Login</a>
+  </div>
+
+  <main>
+
+    <!-- Page Hero -->
+    <div class="page-hero about" style="background-image: linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1530870110042-98b2cb110834?auto=format&fit=crop&q=80&w=1600');">
+      <h1>Our Story</h1>
+      <p>Born from a love of the ocean and a dedication to the craft, Surfboard Workshop has been shaping dreams since 1998.</p>
+      
+    </div>
+
+    <!-- Story Section -->
+    <section class="animate-on-scroll">
+      <div class="story-split">
+        <img src="https://cdn.shopify.com/s/files/1/1437/3542/files/SP_Shaping_1-1.jpg?v=1710887394" alt="Founder shaping a surfboard" class="fade-in">
+        <div class="story-text fade-in">
+          <h2>Born from a Love of Waves</h2>
+          <p>Founded in 1998 by master shaper <strong>Jake Moreno</strong>, Surfboard Workshop began as a one-man shed operation in Malibu. Jake's obsession with the perfect board led to a workshop that now serves surfers from Malibu to Mavericks.</p>
+          <p>Every board that leaves our shop carries 25 years of accumulated knowledge, countless hours on the water, and a genuine passion for the craft of shaping.</p>
+          <a href="contact.html" class="btn btn-primary" style="margin-top:24px;">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Values -->
+    <section style="background:var(--secondary);" class="animate-on-scroll">
+      <h2>Our Mission & Values</h2>
+      <p>We believe a surfboard is not a product — it's a relationship between a surfer and the ocean.</p>
+      <div class="values-grid">
+        <div class="value-card fade-in">
+          <img src="https://blueroom.pt/wp-content/uploads/2025/10/What-Are-Current-Innovations-in-Shortboard-Design.webp" alt="Precision tools">
+          <div class="value-card-content">
+            <i class="fas fa-drafting-compass"></i>
+            <h3>Precision</h3>
+            <p>Every curve and concave is intentional. We measure twice, shape once.</p>
+          </div>
+        </div>
+        <div class="value-card fade-in">
+          <img src="https://cdn.shopify.com/s/files/1/0708/5306/7058/files/56.jpg?v=1698290960" alt="Sustainable waves">
+          <div class="value-card-content">
+            <i class="fas fa-leaf"></i>
+            <h3>Sustainability</h3>
+            <p>We source eco-friendly blanks and low-VOC resins to protect the ocean we love.</p>
+          </div>
+        </div>
+        <div class="value-card fade-in">
+          <img src="https://static.toiimg.com/thumb/msid-120812937,width-400,resizemode-4/120812937.jpg" alt="Community surfing">
+          <div class="value-card-content">
+            <i class="fas fa-handshake"></i>
+            <h3>Community</h3>
+            <p>Local surfers, local shapers. We invest back into the surfing community.</p>
+          </div>
+        </div>
+        <div class="value-card fade-in">
+          <img src="https://asiansurf.co/new/wp-content/uploads/2025/07/Ella-McCaffray-and-Rafael-Castro-Win-Afulu-Pro-2025-APSS-Shortboard-Divisions.jpg" alt="Polished board">
+          <div class="value-card-content">
+            <i class="fas fa-star"></i>
+            <h3>Excellence</h3>
+            <p>No board leaves the shop without a thorough quality check by our senior shaper.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="animate-on-scroll">
+      <h2>Meet the Shapers</h2>
+      <p>Experienced craftsmen with decades of water time and workshop expertise.</p>
+      <div class="team-grid">
+        <div class="team-card fade-in">
+          <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&q=80&w=600" alt="Jake Moreno">
+          <div class="team-info">
+            <h3>Jake Moreno</h3>
+            <div class="team-role">Founder & Master Shaper</div>
+            <p>25+ years crafting boards. Hawaii, Bali, and Hossegor under his belt.</p>
+          </div>
+        </div>
+        <div class="team-card fade-in">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" alt="Ryan Cole">
+          <div class="team-info">
+            <h3>Ryan Cole</h3>
+            <div class="team-role">Senior Glasser</div>
+            <p>Specialist in epoxy laminates and resin tints. Precision every time.</p>
+          </div>
+        </div>
+        <div class="team-card fade-in">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=600" alt="Mia Torres">
+          <div class="team-info">
+            <h3>Mia Torres</h3>
+            <div class="team-role">Ding Repair Specialist</div>
+            <p>Color-match genius with a turnaround time that beats every competitor.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Milestones -->
+    <section class="milestone-section animate-on-scroll">
+      <h2>Our Journey in Numbers</h2>
+      <div class="milestones">
+        <div class="milestone fade-in"><div class="milestone-num">1998</div><div class="milestone-label">Founded</div></div>
+        <div class="milestone fade-in"><div class="milestone-num">1,200+</div><div class="milestone-label">Boards Shaped</div></div>
+        <div class="milestone fade-in"><div class="milestone-num">8,000+</div><div class="milestone-label">Repairs Done</div></div>
+        <div class="milestone fade-in"><div class="milestone-num">3</div><div class="milestone-label">Workshop Locations</div></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="animate-on-scroll">
+      <h2>Ready to Shape Your Dream Board?</h2>
+      <p>Sit with our master shapers for a free consultation — no commitment required.</p>
+      <div class="cta-btns" style="display:flex;gap:20px;justify-content:center;margin-top:28px;flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary">Book Free Consultation</a>
+        <a href="services.html" class="btn btn-outline">Our Services</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; text-decoration: none;">
+                    <img src="https://icon2.cleanpng.com/lnd/20240507/kuj/avocms720.webp" alt="Logo" class="logo">
+                    <span class="brand-name">SURFBOARD</span>
+                </a>
+                <p style="font-size: 0.9rem; margin-bottom: 24px;">Crafting excellence for the ocean since
+                    1998. Your destination for premium shapes and expert repairs.</p>
+                <div class="social-links" style="display: flex; gap: 15px;">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="blog.html">Workshop Blog</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Newsletter</h4>
+                <p style="font-size: 0.85rem; margin-bottom: 16px;">Subscribe for shaping tips and workshop
+                    updates.</p>
+                <form action="#" style="display: flex; flex-direction: column; gap: 10px;">
+                    <input type="email" placeholder="Your Email"
+                        style="padding: 10px; border-radius: 8px; border: none; outline: none;">
+                    <button class="btn btn-primary" style="padding: 10px; font-size: 0.9rem;">Subscribe</button>
+                </form>
+            </div>
+            <div class="footer-links">
+                <h4>Contact Us</h4>
+                <p style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> 123 Ocean
+                    Drive, Malibu, CA</p>
+                <p style="font-size: 0.9rem;"><i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                    info@surfboard.com</p>
+                <p style="font-size: 0.9rem;"><i class="fas fa-phone" style="margin-right: 8px;"></i> (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Surfboard Shaping & Repair. All rights reserved.</p>
+        </div>
+    </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
