@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,2 C35,22 32,68 50,98 C68,68 65,22 50,2 Z' fill='%23C47A2C'/><path d='M50,2 C42,22 44,68 50,98' fill='none' stroke='%23fff' stroke-width='2'/></svg>">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/dark-mode.css">
   <link rel="stylesheet" href="assets/css/rtl.css">
@@ -20,7 +22,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a1a0a 100%);
+      background: linear-gradient(135deg, #FAF8F5 0%, #F5EFEB 100%);
       position: relative;
     }
 
@@ -35,10 +37,10 @@
     }
 
     .auth-controls .icon-btn {
-      color: #fff;
+      color: var(--primary);
       font-size: 0.85rem;
       font-weight: 700;
-      background: rgba(255, 255, 255, .15);
+      background: rgba(0, 0, 0, .05);
       border-radius: 8px;
       min-width: 44px;
       height: 44px;
@@ -46,11 +48,14 @@
       align-items: center;
       justify-content: center;
       padding: 0 10px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(0, 0, 0, 0.10);
+      transition: var(--transition);
     }
 
     .auth-controls .icon-btn:hover {
       background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
     }
 
     /* Auth Card */
@@ -140,6 +145,22 @@
     }
 
     /* Dark Mode Auth Overrides */
+    body.dark-mode {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a1a0a 100%) !important;
+    }
+
+    body.dark-mode .auth-controls .icon-btn {
+      color: #fff !important;
+      background: rgba(255, 255, 255, .15) !important;
+      border-color: rgba(255, 255, 255, 0.2) !important;
+    }
+
+    body.dark-mode .auth-controls .icon-btn:hover {
+      background: var(--accent) !important;
+      border-color: var(--accent) !important;
+      color: #fff !important;
+    }
+
     body.dark-mode .auth-card {
       background: #1a1a1a;
       border: 1px solid rgba(255,255,255,0.1);
@@ -218,6 +239,11 @@
 
     .toggle-pw {
       cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .toggle-pw:hover {
+      color: var(--accent) !important;
     }
 
     .error-msg {
@@ -352,7 +378,7 @@
 
     <!-- Brand Logo & Name (inside card, at top) -->
     <a href="index.html" class="auth-brand">
-      <img src="https://icon2.cleanpng.com/lnd/20240507/kuj/avocms720.webp" alt="Surfboard Logo">
+      <svg viewBox="0 0 100 100" style="width: 44px; height: 44px;"><path d="M50,2 C35,22 32,68 50,98 C68,68 65,22 50,2 Z" fill="var(--accent)"/><path d="M50,2 C42,22 44,68 50,98" fill="none" stroke="#fff" stroke-width="2"/></svg>
       <span>SURFBOARD</span>
     </a>
 
@@ -363,8 +389,8 @@
       <div class="form-group" id="grp-email">
         <label for="email">Email Address</label>
         <div class="input-wrap">
-          <input type="email" id="email" name="email" placeholder="you@example.com">
-          <i class="fas fa-envelope input-icon"></i>
+          <input type="email" id="email" name="email" placeholder="">
+          <i class=""></i>
         </div>
         <div class="error-msg">Enter a valid email address.</div>
       </div>
@@ -372,7 +398,7 @@
       <div class="form-group" id="grp-pw">
         <label for="password">Password</label>
         <div class="input-wrap">
-          <input type="password" id="password" name="password" placeholder="••••••••">
+          <input type="password" id="password" name="password" placeholder="">
           <i class="fas fa-eye input-icon toggle-pw" id="toggle-pw"></i>
         </div>
         <div class="error-msg">Password must be at least 6 characters.</div>
@@ -387,7 +413,7 @@
       </div>
 
       <button type="submit" class="btn btn-primary btn-auth" style="margin-top:20px;">
-        <i class="fas fa-sign-in-alt"></i> Login
+        <i class=""></i> Login
       </button>
     </form>
 

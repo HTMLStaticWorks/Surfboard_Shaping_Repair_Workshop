@@ -7,6 +7,8 @@
   <meta name="description" content="Read expert articles on surfboard shaping techniques, ding repair tutorials, glassing guides, and surf culture from the Surfboard Workshop team.">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,2 C35,22 32,68 50,98 C68,68 65,22 50,2 Z' fill='%23C47A2C'/><path d='M50,2 C42,22 44,68 50,98' fill='none' stroke='%23fff' stroke-width='2'/></svg>">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/dark-mode.css">
   <link rel="stylesheet" href="assets/css/rtl.css">
@@ -16,11 +18,19 @@
     .blog-layout { display:grid; grid-template-columns:1fr 320px; gap:48px; max-width:1200px; margin:0 auto; }
     @media(max-width:1024px){ .blog-layout { grid-template-columns:1fr; } }
 
+
     /* Blog Cards */
     .blog-grid { display:flex; flex-direction:column; gap:32px; }
-    .blog-card { background:#fff; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); display:flex; flex-wrap:wrap; transition:var(--transition); }
+    .blog-card { background:#fff; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); display:flex; flex-wrap:wrap; transition:var(--transition); align-items: stretch; }
     .blog-card:hover { transform:translateY(-4px); }
-    .blog-card img { width:320px; height:220px; object-fit:cover; flex-shrink:0; }
+    .blog-card img {
+      width: 320px;
+      min-height: 220px;
+      height: auto;
+      object-fit: cover;
+      flex-shrink: 0;
+      align-self: stretch;
+    }
     .blog-card-body { flex:1; padding:32px; min-width:260px; text-align:left; }
     .blog-meta { display:flex; gap:16px; align-items:center; font-size:.85rem; color:var(--gray); margin-bottom:12px; flex-wrap:wrap; }
     .blog-tag { background:var(--accent); color:#fff; padding:3px 12px; border-radius:50px; font-size:.75rem; font-weight:600; }
@@ -37,19 +47,79 @@
     .sidebar-card h4 { text-align:center; margin-bottom:20px; color:var(--primary); }
     .sidebar-search { display:flex; border:2px solid #eee; border-radius:8px; overflow:hidden; }
     .sidebar-search input { flex:1; padding:12px; border:none; outline:none; font-size:.95rem; }
-    .sidebar-search button { padding:12px 16px; background:var(--accent); border:none; color:#fff; cursor:pointer; }
+    .sidebar-search button {
+      padding: 12px 16px;
+      background: var(--accent);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .sidebar-search button:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
     .category-list li { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #eee; }
     .category-list li:last-child { border:none; }
     .cat-count { background:var(--secondary); color:var(--primary); padding:3px 10px; border-radius:50px; font-size:.8rem; font-weight:600; }
     .newsletter-form { display:flex; flex-direction:column; gap:12px; }
     .newsletter-form input { padding:12px; border:2px solid #eee; border-radius:8px; font-size:.95rem; }
-    .newsletter-form button { padding:14px; background:var(--accent); color:#fff; border:none; border-radius:8px; font-weight:600; cursor:pointer; }
+    .newsletter-form button {
+      padding: 14px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .newsletter-form button:hover {
+      background: var(--primary);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
     .recent-post { display:flex; gap:12px; align-items:center; padding:10px 0; border-bottom:1px solid #eee; }
     .recent-post:last-child { border:none; }
     .recent-post img { width:70px; height:60px; object-fit:cover; border-radius:8px; flex-shrink:0; }
     .recent-post-info { font-size:.88rem; }
     .recent-post-info a { font-weight:600; color:var(--primary); line-height:1.3; display:block; }
     .recent-post-info span { color:var(--gray); }
+
+    /* Mobile Search Container (hidden on desktop) */
+    .mobile-search-container {
+      display: none;
+      max-width: 1200px;
+      margin: 0 auto 32px auto;
+    }
+
+    /* Responsive Sidebar Grid Overrides */
+    @media (max-width: 1024px) {
+      .mobile-search-container {
+        display: block !important;
+      }
+      .sidebar {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 32px !important;
+      }
+      .sidebar > .sidebar-card:nth-child(1) {
+        display: none !important;
+      }
+      .sidebar > .sidebar-card:nth-child(4) {
+        grid-column: span 2 !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .sidebar {
+        grid-template-columns: 1fr !important;
+      }
+      .sidebar > .sidebar-card:nth-child(4) {
+        grid-column: auto !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -58,7 +128,7 @@
   <header>
     <div class="header-left">
       <a href="index.html" class="logo-container" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-        <img src="https://icon2.cleanpng.com/lnd/20240507/kuj/avocms720.webp" alt="Surfboard Logo" class="logo">
+        <svg class="logo" viewBox="0 0 100 100" style="width: 40px; height: 40px;"><path d="M50,2 C35,22 32,68 50,98 C68,68 65,22 50,2 Z" fill="var(--accent)"/><path d="M50,2 C42,22 44,68 50,98" fill="none" stroke="#fff" stroke-width="2"/></svg>
         <span class="brand-name">SURFBOARD</span>
       </a>
     </div>
@@ -66,8 +136,9 @@
       <ul class="nav-menu">
         <li><a href="index.html"    class="nav-link">Home</a></li>
         <li><a href="home2.html"    class="nav-link">Home 2</a></li>
+                <li><a href="about.html"    class="nav-link">About</a></li>
+
         <li><a href="services.html" class="nav-link">Services</a></li>
-        <li><a href="about.html"    class="nav-link">About</a></li>
         <li><a href="blog.html"     class="nav-link active">Blog</a></li>
         <li><a href="contact.html"  class="nav-link">Contact</a></li>
       </ul>
@@ -84,8 +155,9 @@
   <div class="mobile-nav">
     <a href="index.html"    class="nav-link">Home</a>
     <a href="home2.html"    class="nav-link">Home 2</a>
+        <a href="about.html"    class="nav-link">About</a>
+
     <a href="services.html" class="nav-link">Services</a>
-    <a href="about.html"    class="nav-link">About</a>
     <a href="blog.html"     class="nav-link active">Blog</a>
     <a href="contact.html"  class="nav-link">Contact</a>
     <hr style="border-color:rgba(255,255,255,.15);">
@@ -102,6 +174,17 @@
     </div>
 
     <section>
+      <!-- Mobile/Tablet Search (Visible on <= 1024px) -->
+      <div class="mobile-search-container">
+        <div class="sidebar-card" style="margin-bottom: 0;">
+          <h4>Search</h4>
+          <div class="sidebar-search">
+            <input type="search" placeholder="Search articles...">
+            <button><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+
       <div class="blog-layout">
 
         <!-- Posts -->
@@ -136,7 +219,7 @@
           </div>
 
           <div class="blog-card fade-in">
-            <img src="https://almondsurfboards.com/cdn/shop/articles/2E1A9662-2_2deced57-17d4-4fea-afbd-ba20407155f4.jpg?v=1742433941" alt="Glassing Guide">
+            <img src="https://dmpv0rmlw3a5q.cloudfront.net/optimized/3X/c/8/c81d11c4d758ed2412e040f0ea59fa0cf7cf951a_2_666x500.jpeg" alt="Glassing Guide">
             <div class="blog-card-body">
               <div class="blog-meta">
                 <span class="blog-tag">Glassing</span>
@@ -203,7 +286,7 @@
               </div>
             </div>
             <div class="recent-post">
-              <img src="https://images.unsplash.com/photo-1516571748831-5d81767b788d?auto=format&fit=crop&q=80&w=200" alt="Post">
+              <img src="https://dmpv0rmlw3a5q.cloudfront.net/optimized/3X/c/8/c81d11c4d758ed2412e040f0ea59fa0cf7cf951a_2_666x500.jpeg" alt="Post">
               <div class="recent-post-info">
                 <a href="#">Glassing Weight Guide</a>
                 <span>Apr 5, 2026</span>
@@ -213,7 +296,9 @@
 
           <div class="sidebar-card">
             <h4>Newsletter</h4>
-            <p style="text-align:center;font-size:.9rem;margin-bottom:16px;">Get shaping tips straight to your inbox.</p>
+            <p style="text-align:center;font-size:.9rem;margin-bottom:16px;">Get shaping tips straight to your inbox Subscribe for shaping tips and workshop updates.
+
+</p>
             <!-- Mailchimp / ConvertKit Integration Point -->
             <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
               <input type="email" name="email" placeholder="Your email address" required>
@@ -230,7 +315,7 @@
         <div class="footer-grid">
             <div class="footer-logo">
                 <a href="index.html" style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; text-decoration: none;">
-                    <img src="https://icon2.cleanpng.com/lnd/20240507/kuj/avocms720.webp" alt="Logo" class="logo">
+                    <svg class="logo" viewBox="0 0 100 100" style="width: 40px; height: 40px;"><path d="M50,2 C35,22 32,68 50,98 C68,68 65,22 50,2 Z" fill="var(--accent)"/><path d="M50,2 C42,22 44,68 50,98" fill="none" stroke="#fff" stroke-width="2"/></svg>
                     <span class="brand-name">SURFBOARD</span>
                 </a>
                 <p style="font-size: 0.9rem; margin-bottom: 24px;">Crafting excellence for the ocean since
@@ -238,7 +323,7 @@
                 <div class="social-links" style="display: flex; gap: 15px;">
                     <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-x"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
