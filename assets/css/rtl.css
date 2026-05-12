@@ -1,40 +1,231 @@
-/* RTL Styles */
+/* --- Master Premium RTL Overrides --- */
+
 [dir="rtl"] {
+    direction: rtl;
+    unicode-bidi: embed;
     text-align: right;
 }
 
+/* Ensure body, html follow direction */
+html[dir="rtl"],
+body[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Reset headings and paragraphs that were centered inside body, only center if explicitly needed */
 [dir="rtl"] h1, 
 [dir="rtl"] h2, 
 [dir="rtl"] h3, 
 [dir="rtl"] h4, 
 [dir="rtl"] h5, 
-[dir="rtl"] h6,
-[dir="rtl"] p {
-    text-align: center; /* Per requirements: ALL headings center, ALL content center */
+[dir="rtl"] h6 {
+    text-align: center; /* Headings themselves are centered in LTR design, so keep them centered */
 }
 
-[dir="rtl"] .header-left {
-    order: 3;
+/* Form Group Alignments */
+[dir="rtl"] .form-group {
+    text-align: right !important;
 }
 
-[dir="rtl"] .header-center {
-    order: 2;
+[dir="rtl"] .form-group label {
+    display: block;
+    text-align: right !important;
 }
 
-[dir="rtl"] .header-right {
-    order: 1;
+[dir="rtl"] .form-group input,
+[dir="rtl"] .form-group textarea,
+[dir="rtl"] .form-group select {
+    text-align: right !important;
 }
 
+[dir="rtl"] .error-msg {
+    text-align: right !important;
+}
+
+/* Mobile Nav sliding in from right side instead of left */
 [dir="rtl"] .mobile-nav {
-    left: auto;
-    right: -100%;
+    left: auto !important;
+    right: -100% !important;
+    transition: transform var(--transition), right var(--transition) !important;
 }
 
 [dir="rtl"] .mobile-nav.active {
-    right: 0;
+    left: auto !important;
+    right: 0 !important;
 }
 
-[dir="rtl"] .btn i {
-    margin-left: 8px;
-    margin-right: 0;
+/* Footer Alignments */
+[dir="rtl"] .footer-grid {
+    text-align: right !important;
+}
+
+[dir="rtl"] .footer-logo {
+    align-items: flex-start !important; /* Starts on the right side in RTL */
+    text-align: right !important;
+}
+
+[dir="rtl"] .footer-logo p {
+    text-align: right !important;
+}
+
+[dir="rtl"] .footer-links h4,
+[dir="rtl"] .footer-links ul {
+    text-align: right !important;
+}
+
+[dir="rtl"] .footer-links a:hover {
+    padding-left: 0 !important;
+    padding-right: 8px !important;
+}
+
+[dir="rtl"] .footer-links form {
+    align-items: flex-start !important; /* starts on the right in RTL */
+}
+
+/* Blog Layout Mirroring */
+[dir="rtl"] .blog-layout {
+    direction: rtl !important;
+}
+
+@media (min-width: 992px) {
+    [dir="rtl"] .blog-layout {
+        grid-template-columns: 320px 1fr !important; /* Move sidebar to the left in RTL */
+    }
+}
+
+[dir="rtl"] .blog-card-body {
+    text-align: right !important;
+}
+
+[dir="rtl"] .blog-card-body h3,
+[dir="rtl"] .blog-card-body p {
+    text-align: right !important;
+}
+
+[dir="rtl"] .sidebar-card {
+    text-align: right !important;
+}
+
+[dir="rtl"] .sidebar-search form {
+    flex-direction: row !important;
+}
+
+[dir="rtl"] .sidebar-search input {
+    border-radius: 0 8px 8px 0 !important; /* Swap rounded corners */
+}
+
+[dir="rtl"] .sidebar-search button {
+    border-radius: 8px 0 0 8px !important;
+}
+
+[dir="rtl"] .category-list li a {
+    justify-content: space-between !important;
+}
+
+[dir="rtl"] .recent-post-item {
+    gap: 16px !important;
+}
+
+[dir="rtl"] .recent-post-info h5,
+[dir="rtl"] .recent-post-info span {
+    text-align: right !important;
+}
+
+/* Contact Page Alignments */
+[dir="rtl"] .contact-info-section {
+    text-align: right !important;
+}
+
+[dir="rtl"] .info-item {
+    flex-direction: row !important; /* Keeps row structure, in RTL the icon is on the right */
+    gap: 16px !important;
+}
+
+[dir="rtl"] .info-text {
+    text-align: right !important;
+}
+
+[dir="rtl"] .info-text h4,
+[dir="rtl"] .info-text p {
+    text-align: right !important;
+}
+
+/* Services Calendar and Bookings */
+[dir="rtl"] .calendar-wrapper {
+    text-align: right !important;
+}
+
+[dir="rtl"] .calendar-sidebar {
+    text-align: right !important;
+}
+
+[dir="rtl"] .calendar-sidebar h3,
+[dir="rtl"] .calendar-sidebar p {
+    text-align: right !important;
+}
+
+[dir="rtl"] .time-selection h5 {
+    text-align: right !important;
+}
+
+/* Timeline Process Steps */
+[dir="rtl"] .timeline::before {
+    left: auto !important;
+    right: 24px !important;
+}
+
+[dir="rtl"] .timeline-item {
+    padding-left: 0 !important;
+    padding-right: 64px !important;
+    text-align: right !important;
+}
+
+[dir="rtl"] .timeline-badge {
+    left: auto !important;
+    right: 12px !important;
+}
+
+[dir="rtl"] .timeline-content {
+    text-align: right !important;
+}
+
+[dir="rtl"] .timeline-content h3,
+[dir="rtl"] .timeline-content p {
+    text-align: right !important;
+}
+
+/* Pricing Page Lists */
+[dir="rtl"] .pricing-features li {
+    text-align: right !important;
+}
+
+[dir="rtl"] .pricing-features li i {
+    margin-left: 10px !important;
+    margin-right: 0 !important;
+}
+
+/* Alignments for cards text */
+[dir="rtl"] .card {
+    text-align: center !important; /* Keep card centers */
+}
+
+/* Testimonials client details */
+[dir="rtl"] .client-info {
+    text-align: center !important;
+}
+
+/* About Page splits */
+[dir="rtl"] .story-text {
+    text-align: right !important;
+}
+
+[dir="rtl"] .story-text h2,
+[dir="rtl"] .story-text p {
+    text-align: right !important;
+}
+
+[dir="rtl"] .team-info h3,
+[dir="rtl"] .team-info p {
+    text-align: center !important; /* team info remains center */
 }

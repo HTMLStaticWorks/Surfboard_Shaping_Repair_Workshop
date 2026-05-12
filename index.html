@@ -14,7 +14,8 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,2 C35,22 32,68 50,98 C68,68 65,22 50,2 Z' fill='%23C47A2C'/><path d='M50,2 C42,22 44,68 50,98' fill='none' stroke='%23fff' stroke-width='2'/></svg>">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,2 C35,22 32,68 50,98 C68,68 65,22 50,2 Z' fill='%23C47A2C'/><path d='M50,2 C42,22 44,68 50,98' fill='none' stroke='%23fff' stroke-width='2'/></svg>">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
@@ -34,8 +35,30 @@
     <!-- Header -->
     <header>
         <div class="header-left">
-            <a href="index.html" class="logo-container" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-                <svg class="logo" viewBox="0 0 100 100" style="width: 40px; height: 40px;"><path d="M50,2 C35,22 32,68 50,98 C68,68 65,22 50,2 Z" fill="var(--accent)"/><path d="M50,2 C42,22 44,68 50,98" fill="none" stroke="#fff" stroke-width="2"/></svg>
+            <a href="index.html" class="logo-container"
+                style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <svg class="logo" viewBox="0 0 100 100" style="width: 52px; height: 52px; flex-shrink: 0;">
+                    <defs>
+                        <linearGradient id="logo-grad-header" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#C47A2C" />
+                            <stop offset="40%" stop-color="#DE9447" />
+                            <stop offset="100%" stop-color="#F9D29F" />
+                        </linearGradient>
+                        <filter id="shadow-header" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.3"/>
+                        </filter>
+                    </defs>
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logo-grad-header)" stroke-width="3" stroke-linecap="round" />
+                    <path d="M 15,65 C 25,65 35,50 48,38 C 58,28 72,25 83,32 C 70,15 54,16 43,28 C 32,40 22,55 15,55 Z" fill="url(#logo-grad-header)" filter="url(#shadow-header)" />
+                    <path d="M 22,75 C 32,75 42,62 52,50 C 62,38 74,34 82,39 C 71,25 58,26 49,38 C 40,50 30,65 22,65 Z" fill="url(#logo-grad-header)" fill-opacity="0.45" />
+                    <g transform="rotate(-20, 50, 50)" filter="url(#shadow-header)">
+                        <path d="M 50,8 C 38,28 36,68 50,92 Z" fill="#914D12" />
+                        <path d="M 50,8 C 62,28 64,68 50,92 Z" fill="url(#logo-grad-header)" />
+                        <line x1="50" y1="8" x2="50" y2="92" stroke="#FFFFFF" stroke-width="2" />
+                        <line x1="44" y1="58" x2="56" y2="58" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
+                        <line x1="43" y1="66" x2="57" y2="66" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
+                    </g>
+                </svg>
                 <span class="brand-name">SURFBOARD</span>
             </a>
         </div>
@@ -44,7 +67,7 @@
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link active">Home</a></li>
                 <li><a href="home2.html" class="nav-link">Home 2</a></li>
-                                        <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
 
                 <li><a href="services.html" class="nav-link">Services</a></li>
 
@@ -71,24 +94,29 @@
     <div class="mobile-nav">
         <a href="index.html" class="nav-link active">Home</a>
         <a href="home2.html" class="nav-link">Home 2</a>
-                <a href="about.html" class="nav-link">About</a>
+        <a href="about.html" class="nav-link">About</a>
 
         <a href="services.html" class="nav-link">Services</a>
         <a href="blog.html" class="nav-link">Blog</a>
         <a href="contact.html" class="nav-link">Contact</a>
         <hr>
-        <button class="icon-btn" id="mobile-rtl-toggle">RTL</button>
-        <button class="icon-btn" id="mobile-theme-toggle"><i class="fas fa-moon theme-icon"></i></button>
+        <div class="mobile-controls-row">
+            <button class="icon-btn" id="mobile-rtl-toggle">RTL</button>
+            <button class="icon-btn" id="mobile-theme-toggle"><i class="fas fa-moon theme-icon"></i></button>
+        </div>
         <a href="login.html" class="btn btn-primary">Login</a>
     </div>
 
     <!-- Main Content -->
     <main>
         <!-- 1. Hero Section -->
-        <section class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://solidsurf.co/wp-content/uploads/2024/02/Screenshot-2024-02-03-at-7.28.37-AM-1024x665.png');">
+        <section class="hero"
+            style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://solidsurf.co/wp-content/uploads/2024/02/Screenshot-2024-02-03-at-7.28.37-AM-1024x665.png');">
             <div class="wave-badge">EST. 1998</div>
-            <h1 class="fade-in">Crafting the <br class="hero-br"><span style="color:var(--accent);">Perfect Wave</span></h1>
-            <p class="fade-in">Premium custom shaping and expert repair services for every surfer who lives for the ocean.</p>
+            <h1 class="fade-in">Crafting the <br class="hero-br"><span style="color:var(--accent);">Perfect Wave</span>
+            </h1>
+            <p class="fade-in">Premium custom shaping and expert repair services for every surfer who lives for the
+                ocean.</p>
             <div class="hero-btns fade-in">
                 <a href="services.html" class="btn btn-primary">Our Services</a>
                 <a href="contact.html" class="btn btn-outline">Book Consultation</a>
@@ -198,93 +226,124 @@
                     <p>We can pick up your damaged board from local beaches and return it to your door.</p>
                 </div>
             </div>
-                <!-- 4. Gallery Preview -->
-        <section id="gallery-preview" class="animate-on-scroll">
-            <div style="text-align: center; margin-bottom: 40px;">
-                <h2>Finished Shapes</h2>
-                <p>A glimpse into our workshop's latest master-crafted boards.</p>
-            </div>
-            <div class="card-grid">
-                <div class="card fade-in">
-                    <img src="https://i0.wp.com/lookout.co/wp-content/uploads/2025/04/2025-04-27-LogJam-9-scaled.jpg?fit=2000%2C1334&ssl=1" alt="Shape 1">
-                    <h4 style="margin-top: 12px; text-align: center;">Classic Longboard</h4>
+            <!-- 4. Gallery Preview -->
+            <section id="gallery-preview" class="animate-on-scroll">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h2>Finished Shapes</h2>
+                    <p>A glimpse into our workshop's latest master-crafted boards.</p>
                 </div>
-                <div class="card fade-in">
-                    <img src="https://www.sandiegosurfingschool.com/wp-content/uploads/2024/05/michael-olsen-wJZ2Uyljhfo-unsplash-scaled.jpg" alt="Shape 2">
-                    <h4 style="margin-top: 12px; text-align: center;">Performance Thruster</h4>
+                <div class="card-grid">
+                    <div class="card fade-in">
+                        <img src="https://i0.wp.com/lookout.co/wp-content/uploads/2025/04/2025-04-27-LogJam-9-scaled.jpg?fit=2000%2C1334&ssl=1"
+                            alt="Shape 1">
+                        <h4 style="margin-top: 12px; text-align: center;">Classic Longboard</h4>
+                    </div>
+                    <div class="card fade-in">
+                        <img src="https://www.sandiegosurfingschool.com/wp-content/uploads/2024/05/michael-olsen-wJZ2Uyljhfo-unsplash-scaled.jpg"
+                            alt="Shape 2">
+                        <h4 style="margin-top: 12px; text-align: center;">Performance Thruster</h4>
+                    </div>
+                    <div class="card fade-in">
+                        <img src="https://media.traveler.es/photos/6516b6fc885f528585385c3d/4:3/w_3744,h_2808,c_limit/GT106552.jpg"
+                            alt="Shape 3">
+                        <h4 style="margin-top: 12px; text-align: center;">Big Wave Gun</h4>
+                    </div>
                 </div>
-                <div class="card fade-in">
-                    <img src="https://media.traveler.es/photos/6516b6fc885f528585385c3d/4:3/w_3744,h_2808,c_limit/GT106552.jpg" alt="Shape 3">
-                    <h4 style="margin-top: 12px; text-align: center;">Big Wave Gun</h4>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="home2.html#gallery" class="btn btn-outline">View Full Gallery</a>
                 </div>
-            </div>
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="home2.html#gallery" class="btn btn-outline">View Full Gallery</a>
-            </div>
-        </section>
+            </section>
 
-        <!-- 5. Blank Selection Guide -->
-        <section class="bg-secondary animate-on-scroll">
-            <div style="text-align: center; margin-bottom: 40px;">
-                <h2>Blank Selection</h2>
-                <p>Choosing the right foundation for your performance.</p>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 48px; align-items: center;">
-                <div class="fade-in" style="text-align: center;">
-                    <h3>Polyurethane (PU)</h3>
-                    <p>The industry standard for decades. Familiar flex, organic feel, and excellent glassing properties. Perfect for those who love the traditional surfing experience.</p>
-                    <h3 style="margin-top: 24px;">Expanded Polystyrene (EPS)</h3>
-                    <p>Lightweight and highly buoyant. EPS blanks combined with epoxy resin create a fast, responsive board ideal for progressive maneuvers and small wave performance.</p>
-                    <a href="home2.html#blanks" class="btn btn-primary" style="margin-top: 32px;">Read Selection Guide</a>
+            <!-- 5. Blank Selection Guide -->
+            <section class="bg-secondary animate-on-scroll">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h2>Blank Selection</h2>
+                    <p>Choosing the right foundation for your performance.</p>
                 </div>
-                <div class="fade-in">
-                    <img src="https://iguanasurf.net/wp-content/uploads/2026/01/COVER-PAGE-768x479.jpg" alt="Blanks" class="blank-selection-img" style="width: 100%; border-radius: var(--radius); box-shadow: var(--shadow);">
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 48px; align-items: center;">
+                    <div class="fade-in" style="text-align: center;">
+                        <h3>Polyurethane (PU)</h3>
+                        <p>The industry standard for decades. Familiar flex, organic feel, and excellent glassing
+                            properties. Perfect for those who love the traditional surfing experience.</p>
+                        <h3 style="margin-top: 24px;">Expanded Polystyrene (EPS)</h3>
+                        <p>Lightweight and highly buoyant. EPS blanks combined with epoxy resin create a fast,
+                            responsive board ideal for progressive maneuvers and small wave performance.</p>
+                        <a href="home2.html#blanks" class="btn btn-primary" style="margin-top: 32px;">Read Selection
+                            Guide</a>
+                    </div>
+                    <div class="fade-in">
+                        <img src="https://iguanasurf.net/wp-content/uploads/2026/01/COVER-PAGE-768x479.jpg" alt="Blanks"
+                            class="blank-selection-img"
+                            style="width: 100%; border-radius: var(--radius); box-shadow: var(--shadow);">
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 6. Testimonials Section -->
-        <section id="testimonials">
-            <h2>What Surfers Say</h2>
-            <div class="card-grid">
-                <div class="card fade-in">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User"
-                        style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 20px;">
-                    <p>"The best repair shop in town. They matched the color of my vintage board perfectly!"</p>
-                    <h4>- Alex Johnson</h4>
+            <!-- 6. Testimonials Section -->
+            <section id="testimonials">
+                <h2>What Surfers Say</h2>
+                <div class="card-grid">
+                    <div class="card fade-in">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User"
+                            style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 20px;">
+                        <p>"The best repair shop in town. They matched the color of my vintage board perfectly!"</p>
+                        <h4>- Alex Johnson</h4>
+                    </div>
+                    <div class="card fade-in">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User"
+                            style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 20px;">
+                        <p>"My custom longboard is a dream. It paddles like a boat and turns on a dime forver."</p>
+                        <h4>- Sarah Miller</h4>
+                    </div>
+                    <div class="card fade-in">
+                        <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="User"
+                            style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 20px;">
+                        <p>"Quick, reliable, and incredibly professional. The only shop I trust with my guns."</p>
+                        <h4>- Mike Peters</h4>
+                    </div>
                 </div>
-                <div class="card fade-in">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User"
-                        style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 20px;">
-                    <p>"My custom longboard is a dream. It paddles like a boat and turns on a dime."</p>
-                    <h4>- Sarah Miller</h4>
-                </div>
-                <div class="card fade-in">
-                    <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="User"
-                        style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 20px;">
-                    <p>"Quick, reliable, and incredibly professional. The only shop I trust with my guns."</p>
-                    <h4>- Mike Peters</h4>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 6. CTA Section -->
-        <section id="cta" class="theme-cta">
-            <h2>Ready for Your Next Session?</h2>
-            <p>Get a quote for your repair or start designing your dream board today.</p>
-            <div class="hero-btns">
-                <a href="contact.html" class="btn btn-primary">Contact</a>
-                <a href="services.html" class="btn btn-outline">Pricing</a>
-            </div>
-        </section>
+            <!-- 6. CTA Section -->
+            <section id="cta" class="theme-cta">
+                <h2>Ready for Your Next Session?</h2>
+                <p>Get a quote for your repair or start designing your dream board today.</p>
+                <div class="hero-btns">
+                    <a href="contact.html" class="btn btn-primary">Contact</a>
+                    <a href="services.html" class="btn btn-outline">Pricing</a>
+                </div>
+            </section>
     </main>
 
     <!-- Footer -->
     <footer>
         <div class="footer-grid">
             <div class="footer-logo">
-                <a href="index.html" style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; text-decoration: none;">
-                    <svg class="logo" viewBox="0 0 100 100" style="width: 40px; height: 40px;"><path d="M50,2 C35,22 32,68 50,98 C68,68 65,22 50,2 Z" fill="var(--accent)"/><path d="M50,2 C42,22 44,68 50,98" fill="none" stroke="#fff" stroke-width="2"/></svg>
+                <a href="index.html"
+                    style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; text-decoration: none;">
+                    <svg class="logo" viewBox="0 0 100 100" style="width: 52px; height: 52px; flex-shrink: 0;">
+                        <defs>
+                            <linearGradient id="logo-grad-footer" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#C47A2C" />
+                                <stop offset="40%" stop-color="#DE9447" />
+                                <stop offset="100%" stop-color="#F9D29F" />
+                            </linearGradient>
+                            <filter id="shadow-footer" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.3"/>
+                            </filter>
+                        </defs>
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logo-grad-footer)" stroke-width="3" stroke-linecap="round" />
+                        <path d="M 15,65 C 25,65 35,50 48,38 C 58,28 72,25 83,32 C 70,15 54,16 43,28 C 32,40 22,55 15,55 Z" fill="url(#logo-grad-footer)" filter="url(#shadow-footer)" />
+                        <path d="M 22,75 C 32,75 42,62 52,50 C 62,38 74,34 82,39 C 71,25 58,26 49,38 C 40,50 30,65 22,65 Z" fill="url(#logo-grad-footer)" fill-opacity="0.45" />
+                        <g transform="rotate(-20, 50, 50)" filter="url(#shadow-footer)">
+                            <path d="M 50,8 C 38,28 36,68 50,92 Z" fill="#914D12" />
+                            <path d="M 50,8 C 62,28 64,68 50,92 Z" fill="url(#logo-grad-footer)" />
+                            <line x1="50" y1="8" x2="50" y2="92" stroke="#FFFFFF" stroke-width="2" />
+                            <line x1="44" y1="58" x2="56" y2="58" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
+                            <line x1="43" y1="66" x2="57" y2="66" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
+                        </g>
+                    </svg>
                     <span class="brand-name">SURFBOARD</span>
                 </a>
                 <p style="font-size: 0.9rem; margin-bottom: 24px;">Crafting excellence for the ocean since
@@ -335,6 +394,3 @@
 </body>
 
 </html>
-
-
-

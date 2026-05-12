@@ -4,11 +4,11 @@ body.dark-mode {
     color: var(--text-dark);
 }
 
-body.dark-mode h1, 
-body.dark-mode h2, 
-body.dark-mode h3, 
-body.dark-mode h4, 
-body.dark-mode h5, 
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
 body.dark-mode h6,
 body.dark-mode section h2 {
     color: var(--white) !important;
@@ -16,13 +16,11 @@ body.dark-mode section h2 {
 
 body.dark-mode header {
     background-color: #0A0A0A;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-body.dark-mode .logo,
 body.dark-mode .footer-logo img,
-body.dark-mode .auth-brand img,
-body.dark-mode .logo-container img {
+body.dark-mode .auth-brand img {
     filter: brightness(0) invert(1) !important;
 }
 
@@ -56,8 +54,8 @@ body.dark-mode .tl-content,
 body.dark-mode .value-card,
 body.dark-mode .team-card {
     background-color: #1E1E1E !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border: 1px solid rgba(255,255,255,0.15) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
 }
 
 body.dark-mode .form-group input,
@@ -77,9 +75,18 @@ body.dark-mode .mobile-nav {
     background-color: var(--primary);
 }
 
+body.dark-mode .mobile-nav hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-mode select {
+    background-color: #2A2A2A !important;
+    color: var(--white) !important;
+}
+
 body.dark-mode footer {
     background-color: #0A0A0A;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 body.dark-mode .footer-links h4 {
@@ -106,7 +113,7 @@ body.dark-mode section {
     background-color: var(--bg-dark) !important;
 }
 
-body.dark-mode .hero::before, 
+body.dark-mode .hero::before,
 body.dark-mode .hero2::before,
 body.dark-mode .page-hero::before {
     background-color: var(--bg-dark) !important;
@@ -141,8 +148,8 @@ body.dark-mode .btn-outline:hover {
 /* Pricing cards dark mode */
 body.dark-mode .pricing-card {
     background-color: #1E1E1E !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border-color: rgba(255,255,255,0.15) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.15) !important;
 }
 
 body.dark-mode .pricing-card h3,
@@ -342,5 +349,3 @@ body.dark-mode .recent-post-info a {
 body.dark-mode .recent-post-info a:hover {
     color: var(--accent) !important;
 }
-
-
