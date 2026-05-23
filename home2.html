@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="assets/css/dark-mode.css">
   <link rel="stylesheet" href="assets/css/rtl.css">
   <style>
-
     /* ─── Gallery Grid ─── */
     .gallery-masonry {
       display: grid;
@@ -55,12 +54,14 @@
       padding: 16px;
       font-size: .9rem;
       font-weight: 600;
+      text-align: center;
     }
 
     @media(max-width:768px) {
       .gallery-masonry {
         grid-template-columns: repeat(2, 1fr);
       }
+
       .gallery-masonry .gallery-item:last-child {
         grid-column: 1 / span 2;
         justify-self: center;
@@ -71,6 +72,12 @@
     @media(max-width:480px) {
       .gallery-masonry {
         grid-template-columns: 1fr;
+      }
+
+      .gallery-masonry .gallery-item:last-child {
+        grid-column: auto;
+        width: 100%;
+        justify-self: stretch;
       }
     }
 
@@ -125,6 +132,7 @@
       .pricing-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
       .pricing-grid .pricing-card:last-child {
         grid-column: 1 / span 2;
         justify-self: center;
@@ -136,6 +144,7 @@
       .pricing-grid {
         grid-template-columns: 1fr;
       }
+
       .pricing-grid .pricing-card:last-child {
         grid-column: auto;
         width: 100%;
@@ -216,6 +225,7 @@
       .blank-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
       .blank-grid .blank-card:last-child {
         grid-column: 1 / span 2;
         justify-self: center;
@@ -227,6 +237,7 @@
       .blank-grid {
         grid-template-columns: 1fr;
       }
+
       .blank-grid .blank-card:last-child {
         grid-column: auto;
         width: 100%;
@@ -241,13 +252,7 @@
     }
 
     .timeline::before {
-      content: '';
-      position: absolute;
-      left: 24px;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: var(--secondary);
+      display: none !important;
     }
 
     .tl-item {
@@ -282,18 +287,30 @@
       text-align: center;
     }
 
-    .tl-content h3 { text-align: center; }
-    .tl-content p  { text-align: center; margin: 0; max-width: none; }
+    .tl-content h3 {
+      text-align: center;
+    }
+
+    .tl-content p {
+      text-align: center;
+      margin: 0;
+      max-width: none;
+    }
 
     @media(max-width:360px) {
       .tl-item {
         flex-direction: column;
         align-items: center;
       }
+
       .tl-content {
         text-align: center;
       }
-      .tl-content h3, .tl-content p { text-align: center; }
+
+      .tl-content h3,
+      .tl-content p {
+        text-align: center;
+      }
     }
 
     /* ─── Stats Strip ─── */
@@ -336,6 +353,242 @@
     .cta2 p {
       color: var(--text-light);
     }
+
+    /* ─── Hero 2 Asymmetric Split ─── */
+
+
+
+    /* ─── Workshop Capabilities ─── */
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 48px;
+    }
+
+    .capability-card {
+      background: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: var(--transition);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .capability-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--accent);
+    }
+
+    .capability-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: calc(var(--radius) / 2);
+      margin-bottom: 20px;
+      transition: var(--transition);
+    }
+
+    .capability-icon {
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+      text-align: center;
+      display: inline-flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .capability-card h3 {
+      text-align: center;
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      width: 100%;
+    }
+
+    .capability-card p {
+      text-align: center;
+      font-size: 0.92rem;
+      color: var(--text-light);
+      margin-bottom: 0;
+      max-width: none;
+      width: 100%;
+    }
+
+    .dark-mode .capability-card {
+      background: var(--bg-dark);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .dark-mode .capability-card p {
+      color: var(--text-dark);
+    }
+
+    @media (max-width: 1440px) {
+      .capability-card img {
+        aspect-ratio: 1 / 1 !important;
+        height: auto !important;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .capabilities-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .capabilities-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+
+
+    .tl-content {
+      background: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      text-align: left;
+      padding: 24px 32px;
+    }
+
+    .tl-content h3 {
+      text-align: left;
+      margin-bottom: 8px;
+    }
+
+    .tl-content p {
+      text-align: left;
+    }
+
+    .dark-mode .tl-content {
+      background: var(--bg-dark);
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+
+
+
+    /* ─── Testimonials Grid for Home 2 ─── */
+    .testimonials-dark-section {
+      background: var(--bg-light);
+      transition: var(--transition);
+    }
+
+    .dark-mode .testimonials-dark-section {
+      background: var(--bg-dark);
+    }
+
+    .testimonials-list-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .testimonial-bubble-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .testimonial-bubble-card::before {
+      content: '"';
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      font-size: 5rem;
+      color: rgba(196, 122, 44, 0.08);
+      font-family: serif;
+      line-height: 1;
+    }
+
+    .testimonial-bubble-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .testimonial-bubble-card p {
+      text-align: left;
+      font-style: italic;
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-user-profile {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .testimonial-user-profile img {
+      width: 50px !important;
+      height: 50px !important;
+      border-radius: 50% !important;
+      object-fit: cover;
+      margin: 0 !important;
+    }
+
+    .testimonial-user-info {
+      text-align: left;
+    }
+
+    .testimonial-user-info h4 {
+      margin: 0;
+      font-size: 1rem;
+      color: var(--primary);
+      text-align: left;
+    }
+
+    .testimonial-user-info span {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    .dark-mode .testimonial-bubble-card {
+      background: var(--bg-dark);
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .dark-mode .testimonial-bubble-card p {
+      color: var(--text-dark);
+    }
+
+    @media (max-width: 991px) {
+      .testimonials-list-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+      .testimonials-list-grid .testimonial-bubble-card:last-child {
+        grid-column: 1 / span 2 !important;
+        justify-self: center !important;
+        width: calc(50% - 16px) !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .testimonials-list-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .testimonials-list-grid .testimonial-bubble-card:last-child {
+        grid-column: auto !important;
+        width: 100% !important;
+        justify-self: stretch !important;
+      }
+    }
   </style>
 </head>
 
@@ -344,28 +597,32 @@
   <!-- ═══ HEADER ═══ -->
   <header>
     <div class="header-left">
-      <a href="index.html" class="logo-container" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+      <a href="index.html" class="logo-container"
+        style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
         <svg class="logo" viewBox="0 0 100 100" style="width: 52px; height: 52px; flex-shrink: 0;">
-            <defs>
-                <linearGradient id="logo-grad-header" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#C47A2C" />
-                    <stop offset="40%" stop-color="#DE9447" />
-                    <stop offset="100%" stop-color="#F9D29F" />
-                </linearGradient>
-                <filter id="shadow-header" x="-20%" y="-20%" width="140%" height="140%">
-                    <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.3"/>
-                </filter>
-            </defs>
-            <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logo-grad-header)" stroke-width="3" stroke-linecap="round" />
-            <path d="M 15,65 C 25,65 35,50 48,38 C 58,28 72,25 83,32 C 70,15 54,16 43,28 C 32,40 22,55 15,55 Z" fill="url(#logo-grad-header)" filter="url(#shadow-header)" />
-            <path d="M 22,75 C 32,75 42,62 52,50 C 62,38 74,34 82,39 C 71,25 58,26 49,38 C 40,50 30,65 22,65 Z" fill="url(#logo-grad-header)" fill-opacity="0.45" />
-            <g transform="rotate(-20, 50, 50)" filter="url(#shadow-header)">
-                <path d="M 50,8 C 38,28 36,68 50,92 Z" fill="#914D12" />
-                <path d="M 50,8 C 62,28 64,68 50,92 Z" fill="url(#logo-grad-header)" />
-                <line x1="50" y1="8" x2="50" y2="92" stroke="#FFFFFF" stroke-width="2" />
-                <line x1="44" y1="58" x2="56" y2="58" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
-                <line x1="43" y1="66" x2="57" y2="66" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
-            </g>
+          <defs>
+            <linearGradient id="logo-grad-header" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#C47A2C" />
+              <stop offset="40%" stop-color="#DE9447" />
+              <stop offset="100%" stop-color="#F9D29F" />
+            </linearGradient>
+            <filter id="shadow-header" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.3" />
+            </filter>
+          </defs>
+          <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logo-grad-header)" stroke-width="3"
+            stroke-linecap="round" />
+          <path d="M 15,65 C 25,65 35,50 48,38 C 58,28 72,25 83,32 C 70,15 54,16 43,28 C 32,40 22,55 15,55 Z"
+            fill="url(#logo-grad-header)" filter="url(#shadow-header)" />
+          <path d="M 22,75 C 32,75 42,62 52,50 C 62,38 74,34 82,39 C 71,25 58,26 49,38 C 40,50 30,65 22,65 Z"
+            fill="url(#logo-grad-header)" fill-opacity="0.45" />
+          <g transform="rotate(-20, 50, 50)" filter="url(#shadow-header)">
+            <path d="M 50,8 C 38,28 36,68 50,92 Z" fill="#914D12" />
+            <path d="M 50,8 C 62,28 64,68 50,92 Z" fill="url(#logo-grad-header)" />
+            <line x1="50" y1="8" x2="50" y2="92" stroke="#FFFFFF" stroke-width="2" />
+            <line x1="44" y1="58" x2="56" y2="58" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
+            <line x1="43" y1="66" x2="57" y2="66" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
+          </g>
         </svg>
         <span class="brand-name">SURFBOARD</span>
       </a>
@@ -374,7 +631,7 @@
       <ul class="nav-menu">
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="home2.html" class="nav-link active">Home 2</a></li>
-                        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
 
         <li><a href="services.html" class="nav-link">Services</a></li>
 
@@ -395,15 +652,15 @@
   <div class="mobile-nav">
     <a href="index.html" class="nav-link">Home</a>
     <a href="home2.html" class="nav-link active">Home 2</a>
-        <a href="about.html" class="nav-link">About</a>
+    <a href="about.html" class="nav-link">About</a>
 
     <a href="services.html" class="nav-link">Services</a>
     <a href="blog.html" class="nav-link">Blog</a>
     <a href="contact.html" class="nav-link">Contact</a>
     <hr>
     <div class="mobile-controls-row">
-        <button class="icon-btn" id="mobile-rtl-toggle">RTL</button>
-        <button class="icon-btn" id="mobile-theme-toggle"><i class="fas fa-moon theme-icon"></i></button>
+      <button class="icon-btn" id="mobile-rtl-toggle">RTL</button>
+      <button class="icon-btn" id="mobile-theme-toggle"><i class="fas fa-moon theme-icon"></i></button>
     </div>
     <a href="login.html" class="btn btn-primary">Login</a>
   </div>
@@ -411,21 +668,112 @@
   <main>
 
     <!-- ── SECTION 1 · HERO ── -->
-    <section class="hero2" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1455729552865-3658a5d39692?auto=format&fit=crop&q=80&w=1920');">
-      <div class="wave-badge">GALLERY EDITION</div>
-      <h1 class="fade-in">Boards Built for <br class="hero-br"><span style="color:var(--accent);">Legends</span></h1>
-      <p class="fade-in">Every curve, every layer of glass — shaped by hands that have ridden every break on the planet.
-      </p>
+    <section class="hero"
+      style="background-image: url('https://www.ondanovasurf.com/cdn/shop/files/workshop-working.jpg?v=1751413140&width=3000');">
+      <div class="wave-badge">MALIBU WORKSHOP</div>
+      <h1 class="fade-in">Artisan Surf Repair <br class="hero-br">& <span style="color:var(--accent);">Custom Shaping</span></h1>
+      <p class="fade-in">Premium ding restorations, carbon structural reinforcements, and custom board templates shaped by surfers who have ridden every break on the planet.</p>
       <div class="hero-btns fade-in">
-        <a href="#gallery" class="btn btn-primary">View Gallery</a>
-        <a href="#pricing" class="btn btn-outline">See Pricing</a>
+        <a href="services.html#pricing" class="btn btn-primary">See Repair Rates</a>
+        <a href="#gallery" class="btn btn-outline">Browse Shapes Gallery</a>
       </div>
     </section>
 
-    <!-- ── SECTION 2 · GALLERY ── -->
-    <section id="gallery">
-      <h2>Finished Shapes Gallery</h2>
-      <p>Hand-crafted boards that prove performance and beauty are never mutually exclusive.</p>
+    <!-- ── SECTION 2 · WORKSHOP CAPABILITIES ── -->
+    <section id="capabilities" class="animate-on-scroll">
+      <h2>Workshop Capabilities & Craft</h2>
+      <p class="section-subheading">Our workshop combines old-school hand-tool details with modern glassing techniques
+        for outstanding durability.</p>
+      <div class="capabilities-grid">
+        <div class="capability-card fade-in">
+          <img src="https://www.shape3d.com/Images/New/APS%20DinoD.png" alt="Shaping Bay">
+          <h3>CNC & Hand-Shaping Bay</h3>
+          <p>We combine digital accuracy with master hand-finished rails for perfect rocker lines and foil profiles.</p>
+        </div>
+        <div class="capability-card fade-in">
+          <img src="https://i.pinimg.com/736x/b8/83/2c/b8832c922b343dc60347084b9abd250f.jpg" alt="Color Lab">
+          <h3>Color Match Lab</h3>
+          <p>Custom resin pigments and acrylic spray systems to match your board's original vintage tint or neon fade.</p>
+        </div>
+        <div class="capability-card fade-in">
+          <img src="https://i.pinimg.com/1200x/57/dd/42/57dd421ad29a7c14d6215f2b981ce37b.jpg" alt="Glassing">
+          <h3>Vacuum Bag</h3>
+          <p>Advanced epoxy sandwich lamination techniques ensuring high impact resistance and optimal flex memory.</p>
+        </div>
+        <div class="capability-card fade-in">
+          <img src="https://i.pinimg.com/1200x/e8/e1/4e/e8e14ed8f360e5d5201cd78df26cc0e2.jpg" alt="Fin Align">
+          <h3>Fin Alignment Jigs</h3>
+          <p>Precision routing systems and original templates for FCS II, Futures, and glass-on fin installations.</p>
+        </div>
+        <div class="capability-card fade-in">
+          <img src="https://i.pinimg.com/736x/e5/ef/bf/e5efbf5a2d2d9088df18b4cd87fe5ea7.jpg" alt="Carbon">
+          <h3>Carbon tail reinforcement</h3>
+          <p>Strategic carbon patches on tail rails to reduce impact fractures and add drive to your board snaps.</p>
+        </div>
+        <div class="capability-card fade-in">
+          <img src="assets/images/fast-turnaround.jpg" alt="Fast Turnaround">
+          <h3>Fast swell turnaround</h3>
+          <p>Emergency ding services to get you back in the water for the next tide. Standard repairs completed in 48 hours.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 3 · DING REPAIR PROCESS ── -->
+    <section id="process" class="bg-secondary animate-on-scroll">
+      <h2>Ding Repair & Shaping Process</h2>
+      <p class="section-subheading">From structural foam preps to high-grit glass polish — here is how we handle your
+        board restoration.</p>
+      <div class="timeline">
+        <div class="tl-item fade-in">
+          <div class="tl-dot">01</div>
+          <div class="tl-content">
+            <h3>Damage Inspection & Dry-Out</h3>
+            <p>We examine the foam core for water logging and completely dry it out in our climate-controlled bay to
+              prevent future delamination.</p>
+          </div>
+        </div>
+        <div class="tl-item fade-in">
+          <div class="tl-dot">02</div>
+          <div class="tl-content">
+            <h3>Foam Core Prep & Fill</h3>
+            <p>Shattered glass is cut away and the core is rebuilt using matching density polyurethane or polystyrene
+              foam inserts.</p>
+          </div>
+        </div>
+        <div class="tl-item fade-in">
+          <div class="tl-dot">03</div>
+          <div class="tl-content">
+            <h3>Fiberglass Lamination</h3>
+            <p>Layers of premium aerial fiberglass cloth are laid down and laminated with matching polyester or epoxy
+              resins for structural strength.</p>
+          </div>
+        </div>
+        <div class="tl-item fade-in">
+          <div class="tl-dot">04</div>
+          <div class="tl-content">
+            <h3>Hotcoating & Color Match</h3>
+            <p>A sealing hotcoat is applied, followed by custom pigment sprays to match original color schemes, logos,
+              and deck styles.</p>
+          </div>
+        </div>
+        <div class="tl-item fade-in">
+          <div class="tl-dot">05</div>
+          <div class="tl-content">
+            <h3>Sanding & Polishing</h3>
+            <p>The repair is progressively hand-sanded from 120 up to 1500 grit, then machine-buffed for a completely
+              seamless gloss finish.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ── SECTION 5 · GALLERY ── -->
+    <section id="gallery" class="animate-on-scroll">
+      <h2>Repair & Shape Showcase</h2>
+      <p class="section-subheading">Hand-crafted boards and professional restoration repairs that prove performance and
+        aesthetic beauty.</p>
       <div class="gallery-masonry">
         <div class="gallery-item fade-in">
           <img src="https://www.newsofthearea.com.au/wp-content/uploads/2024/10/SPORT_longboard_AB_PY.jpg"
@@ -433,165 +781,94 @@
           <div class="gallery-caption">Classic Longboard · EPS Blank</div>
         </div>
         <div class="gallery-item fade-in">
-          <img src="https://i.ytimg.com/vi/vdaBEXeiefo/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBt_mTnWsEPvGhcAJw6tHTXLqliRw"
-            alt="Performance Shortboard">
-          <div class="gallery-caption">Performance Shortboard</div>
+          <img src="assets/images/shortboard-workshops.jpg" alt="Shortboard Workshops">
+          <div class="gallery-caption">Shortboard Workshops</div>
         </div>
         <div class="gallery-item fade-in">
-          <img src="https://i.ytimg.com/vi/a-VRhh7R8Zs/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDLHxDE8UUXm3LSOtAYQJSNkVs-mQ"
-            alt="Vintage Fish">
-          <div class="gallery-caption">Retro Fish · Teal Tint</div>
+          <img src="assets/images/custom-restoration.jpg" alt="Custom Board Restoration Hub">
+          <div class="gallery-caption">Custom Board Restoration Hub</div>
         </div>
         <div class="gallery-item fade-in">
-          <img src="https://lostsurfboards.com.au/cdn/shop/articles/proformance-cover.jpg?v=1638312581"
-            alt="Gun Board">
-          <div class="gallery-caption">Big-Wave Gun</div>
+          <img src="assets/images/pro-ding-repair.jpg" alt="Pro Ding Repair Studio">
+          <div class="gallery-caption">Pro Ding Repair Studio</div>
         </div>
         <div class="gallery-item fade-in">
-          <img src="https://www.viral-surf.com/9288-large_default/surfboards-polyurethane-pu-5-10-fish-arctic-foam.jpg"
-            alt="Egg Board">
-          <div class="gallery-caption">Egg Hybrid · PU Blank</div>
+          <img src="assets/images/wave-rider-lab.jpg" alt="Wave Rider Repair Lab">
+          <div class="gallery-caption">Wave Rider Repair Lab</div>
         </div>
         <div class="gallery-item fade-in">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW7DKwmHDQj__cPvpeQQUF-SfA-2n2Dam6-Q&s"
             alt="Mid-Length">
-          <div class="gallery-caption">Mid-Length · Single Fin</div>
+          <div class="gallery-caption">Surfboard Shape & Repair Bay</div>
         </div>
         <div class="gallery-item fade-in">
-          <img src="https://i.ytimg.com/vi/aEn8kENXQzE/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB8_x59hAkbtKccobJsUWqEiV2o4Q"
+          <img
+            src="https://i.ytimg.com/vi/aEn8kENXQzE/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB8_x59hAkbtKccobJsUWqEiV2o4Q"
             alt="Shortboard">
-          <div class="gallery-caption">Pro Model · Carbon Fiber</div>
+          <div class="gallery-caption">Handcrafted Board Fixes</div>
         </div>
         <div class="gallery-item fade-in">
-          <img src="https://static.vecteezy.com/system/resources/thumbnails/039/902/054/small/young-surfer-having-fun-enjoying-a-surf-day-at-sunset-time-extreme-sport-lifestyle-people-concept-photo.jpg"
+          <img
+            src="https://static.vecteezy.com/system/resources/thumbnails/039/902/054/small/young-surfer-having-fun-enjoying-a-surf-day-at-sunset-time-extreme-sport-lifestyle-people-concept-photo.jpg"
             alt="Funboard">
-          <div class="gallery-caption">The Minimalist · Wood Inlay</div>
+          <div class="gallery-caption">Ocean Board Service Center</div>
         </div>
         <div class="gallery-item fade-in">
-          <img src="https://i0.wp.com/texasartandsoul.com/wp-content/uploads/2021/06/Featured-Photo-For-Blog-6.png?resize=1080%2C675&ssl=1"
+          <img
+            src="https://i0.wp.com/texasartandsoul.com/wp-content/uploads/2021/06/Featured-Photo-For-Blog-6.png?resize=1080%2C675&ssl=1"
             alt="Custom">
-          <div class="gallery-caption">Art Edition · Hand Painted</div>
+          <div class="gallery-caption">Performance Surf Repair Zone</div>
         </div>
       </div>
     </section>
 
-    <!-- ── SECTION 3 · PRICING ── -->
-    <section id="pricing" class="bg-secondary">
-      <h2>Ding Repair Pricing</h2>
-      <p>Transparent rates with no surprises. Minor dings to major refurbishments, we've got you covered.</p>
-      <div class="pricing-grid">
-        <div class="pricing-card fade-in">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpcgJprrsaHCpCn7YrbzBTVxiI8whL-cXbPQ&s"
-            alt="Repair"
-            style="width: 100%; height: 150px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
-          <h3>Minor Ding</h3>
-          <div class="price">$45<span>/repair</span></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check-circle"></i> Up to 3-inch crack</li>
-            <li><i class="fas fa-check-circle"></i> Resin fill & sand</li>
-            <li><i class="fas fa-check-circle"></i> Color match included</li>
-          </ul>
-          <a href="contact.html" class="btn btn-outline" style="width:100%;">Book Repair</a>
-        </div>
-        <div class="pricing-card featured fade-in">
-          <div class="wave-badge">POPULAR</div>
-          <img src="https://rustysurfboards.me/cdn/shop/articles/wax-it-up-blog_2048x2048_337554a0-e8ad-49c7-ac6d-0efe789ffe78.jpg?v=1633719419"
-            alt="Restoration"
-            style="width: 100%; height: 150px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
-          <h3>Full Restoration</h3>
-          <div class="price">$180<span>/board</span></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check-circle"></i> Multiple ding repair</li>
-            <li><i class="fas fa-check-circle"></i> Fin box inspection</li>
-            <li><i class="fas fa-check-circle"></i> Re-glass sections</li>
-          </ul>
-          <a href="contact.html" class="btn btn-primary" style="width:100%;">Get Started</a>
-        </div>
-        <div class="pricing-card fade-in">
-          <img src="https://www.boardcave.com.au/wp-content/uploads/2016/02/glassing-finish-asilda-photography.jpg"
-            alt="Glass"
-            style="width: 100%; height: 150px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
-          <h3>Custom Glass Job</h3>
-          <div class="price">$320<span>/board</span></div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check-circle"></i> Full laminate strip</li>
-            <li><i class="fas fa-check-circle"></i> 4+4 / 6+6 oz glass</li>
-            <li><i class="fas fa-check-circle"></i> Hotcoat & polish</li>
-          </ul>
-          <a href="contact.html" class="btn btn-outline" style="width:100%;">Request Quote</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── SECTION 4 · BLANK SELECTION ── -->
-    <section id="blanks">
-      <h2>Blank Selection Guide</h2>
-      <p>The right blank determines everything about your board's flex, weight, and durability.</p>
-      <div class="blank-grid">
-        <div class="blank-card fade-in">
-          <img src="https://www.woodstockshop.com/cdn/shop/articles/blog-pu-epoxy.jpg?v=1777035284"
-            alt="PU Blank">
-          <div class="blank-info">
-            <div class="blank-tag">Traditional</div>
-            <h3>PU / Polyester</h3>
-            <p>The classic combination. Familiar flex pattern, easy to glass, and affordable.</p>
+    <!-- ── SECTION 6 · TESTIMONIALS (Dark/Light bubble cards) ── -->
+    <section id="testimonials" class="testimonials-dark-section animate-on-scroll">
+      <h2>Surfers Testimonials</h2>
+      <p class="section-subheading">Hear what our local Malibu surfers and competition riders say about our workshop
+        repairs and custom shapes.</p>
+      <div class="testimonials-list-grid">
+        <div class="testimonial-bubble-card fade-in">
+          <p>"The best repair shop in CA. They color matched the resin on my vintage board perfectly. You can't even see
+            where the rail crack was!"</p>
+          <div class="testimonial-user-profile">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Alex Johnson">
+            <div class="testimonial-user-info">
+              <h4>Alex Johnson</h4>
+              <span>Malibu Local</span>
+            </div>
           </div>
         </div>
-        <div class="blank-card fade-in">
-          <img src="https://surfnshow.com/cdn/shop/products/construction_pu_pe_1333_1946x.jpg?v=1488444044"
-            alt="EPS Blank">
-          <div class="blank-info">
-            <div class="blank-tag">Performance</div>
-            <h3>EPS / Epoxy</h3>
-            <p>Lighter and more buoyant. Ideal for small waves and progressive surfers.</p>
+        <div class="testimonial-bubble-card fade-in">
+          <p>"My custom single-fin is a masterpiece. It paddles incredibly well and holds beautifully in steep waves.
+            Shaper understood exactly what I needed."</p>
+          <div class="testimonial-user-profile">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Miller">
+            <div class="testimonial-user-info">
+              <h4>Sarah Miller</h4>
+              <span>Point Surf Rider</span>
+            </div>
           </div>
         </div>
-        <div class="blank-card fade-in">
-          <img src="https://cdn.shopify.com/s/files/1/0000/5597/files/Screenshot2026-03-31at10.37.49AM.png?v=1774967888"
-            alt="Tuna Blank">
-          <div class="blank-info">
-            <div class="blank-tag">Eco</div>
-            <h3>Bio-Epoxy</h3>
-            <p>Sustainable blanks with plant-based resins — performance without compromise.</p>
+        <div class="testimonial-bubble-card fade-in">
+          <p>"Quick, reliable, and extremely professional. Broke my fin box during a swell, and they had it routed and
+            rebuilt in 24 hours. Phenomenal work!"</p>
+          <div class="testimonial-user-profile">
+            <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Mike Peters">
+            <div class="testimonial-user-info">
+              <h4>Mike Peters</h4>
+              <span>Competition Surfer</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── SECTION 5 · PROCESS TIMELINE ── -->
-    <section id="process" class="bg-secondary">
-      <h2>How We Build Your Board</h2>
-      <p>From blank selection to final polish, here's every step of your board's journey.</p>
-      <div class="timeline">
-        <div class="tl-item fade-in">
-          <div class="tl-dot">01</div>
-          <div class="tl-content">
-            <h3>Consultation</h3>
-            <p>We discuss your surfing style, local break, and board goals to plan the perfect shape.</p>
-          </div>
-        </div>
-        <div class="tl-item fade-in">
-          <div class="tl-dot">02</div>
-          <div class="tl-content">
-            <h3>Shaping</h3>
-            <p>Master shapers craft your outline, concaves, and rails by hand and CNC.</p>
-          </div>
-        </div>
-        <div class="tl-item fade-in">
-          <div class="tl-dot">03</div>
-          <div class="tl-content">
-            <h3>Glassing</h3>
-            <p>Fiberglass cloth is laminated and hotcoated for strength and flex.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── SECTION 6 · STATS + CTA ── -->
+    <!-- ── SECTION 7 · STATS + CTA ── -->
     <div class="stats-strip">
       <div class="stat">
         <div class="stat-num">1,200+</div>
-        <div class="stat-label">Boards Shaped</div>
+        <div class="stat-label">Boards Shaped & Repaired</div>
       </div>
       <div class="stat">
         <div class="stat-num">25+</div>
@@ -608,11 +885,11 @@
     </div>
 
     <section class="cta2">
-      <h2>Start Your Custom Build Today</h2>
-      <p>Tell us your dream board — we'll make it a reality.</p>
+      <h2>Ready to Get Back in the Water?</h2>
+      <p class="section-subheading">Whether you need a minor rail repair or a full custom shapes package, our workshop
+        is ready.</p>
       <div style="display:flex;gap:20px;justify-content:center;margin-top:32px;flex-wrap:wrap;">
         <a href="contact.html" class="btn btn-primary">Book Consultation</a>
-        <a href="serivces.html" class="btn btn-primary">Explore Services</a>
       </div>
     </section>
 
@@ -620,83 +897,81 @@
 
   <!-- Footer -->
   <footer>
-        <div class="footer-grid">
-            <div class="footer-logo">
-                <a href="index.html" style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; text-decoration: none;">
-                    <svg class="logo" viewBox="0 0 100 100" style="width: 52px; height: 52px; flex-shrink: 0;">
-                        <defs>
-                            <linearGradient id="logo-grad-footer" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#C47A2C" />
-                                <stop offset="40%" stop-color="#DE9447" />
-                                <stop offset="100%" stop-color="#F9D29F" />
-                            </linearGradient>
-                            <filter id="shadow-footer" x="-20%" y="-20%" width="140%" height="140%">
-                                <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.3"/>
-                            </filter>
-                        </defs>
-                        <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logo-grad-footer)" stroke-width="3" stroke-linecap="round" />
-                        <path d="M 15,65 C 25,65 35,50 48,38 C 58,28 72,25 83,32 C 70,15 54,16 43,28 C 32,40 22,55 15,55 Z" fill="url(#logo-grad-footer)" filter="url(#shadow-footer)" />
-                        <path d="M 22,75 C 32,75 42,62 52,50 C 62,38 74,34 82,39 C 71,25 58,26 49,38 C 40,50 30,65 22,65 Z" fill="url(#logo-grad-footer)" fill-opacity="0.45" />
-                        <g transform="rotate(-20, 50, 50)" filter="url(#shadow-footer)">
-                            <path d="M 50,8 C 38,28 36,68 50,92 Z" fill="#914D12" />
-                            <path d="M 50,8 C 62,28 64,68 50,92 Z" fill="url(#logo-grad-footer)" />
-                            <line x1="50" y1="8" x2="50" y2="92" stroke="#FFFFFF" stroke-width="2" />
-                            <line x1="44" y1="58" x2="56" y2="58" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
-                            <line x1="43" y1="66" x2="57" y2="66" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
-                        </g>
-                    </svg>
-                    <span class="brand-name">SURFBOARD</span>
-                </a>
-                <p style="font-size: 0.9rem; margin-bottom: 24px;">Crafting excellence for the ocean since
-                    1998. Your destination for premium shapes and expert repairs.</p>
-                <div class="social-links" style="display: flex; gap: 15px;">
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-x"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Our Services</a></li>
-                    <li><a href="blog.html">Workshop Blog</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Newsletter</h4>
-                <p style="font-size: 0.85rem; margin-bottom: 16px;">Subscribe for shaping tips and workshop
-                    updates.</p>
-                <form action="#" style="display: flex; flex-direction: column; gap: 10px;">
-                    <input type="email" placeholder="Your Email"
-                        style="padding: 10px; border-radius: 8px; border: none; outline: none;">
-                    <button class="btn btn-primary" style="padding: 10px; font-size: 0.9rem;">Subscribe</button>
-                </form>
-            </div>
-            <div class="footer-links">
-                <h4>Contact Us</h4>
-                <p style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> 123 Ocean
-                    Drive, Malibu, CA</p>
-                <p style="font-size: 0.9rem;"><i class="fas fa-envelope" style="margin-right: 8px;"></i>
-                    info@surfboard.com</p>
-                <p style="font-size: 0.9rem;"><i class="fas fa-phone" style="margin-right: 8px;"></i> (555) 123-4567</p>
-            </div>
+    <div class="footer-grid">
+      <div class="footer-logo">
+        <a href="index.html"
+          style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; text-decoration: none;">
+          <svg class="logo" viewBox="0 0 100 100" style="width: 52px; height: 52px; flex-shrink: 0;">
+            <defs>
+              <linearGradient id="logo-grad-footer" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#C47A2C" />
+                <stop offset="40%" stop-color="#DE9447" />
+                <stop offset="100%" stop-color="#F9D29F" />
+              </linearGradient>
+              <filter id="shadow-footer" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.3" />
+              </filter>
+            </defs>
+            <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logo-grad-footer)" stroke-width="3"
+              stroke-linecap="round" />
+            <path d="M 15,65 C 25,65 35,50 48,38 C 58,28 72,25 83,32 C 70,15 54,16 43,28 C 32,40 22,55 15,55 Z"
+              fill="url(#logo-grad-footer)" filter="url(#shadow-footer)" />
+            <path d="M 22,75 C 32,75 42,62 52,50 C 62,38 74,34 82,39 C 71,25 58,26 49,38 C 40,50 30,65 22,65 Z"
+              fill="url(#logo-grad-footer)" fill-opacity="0.45" />
+            <g transform="rotate(-20, 50, 50)" filter="url(#shadow-footer)">
+              <path d="M 50,8 C 38,28 36,68 50,92 Z" fill="#914D12" />
+              <path d="M 50,8 C 62,28 64,68 50,92 Z" fill="url(#logo-grad-footer)" />
+              <line x1="50" y1="8" x2="50" y2="92" stroke="#FFFFFF" stroke-width="2" />
+              <line x1="44" y1="58" x2="56" y2="58" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
+              <line x1="43" y1="66" x2="57" y2="66" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
+            </g>
+          </svg>
+          <span class="brand-name">SURFBOARD</span>
+        </a>
+        <p style="font-size: 0.9rem; margin-bottom: 24px;">Crafting excellence for the ocean since
+          1998. Your destination for premium shapes and expert repairs.</p>
+        <div class="social-links" style="display: flex; gap: 15px;">
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-x"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Surfboard Shaping & Repair. All rights reserved.</p>
-        </div>
-    </footer>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Our Services</a></li>
+          <li><a href="blog.html">Workshop Blog</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Newsletter</h4>
+        <p style="font-size: 0.85rem; margin-bottom: 16px;">Subscribe for shaping tips and workshop
+          updates.</p>
+        <form action="#" style="display: flex; flex-direction: column; gap: 10px;">
+          <input type="email" placeholder="Your Email"
+            style="padding: 10px; border-radius: 8px; border: none; outline: none;">
+          <button class="btn btn-primary" style="padding: 10px; font-size: 0.9rem;">Subscribe</button>
+        </form>
+      </div>
+      <div class="footer-links">
+        <h4>Contact Us</h4>
+        <p style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> 123 Ocean
+          Drive, Malibu, CA</p>
+        <p style="font-size: 0.9rem;"><i class="fas fa-envelope" style="margin-right: 8px;"></i>
+          info@surfboard.com</p>
+        <p style="font-size: 0.9rem;"><i class="fas fa-phone" style="margin-right: 8px;"></i> (555) 123-4567</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Surfboard Shaping & Repair. All rights reserved.</p>
+    </div>
+  </footer>
 
   <script src="assets/js/main.js"></script>
 </body>
 
 </html>
-
-
-
-
-
-

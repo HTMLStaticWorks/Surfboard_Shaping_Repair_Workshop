@@ -41,6 +41,10 @@ body.dark-mode .icon-btn {
     color: var(--white);
 }
 
+body.dark-mode .bg-secondary {
+    background-color: #1A1A1A !important;
+}
+
 body.dark-mode .card,
 body.dark-mode .calc-box,
 body.dark-mode .booking-box,
@@ -52,7 +56,12 @@ body.dark-mode .contact-form-box,
 body.dark-mode .info-card,
 body.dark-mode .tl-content,
 body.dark-mode .value-card,
-body.dark-mode .team-card {
+body.dark-mode .team-card,
+body.dark-mode .pricing-calculator-col,
+body.dark-mode .ba-card,
+body.dark-mode .calc-card,
+body.dark-mode .pricing-dark-calc-wrapper,
+body.dark-mode .pricing-dark-card {
     background-color: #1E1E1E !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
@@ -116,7 +125,16 @@ body.dark-mode section {
 body.dark-mode .hero::before,
 body.dark-mode .hero2::before,
 body.dark-mode .page-hero::before {
-    background-color: var(--bg-dark) !important;
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.75) !important; /* 75% dark translucent overlay to allow gorgeous background images to stay visible */
+    opacity: 1 !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
 }
 
 body.dark-mode .theme-cta {
@@ -348,4 +366,140 @@ body.dark-mode .recent-post-info a {
 
 body.dark-mode .recent-post-info a:hover {
     color: var(--accent) !important;
+}
+
+/* 9. Global Text Contrast Fixes in Dark Mode */
+body.dark-mode p,
+body.dark-mode li,
+body.dark-mode .section-subheading,
+body.dark-mode .pricing-calculator-col p,
+body.dark-mode .ba-info p,
+body.dark-mode .pricing-dark-features li,
+body.dark-mode .form-group label {
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .pricing-dark-card h3,
+body.dark-mode .pricing-dark-card .price {
+    color: var(--white) !important;
+}
+
+/* 10. Estimated Total Dynamic Dark Mode Background */
+body.dark-mode .calc-result {
+    background-color: #252525 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: var(--white) !important;
+}
+
+body.dark-mode .calc-result div {
+    color: #FFFFFF !important; /* Pure white labels in dark mode */
+    opacity: 1 !important;
+}
+
+body.dark-mode .calc-result .price {
+    color: #FFAD4A !important; /* High contrast gold/copper highlights for dark mode readability */
+}
+
+/* 11. Custom Premium High Contrast Section Subheading in Dark Mode */
+body.dark-mode .section-subheading {
+    color: #FFFFFF !important; /* Pure white for maximum visibility */
+    font-weight: 600 !important; /* Slightly bolder for robust reading shape */
+    opacity: 1 !important;
+}
+
+/* 12. Custom Responsive Dual-Tone High Legibility Typography in Dark Mode (excluding Heroes) */
+body.dark-mode section h2 {
+    color: #FFAD4A !important; /* Premium high contrast copper gold for section titles in dark mode */
+}
+
+body.dark-mode .card h3,
+body.dark-mode .card h4,
+body.dark-mode .service-card h3,
+body.dark-mode .service-card h4,
+body.dark-mode .case-card h3,
+body.dark-mode .case-card h4,
+body.dark-mode .blog-card h3,
+body.dark-mode .blog-card h4,
+body.dark-mode .sidebar-card h3,
+body.dark-mode .sidebar-card h4,
+body.dark-mode .info-card h3,
+body.dark-mode .info-card h4,
+body.dark-mode .value-card h3,
+body.dark-mode .value-card h4,
+body.dark-mode .team-card h3,
+body.dark-mode .team-card h4,
+body.dark-mode .pricing-card h3,
+body.dark-mode .pricing-card h4,
+body.dark-mode .pricing-dark-card h3,
+body.dark-mode .pricing-dark-card h4,
+body.dark-mode .blank-card h3,
+body.dark-mode .blank-card h4,
+body.dark-mode .capability-card h3,
+body.dark-mode .capability-card h4,
+body.dark-mode .testimonial-user-info h4,
+body.dark-mode .testimonial-bubble-card h4,
+body.dark-mode .ba-card h3,
+body.dark-mode .ba-card h4,
+body.dark-mode .recent-post-info a {
+    color: #D6C3A3 !important; /* Warm sand beige for card titles and name headings in dark mode */
+}
+
+/* --- Dark Mode Overrides for Pricing Section --- */
+body.dark-mode .pricing-dark-section {
+  background: var(--bg-dark) !important;
+  color: var(--text-dark) !important;
+}
+
+body.dark-mode .pricing-dark-section h2 {
+  color: var(--white) !important;
+}
+
+body.dark-mode .pricing-dark-section p,
+body.dark-mode .pricing-dark-section .section-subheading {
+  color: #E5DCD0 !important;
+}
+
+body.dark-mode .pricing-dark-card {
+  background: #1E1E1E !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark-mode .pricing-dark-card.featured {
+  border: 2px solid var(--accent) !important;
+}
+
+body.dark-mode .pricing-dark-card h3 {
+  color: var(--white) !important;
+}
+
+body.dark-mode .pricing-dark-card .price span {
+  color: var(--gray) !important;
+}
+
+body.dark-mode .pricing-dark-features li {
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode .pricing-dark-calc-wrapper {
+  background: #1E1E1E !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark-mode .pricing-dark-calc-wrapper h3,
+body.dark-mode .pricing-dark-calc-wrapper label {
+  color: var(--white) !important;
+}
+
+body.dark-mode .pricing-dark-calc-wrapper select {
+  background-color: #242424 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: var(--white) !important;
+}
+
+body.dark-mode .pricing-dark-calc-wrapper .calc-result {
+  background: #252525 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: var(--white) !important;
 }

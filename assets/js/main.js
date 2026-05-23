@@ -93,20 +93,37 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Service Calculator ---
     const calcForm = document.getElementById('price-calc');
     if (calcForm) {
-        calcForm.addEventListener('change', () => {
-            const boardType = document.getElementById('board-type').value;
-            const repairType = document.getElementById('repair-type').value;
-            const result = document.getElementById('calc-result');
+        const updatePrice = () => {
+            const boardEl = document.getElementById('board-type');
+            const repairEl = document.getElementById('repair-type');
+            const extraEl = document.getElementById('extra');
+            const resultEl = document.getElementById('calc-result');
+            
+            if (!boardEl || !repairEl || !resultEl) return;
+            
+            const board = boardEl.value;
+            const repair = repairEl.value;
+            const extra = extraEl ? extraEl.value : '';
             
             let price = 0;
-            if (boardType === 'shortboard') price += 50;
-            if (boardType === 'longboard') price += 80;
-            if (repairType === 'ding') price += 40;
-            if (repairType === 'fin') price += 60;
-            if (repairType === 'glassing') price += 200;
-
-            result.textContent = `$${price}`;
-        });
+            if (board === 'shortboard') price += 30;
+            if (board === 'longboard') price += 50;
+            if (board === 'fish') price += 35;
+            if (board === 'gun') price += 70;
+            
+            if (repair === 'ding') price += 45;
+            if (repair === 'fin') price += 80;
+            if (repair === 'glassing') price += 200;
+            if (repair === 'custom') price += 600;
+            
+            if (extra === 'tint') price += 60;
+            if (extra === 'logo') price += 40;
+            if (extra === 'rush') price += 80;
+            
+            resultEl.textContent = `$${price}`;
+        };
+        calcForm.addEventListener('change', updatePrice);
+        updatePrice(); // Run once initially
     }
 
     // --- Back to Top Dynamic Implementation ---

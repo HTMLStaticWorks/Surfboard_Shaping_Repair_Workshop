@@ -23,7 +23,18 @@ body[dir="rtl"] {
     text-align: center; /* Headings themselves are centered in LTR design, so keep them centered */
 }
 
-/* Form Group Alignments */
+/* Automatic inline text-align overrides to prevent hardcoded LTR layout locks */
+[dir="rtl"] *[style*="text-align: left"],
+[dir="rtl"] *[style*="text-align:left"] {
+    text-align: right !important;
+}
+
+[dir="rtl"] *[style*="text-align: center"],
+[dir="rtl"] *[style*="text-align:center"] {
+    text-align: center !important;
+}
+
+/* Form Group & Input Alignments */
 [dir="rtl"] .form-group {
     text-align: right !important;
 }
@@ -37,16 +48,19 @@ body[dir="rtl"] {
 [dir="rtl"] .form-group textarea,
 [dir="rtl"] .form-group select {
     text-align: right !important;
+    direction: rtl !important;
 }
 
 [dir="rtl"] .error-msg {
     text-align: right !important;
 }
 
-/* Mobile Nav sliding in from right side instead of left */
+/* Mobile Nav Drawer Mirroring & Right Alignment */
 [dir="rtl"] .mobile-nav {
     left: auto !important;
     right: -100% !important;
+    text-align: right !important;
+    align-items: flex-start !important;
     transition: transform var(--transition), right var(--transition) !important;
 }
 
@@ -55,7 +69,11 @@ body[dir="rtl"] {
     right: 0 !important;
 }
 
-/* Footer Alignments */
+[dir="rtl"] .mobile-nav .nav-link {
+    text-align: right !important;
+}
+
+/* Footer Grid & Columns Overrides */
 [dir="rtl"] .footer-grid {
     text-align: right !important;
 }
@@ -65,7 +83,8 @@ body[dir="rtl"] {
     text-align: right !important;
 }
 
-[dir="rtl"] .footer-logo p {
+[dir="rtl"] .footer-logo p,
+[dir="rtl"] .footer-links p {
     text-align: right !important;
 }
 
@@ -81,6 +100,29 @@ body[dir="rtl"] {
 
 [dir="rtl"] .footer-links form {
     align-items: flex-start !important; /* starts on the right in RTL */
+    text-align: right !important;
+}
+
+[dir="rtl"] .footer-links p i {
+    margin-left: 10px !important;
+    margin-right: 0 !important;
+}
+
+/* Lists and Icon Spacing Override (Both inline & stylesheets) */
+[dir="rtl"] i[style*="margin-right"],
+[dir="rtl"] .card ul li i,
+[dir="rtl"] .pricing-card ul li i,
+[dir="rtl"] .pricing-dark-card ul li i,
+[dir="rtl"] .ba-card ul li i {
+    margin-left: 8px !important;
+    margin-right: 0 !important;
+}
+
+[dir="rtl"] .card ul,
+[dir="rtl"] .pricing-card ul,
+[dir="rtl"] .pricing-dark-card ul,
+[dir="rtl"] .ba-card ul {
+    text-align: right !important;
 }
 
 /* Blog Layout Mirroring */
@@ -132,7 +174,7 @@ body[dir="rtl"] {
     text-align: right !important;
 }
 
-/* Contact Page Alignments */
+/* Contact Page Spacings & Info Grid */
 [dir="rtl"] .contact-info-section {
     text-align: right !important;
 }
@@ -151,7 +193,7 @@ body[dir="rtl"] {
     text-align: right !important;
 }
 
-/* Services Calendar and Bookings */
+/* Services Calendar, Timings & Bookings */
 [dir="rtl"] .calendar-wrapper {
     text-align: right !important;
 }
@@ -169,7 +211,26 @@ body[dir="rtl"] {
     text-align: right !important;
 }
 
-/* Timeline Process Steps */
+/* Interactive Cost Estimator Alignment */
+[dir="rtl"] .pricing-calculator-col,
+[dir="rtl"] .pricing-dark-calc-wrapper {
+    text-align: right !important;
+}
+
+[dir="rtl"] .pricing-calculator-col h3,
+[dir="rtl"] .pricing-calculator-col p,
+[dir="rtl"] .pricing-dark-calc-wrapper h3,
+[dir="rtl"] .pricing-dark-calc-wrapper p,
+[dir="rtl"] .pricing-calculator-col form,
+[dir="rtl"] .pricing-dark-calc-wrapper form {
+    text-align: right !important;
+}
+
+[dir="rtl"] .calc-result {
+    text-align: center !important; /* Keeps price figure centered for premium presentation */
+}
+
+/* Timeline Process Steps Mirroring */
 [dir="rtl"] .timeline::before {
     left: auto !important;
     right: 24px !important;
@@ -195,7 +256,7 @@ body[dir="rtl"] {
     text-align: right !important;
 }
 
-/* Pricing Page Lists */
+/* Pricing Page Lists & Bullets */
 [dir="rtl"] .pricing-features li {
     text-align: right !important;
 }
@@ -205,17 +266,17 @@ body[dir="rtl"] {
     margin-right: 0 !important;
 }
 
-/* Alignments for cards text */
+/* Card Alignment Overrides */
 [dir="rtl"] .card {
-    text-align: center !important; /* Keep card centers */
+    text-align: center !important; /* Keeps standard card center balance */
 }
 
-/* Testimonials client details */
+/* Testimonials client details centering */
 [dir="rtl"] .client-info {
     text-align: center !important;
 }
 
-/* About Page splits */
+/* About Page splits and Story lines */
 [dir="rtl"] .story-text {
     text-align: right !important;
 }
@@ -227,5 +288,11 @@ body[dir="rtl"] {
 
 [dir="rtl"] .team-info h3,
 [dir="rtl"] .team-info p {
-    text-align: center !important; /* team info remains center */
+    text-align: center !important; /* Shaper team cards remain centered */
+}
+
+/* Back to Top button override */
+[dir="rtl"] .back-to-top {
+    right: auto !important;
+    left: 30px !important;
 }
