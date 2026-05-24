@@ -122,20 +122,7 @@ body.dark-mode section {
     background-color: var(--bg-dark) !important;
 }
 
-body.dark-mode .hero::before,
-body.dark-mode .hero2::before,
-body.dark-mode .page-hero::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    background: rgba(0, 0, 0, 0.75) !important; /* 75% dark translucent overlay to allow gorgeous background images to stay visible */
-    opacity: 1 !important;
-    z-index: 1 !important;
-    pointer-events: none !important;
-}
+
 
 body.dark-mode .theme-cta {
     background-color: var(--primary);

@@ -130,7 +130,7 @@ body[dir="rtl"] {
     direction: rtl !important;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1025px) {
     [dir="rtl"] .blog-layout {
         grid-template-columns: 320px 1fr !important; /* Move sidebar to the left in RTL */
     }
@@ -138,11 +138,17 @@ body[dir="rtl"] {
 
 [dir="rtl"] .blog-card-body {
     text-align: right !important;
+    direction: ltr !important;
 }
 
 [dir="rtl"] .blog-card-body h3,
 [dir="rtl"] .blog-card-body p {
     text-align: right !important;
+}
+
+[dir="rtl"] .blog-meta {
+    direction: ltr !important;
+    justify-content: flex-end !important;
 }
 
 [dir="rtl"] .sidebar-card {
@@ -165,11 +171,16 @@ body[dir="rtl"] {
     justify-content: space-between !important;
 }
 
-[dir="rtl"] .recent-post-item {
+[dir="rtl"] .recent-post {
     gap: 16px !important;
 }
 
-[dir="rtl"] .recent-post-info h5,
+[dir="rtl"] .recent-post-info {
+    text-align: right !important;
+    direction: ltr !important;
+}
+
+[dir="rtl"] .recent-post-info a,
 [dir="rtl"] .recent-post-info span {
     text-align: right !important;
 }

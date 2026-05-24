@@ -18,34 +18,93 @@
   <style>
     /* Page Hero */
 
-    /* Story Split */
+    /* Story Split Refactoring for Perfect Equal Heights & Center Alignment */
     .story-split {
       display: flex;
-      flex-wrap: wrap;
-      gap: 60px;
-      align-items: center;
+      flex-wrap: nowrap !important; /* Keep columns side-by-side on desktop and tablet */
+      gap: 40px; /* Elegant gap for better tablet fit */
+      align-items: stretch !important; /* Forces equal height of columns */
       justify-content: center;
     }
 
-    .story-split img {
-      flex: 1;
-      min-width: 280px;
+    .story-img-container {
+      flex: 0 1 50% !important; /* Take exactly half the width */
       max-width: 500px;
+      min-width: 280px;
       border-radius: var(--radius);
+      overflow: hidden;
       box-shadow: var(--shadow);
-      object-fit: cover;
-      height: 400px;
+      display: block;
+      position: relative; /* Solves percentage height resolution bugs in flex containers */
+    }
+
+    .story-img-container img {
+      position: absolute; /* Force absolute fill to stretch across computed parent height */
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block;
     }
 
     .story-text {
-      flex: 1;
-      min-width: 280px;
+      flex: 0 1 50% !important; /* Take exactly half the width */
       max-width: 580px;
+      min-width: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center horizontally */
+      justify-content: center; /* Center vertically */
       text-align: center;
+      padding: 20px 0;
     }
 
     .story-text h2 {
-      text-align: center;
+      text-align: center !important;
+      margin-bottom: 12px !important;
+      line-height: 1.15 !important; /* Solves the wide line wrapping gap shown in the screenshot */
+      width: 100%;
+    }
+
+    .story-text .section-subheading {
+      text-align: center !important;
+      margin: 0 auto 24px !important;
+      width: 100%;
+    }
+
+    .story-text p:not(.section-subheading) {
+      text-align: center !important;
+      margin: 0 auto 16px !important;
+      max-width: 500px;
+    }
+
+    .story-text .btn {
+      margin-top: 12px !important;
+      align-self: center !important;
+    }
+
+    /* Stack on mobile screens below 768px */
+    @media (max-width: 767px) {
+      .story-split {
+        flex-wrap: wrap !important;
+        flex-direction: column-reverse !important; /* Stack vertically with text first on mobile */
+        align-items: center !important;
+        gap: 30px !important;
+      }
+      
+      .story-img-container {
+        flex: 0 1 100% !important;
+        width: 100% !important;
+        height: 350px !important;
+        min-height: 300px !important;
+      }
+
+      .story-text {
+        flex: 0 1 100% !important;
+        width: 100% !important;
+        padding: 10px 0 !important;
+      }
     }
 
     /* Values */
@@ -196,6 +255,192 @@
         justify-self: center;
         width: calc(50% - 16px);
       }
+
+      /* Make the 4th milestone equal in size and length to the 3rd milestone on 768px tablet screens */
+      .milestones .milestone {
+        flex: 0 1 calc(50% - 10px) !important;
+      }
+    }
+
+    /* Premium Responsive CTA Layout */
+    .cta-premium-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cta-premium-content {
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .cta-premium-content h2 {
+      text-align: center !important;
+      font-size: clamp(2rem, 3.5vw, 2.8rem) !important;
+      line-height: 1.15;
+      margin-bottom: 16px !important;
+      width: 100%;
+    }
+
+    .cta-premium-content .section-subheading {
+      text-align: center !important;
+      margin: 12px auto 24px auto !important;
+      max-width: 600px !important;
+      width: 100%;
+    }
+
+    .cta-features-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px auto 0 auto;
+      display: flex;
+      flex-direction: column; /* Stacked vertically by default on mobile/tablet */
+      align-items: flex-start;
+      text-align: left;
+      gap: 14px;
+      width: fit-content;
+    }
+
+    .cta-features-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-light);
+      text-align: left !important;
+    }
+
+    .cta-features-list li i {
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .cta-premium-card {
+      width: 100%;
+      max-width: 460px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow-hover);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    body.dark-mode .cta-premium-card {
+      background: rgba(30, 30, 30, 0.95) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .cta-premium-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    .cta-premium-card p {
+      font-size: 0.95rem;
+      color: var(--gray);
+      margin-bottom: 28px;
+    }
+
+    .cta-premium-card .cta-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      align-items: center;
+    }
+
+    .cta-premium-card .cta-btns .btn {
+      width: 100% !important;
+      min-width: 0 !important;
+    }
+
+    /* Desktop split-screen layout (1024px and 1440px) */
+    @media (min-width: 1024px) {
+      .cta-premium-wrapper {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        max-width: 1100px !important;
+        text-align: center !important; /* Center the layout internally */
+      }
+
+      .cta-premium-content {
+        flex: 1 1 500px !important;
+        width: auto !important;
+        text-align: center !important; /* Internally center text inside left column */
+        align-items: center !important; /* Internally center flex items horizontally */
+        margin-bottom: 0 !important;
+      }
+
+      .cta-premium-content h2 {
+        text-align: center !important; /* Center heading inside left column */
+        font-size: clamp(2.2rem, 3.5vw, 3.2rem) !important;
+      }
+
+      .cta-premium-content .section-subheading {
+        text-align: center !important; /* Center paragraph inside left column */
+        margin: 12px auto 24px auto !important;
+        max-width: 500px !important;
+      }
+
+      .cta-features-list {
+        margin: 24px auto 0 auto !important; /* Center checklist block inside left column */
+        align-items: flex-start !important; /* Keep checklist points stacked in a vertical straight line */
+        text-align: left !important;
+      }
+
+      .cta-premium-card {
+        flex: 0 1 400px !important;
+        max-width: 400px !important;
+      }
+    }
+
+    /* Reduce CTA button length in 360px */
+    @media (max-width: 360px) {
+      .cta-premium-card {
+        padding: 24px !important;
+      }
+      
+      .cta-premium-card .cta-btns .btn {
+        width: auto !important;
+        min-width: 140px !important; /* Reduced visual length */
+        max-width: 180px !important;
+        padding: 10px 18px !important;
+        font-size: 0.85rem !important;
+      }
+      
+      /* Make sure the 3 points are strictly stacked in a vertical straight line aligned to start on 360px mobile */
+      .cta-features-list {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: fit-content !important;
+        gap: 12px !important;
+      }
+      
+      .cta-features-list li {
+        justify-content: flex-start !important;
+        text-align: left !important;
+        width: 100% !important;
+      }
     }
 
     @media (max-width: 600px) {
@@ -257,7 +502,8 @@
         <li><a href="about.html" class="nav-link active">About</a></li>
 
         <li><a href="services.html" class="nav-link">Services</a></li>
-        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li><a href="workshops.html" class="nav-link">Workshops</a></li>
         <li><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
     </nav>
@@ -275,7 +521,8 @@
     <a href="about.html" class="nav-link active">About</a>
 
     <a href="services.html" class="nav-link">Services</a>
-    <a href="blog.html" class="nav-link">Blog</a>
+    <a href="pricing.html" class="nav-link">Pricing</a>
+    <a href="workshops.html" class="nav-link">Workshops</a>
     <a href="contact.html" class="nav-link">Contact</a>
     <hr style="border-color:rgba(255,255,255,.15);">
     <div class="mobile-controls-row">
@@ -299,105 +546,25 @@
     <!-- Story Section -->
     <section class="animate-on-scroll">
       <div class="story-split">
-        <img
-          src="https://images.squarespace-cdn.com/content/v1/5b18524d12b13f40e533f207/1562877141296-S5GP9N74VQMEBUE87HSS/ImperfectsxInR_Shaping-45.jpg?format=1500w"
-          alt="Founder shaping a surfboard" class="fade-in">
+        <div class="story-img-container fade-in">
+          <img
+            src="https://i.pinimg.com/1200x/61/95/a7/6195a75912ce80a9960f5b7d2928df7d.jpg"
+            alt="Founder shaping a surfboard">
+        </div>
         <div class="story-text fade-in">
           <h2>Born from a Love of Waves</h2>
-          <p class="section-subheading" style="text-align: left; margin-left: 0; margin-bottom: 24px !important;">Our
-            journey from a local Malibu sandbar shed to a leading workshop.</p>
+          <p class="section-subheading">Our journey from a local Malibu sandbar shed to a leading workshop.</p>
           <p>Founded in 1998 by master shaper <strong>Jake Moreno</strong>, Surfboard Workshop began as a one-man shed
             operation in Malibu. Jake's obsession with the perfect board led to a workshop that now serves surfers from
             Malibu to Mavericks.</p>
           <p>Every board that leaves our shop carries 25 years of accumulated knowledge, countless hours on the water,
             and a genuine passion for the craft of shaping.</p>
-          <a href="contact.html" class="btn btn-primary" style="margin-top:24px;">Get in Touch</a>
+          <a href="contact.html" class="btn btn-primary">Get in Touch</a>
         </div>
       </div>
     </section>
 
-    <!-- Mission & Values -->
-    <section style="background:var(--secondary);" class="animate-on-scroll">
-      <h2>Our Mission & Values</h2>
-      <p class="section-subheading">We believe a surfboard is not a product — it's a relationship between a surfer and
-        the ocean.</p>
-      <div class="values-grid">
-        <div class="value-card fade-in">
-          <img
-            src="https://blueroom.pt/wp-content/uploads/2025/10/What-Are-Current-Innovations-in-Shortboard-Design.webp"
-            alt="Precision tools">
-          <div class="value-card-content">
-            <i class="fas fa-drafting-compass"></i>
-            <h3>Precision</h3>
-            <p>Every curve and concave is intentional. We measure twice, shape once.</p>
-          </div>
-        </div>
-        <div class="value-card fade-in">
-          <img src="https://cdn.shopify.com/s/files/1/0708/5306/7058/files/56.jpg?v=1698290960" alt="Sustainable waves">
-          <div class="value-card-content">
-            <i class="fas fa-leaf"></i>
-            <h3>Sustainability</h3>
-            <p>We source eco-friendly blanks and low-VOC resins to protect the ocean we love.</p>
-          </div>
-        </div>
-        <div class="value-card fade-in">
-          <img src="https://static.toiimg.com/thumb/msid-120812937,width-400,resizemode-4/120812937.jpg"
-            alt="Community surfing">
-          <div class="value-card-content">
-            <i class="fas fa-handshake"></i>
-            <h3>Community</h3>
-            <p>Local surfers, local shapers. We invest back into the surfing community.</p>
-          </div>
-        </div>
-        <div class="value-card fade-in">
-          <img
-            src="https://asiansurf.co/new/wp-content/uploads/2025/07/Ella-McCaffray-and-Rafael-Castro-Win-Afulu-Pro-2025-APSS-Shortboard-Divisions.jpg"
-            alt="Polished board">
-          <div class="value-card-content">
-            <i class="fas fa-star"></i>
-            <h3>Excellence</h3>
-            <p>No board leaves the shop without a thorough quality check by our senior shaper.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="animate-on-scroll">
-      <h2>Meet the Shapers</h2>
-      <p class="section-subheading">Experienced craftsmen with decades of water time and workshop expertise.</p>
-      <div class="team-grid">
-        <div class="team-card fade-in">
-          <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&q=80&w=600"
-            alt="Jake Moreno">
-          <div class="team-info">
-            <h3>Jake Moreno</h3>
-            <div class="team-role">Founder & Master Shaper</div>
-            <p>25+ years crafting boards. Hawaii, Bali, and Hossegor under his belt.</p>
-          </div>
-        </div>
-        <div class="team-card fade-in">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600"
-            alt="Ryan Cole">
-          <div class="team-info">
-            <h3>Ryan Cole</h3>
-            <div class="team-role">Senior Glasser</div>
-            <p>Specialist in epoxy laminates and resin tints. Precision every time.</p>
-          </div>
-        </div>
-        <div class="team-card fade-in">
-          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=600"
-            alt="Mia Torres">
-          <div class="team-info">
-            <h3>Mia Torres</h3>
-            <div class="team-role">Ding Repair Specialist</div>
-            <p>Color-match genius with a turnaround time that beats every competitor.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Milestones -->
+    <!-- Journey in Numbers (Second section in page) -->
     <section class="milestone-section animate-on-scroll">
       <h2>Our Journey in Numbers</h2>
       <p class="section-subheading">The historical milestones that define our repair and shaping craftsmanship.</p>
@@ -421,13 +588,103 @@
       </div>
     </section>
 
-    <!-- CTA -->
+    <!-- Mission & Values -->
+    <section style="background:var(--secondary);" class="animate-on-scroll">
+      <h2>Our Mission & Values</h2>
+      <p class="section-subheading">We believe a surfboard is not a product — it's a relationship between a surfer and
+        the ocean.</p>
+      <div class="values-grid">
+        <div class="value-card fade-in">
+          <img
+            src="https://blueroom.pt/wp-content/uploads/2025/10/What-Are-Current-Innovations-in-Shortboard-Design.webp"
+            alt="Precision tools">
+          <div class="value-card-content">
+            <h3>Precision</h3>
+            <p>Every curve and concave is intentional. We measure twice, shape once.</p>
+          </div>
+        </div>
+        <div class="value-card fade-in">
+          <img src="https://cdn.shopify.com/s/files/1/0708/5306/7058/files/56.jpg?v=1698290960" alt="Sustainable waves">
+          <div class="value-card-content">
+            <h3>Sustainability</h3>
+            <p>We source eco-friendly blanks and low-VOC resins to protect the ocean we love.</p>
+          </div>
+        </div>
+        <div class="value-card fade-in">
+          <img src="https://static.toiimg.com/thumb/msid-120812937,width-400,resizemode-4/120812937.jpg"
+            alt="Community surfing">
+          <div class="value-card-content">
+            <h3>Community</h3>
+            <p>Local surfers, local shapers. We invest back into the surfing community.</p>
+          </div>
+        </div>
+        <div class="value-card fade-in">
+          <img
+            src="https://asiansurf.co/new/wp-content/uploads/2025/07/Ella-McCaffray-and-Rafael-Castro-Win-Afulu-Pro-2025-APSS-Shortboard-Divisions.jpg"
+            alt="Polished board">
+          <div class="value-card-content">
+            <h3>Excellence</h3>
+            <p>No board leaves the shop without a thorough quality check by our senior shaper.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
     <section class="animate-on-scroll">
-      <h2>Ready to Shape Your Dream Board?</h2>
-      <p class="section-subheading">Sit with our master shapers for a free consultation — no commitment required.</p>
-      <div class="cta-btns" style="display:flex;gap:20px;justify-content:center;margin-top:28px;flex-wrap:wrap;">
-        <a href="contact.html" class="btn btn-primary">Book Free Consultation</a>
-        <a href="services.html" class="btn btn-outline">Our Services</a>
+      <h2>Meet the Shapers</h2>
+      <p class="section-subheading">Experienced craftsmen with decades of water time and workshop expertise.</p>
+      <div class="team-grid">
+        <div class="team-card fade-in">
+          <img src="https://i.pinimg.com/736x/5f/31/80/5f318093615a9d05d1cca449b1d6d179.jpg"
+            alt="Jake Moreno">
+          <div class="team-info">
+            <h3>Jake Moreno</h3>
+            <div class="team-role">Founder & Master Shaper</div>
+            <p>25+ years crafting boards. Hawaii, Bali, and Hossegor under his belt.</p>
+          </div>
+        </div>
+        <div class="team-card fade-in">
+          <img src="https://i.pinimg.com/1200x/29/5c/e2/295ce2951b69a51ea81267cc50de8f75.jpg"
+            alt="Ryan Cole">
+          <div class="team-info">
+            <h3>Ryan Cole</h3>
+            <div class="team-role">Senior Glasser</div>
+            <p>Specialist in epoxy laminates and resin tints. Precision every time.</p>
+          </div>
+        </div>
+        <div class="team-card fade-in">
+          <img src="https://i.pinimg.com/1200x/eb/57/c8/eb57c8c7332e52f69d0db8c337c85209.jpg"
+            alt="Mia Torres">
+          <div class="team-info">
+            <h3>Mia Torres</h3>
+            <div class="team-role">Ding Repair Specialist</div>
+            <p>Color-match genius with a turnaround time that beats every competitor.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="theme-cta animate-on-scroll" style="padding: 100px 8%;">
+      <div class="cta-premium-wrapper">
+        <div class="cta-premium-content">
+          <div class="wave-badge">CUSTOM BAY</div>
+          <h2>Ready to Shape Your <br><span style="color: var(--accent);">Dream Board?</span></h2>
+          <ul class="cta-features-list">
+            <li><i class="fas fa-check-circle"></i> 1-on-1 hand-shaping bay consultations</li>
+            <li><i class="fas fa-check-circle"></i> Custom rocker & rail profiling for your exact style</li>
+            <li><i class="fas fa-check-circle"></i> Eco-friendly PU/EPS blanks & bio-resins</li>
+          </ul>
+        </div>
+        <div class="cta-premium-card">
+          <h3>Let's start shaping</h3>
+          <p>Book a free 30-minute shaper consultation in our Malibu bay.</p>
+          <div class="cta-btns">
+            <a href="contact.html" class="btn btn-primary">Book Consultation</a>
+            <a href="services.html" class="btn btn-outline">Explore Our Craft</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -480,7 +737,8 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="services.html">Our Services</a></li>
-          <li><a href="blog.html">Workshop Blog</a></li>
+          <li><a href="pricing.html">Repair Pricing</a></li>
+          <li><a href="workshops.html">Workshops</a></li>
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
       </div>
@@ -497,7 +755,7 @@
       <div class="footer-links">
         <h4>Contact Us</h4>
         <p style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> 123 Ocean
-          Drive, Malibu, CA</p>
+          Drive, Malibu</p>
         <p style="font-size: 0.9rem;"><i class="fas fa-envelope" style="margin-right: 8px;"></i>
           info@surfboard.com</p>
         <p style="font-size: 0.9rem;"><i class="fas fa-phone" style="margin-right: 8px;"></i> (555) 123-4567</p>

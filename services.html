@@ -355,19 +355,137 @@
     }
 
     @keyframes calendarFadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @media (max-width: 768px) {
       .calendar-wrapper {
         flex-direction: column;
       }
+
       .calendar-sidebar {
         order: 2;
       }
-      .calendar-main {
-        order: 1;
+    }
+
+    /* --- Calendar Modal Popup Overlay --- */
+    .calendar-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .calendar-modal-overlay.active {
+      display: flex !important;
+      opacity: 1;
+    }
+
+    .calendar-modal-content {
+      background: var(--white);
+      border-radius: var(--radius);
+      width: 90%;
+      max-width: 500px;
+      padding: 36px 32px 32px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      position: relative;
+      transform: translateY(-30px);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-align: left;
+    }
+
+    .calendar-modal-overlay.active .calendar-modal-content {
+      transform: translateY(0);
+    }
+
+    .calendar-modal-close {
+      position: absolute;
+      top: 5px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.25rem;
+      color: var(--primary);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.05);
+      z-index: 10;
+    }
+
+    .calendar-modal-close:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .calendar-modal-content .calendar-main {
+      width: 100% !important;
+      order: unset !important;
+    }
+
+    .calendar-modal-content .calendar-nav {
+      margin-top: 12px !important;
+    }
+
+    /* Dark mode support for Modal */
+    body.dark-mode .calendar-modal-content {
+      background-color: #1E1E1E !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    }
+
+    body.dark-mode .calendar-modal-close {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-mode .calendar-modal-close:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    @media (max-width: 480px) {
+      .calendar-modal-content {
+        padding: 32px 16px 20px !important;
+        width: 94% !important;
+      }
+      .calendar-modal-content .calendar-main {
+        min-width: 0 !important;
+        width: 100% !important;
+      }
+      .calendar-days {
+        gap: 4px !important;
+      }
+      .day {
+        font-size: 0.85rem !important;
+      }
+      .calendar-grid-header {
+        font-size: 0.7rem !important;
+        letter-spacing: 0px !important;
+      }
+      .calendar-nav h4 {
+        font-size: 1rem !important;
       }
     }
   </style>
@@ -381,26 +499,29 @@
       <a href="index.html" class="logo-container"
         style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
         <svg class="logo" viewBox="0 0 100 100" style="width: 52px; height: 52px; flex-shrink: 0;">
-            <defs>
-                <linearGradient id="logo-grad-header" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#C47A2C" />
-                    <stop offset="40%" stop-color="#DE9447" />
-                    <stop offset="100%" stop-color="#F9D29F" />
-                </linearGradient>
-                <filter id="shadow-header" x="-20%" y="-20%" width="140%" height="140%">
-                    <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.3"/>
-                </filter>
-            </defs>
-            <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logo-grad-header)" stroke-width="3" stroke-linecap="round" />
-            <path d="M 15,65 C 25,65 35,50 48,38 C 58,28 72,25 83,32 C 70,15 54,16 43,28 C 32,40 22,55 15,55 Z" fill="url(#logo-grad-header)" filter="url(#shadow-header)" />
-            <path d="M 22,75 C 32,75 42,62 52,50 C 62,38 74,34 82,39 C 71,25 58,26 49,38 C 40,50 30,65 22,65 Z" fill="url(#logo-grad-header)" fill-opacity="0.45" />
-            <g transform="rotate(-20, 50, 50)" filter="url(#shadow-header)">
-                <path d="M 50,8 C 38,28 36,68 50,92 Z" fill="#914D12" />
-                <path d="M 50,8 C 62,28 64,68 50,92 Z" fill="url(#logo-grad-header)" />
-                <line x1="50" y1="8" x2="50" y2="92" stroke="#FFFFFF" stroke-width="2" />
-                <line x1="44" y1="58" x2="56" y2="58" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
-                <line x1="43" y1="66" x2="57" y2="66" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
-            </g>
+          <defs>
+            <linearGradient id="logo-grad-header" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#C47A2C" />
+              <stop offset="40%" stop-color="#DE9447" />
+              <stop offset="100%" stop-color="#F9D29F" />
+            </linearGradient>
+            <filter id="shadow-header" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.3" />
+            </filter>
+          </defs>
+          <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logo-grad-header)" stroke-width="3"
+            stroke-linecap="round" />
+          <path d="M 15,65 C 25,65 35,50 48,38 C 58,28 72,25 83,32 C 70,15 54,16 43,28 C 32,40 22,55 15,55 Z"
+            fill="url(#logo-grad-header)" filter="url(#shadow-header)" />
+          <path d="M 22,75 C 32,75 42,62 52,50 C 62,38 74,34 82,39 C 71,25 58,26 49,38 C 40,50 30,65 22,65 Z"
+            fill="url(#logo-grad-header)" fill-opacity="0.45" />
+          <g transform="rotate(-20, 50, 50)" filter="url(#shadow-header)">
+            <path d="M 50,8 C 38,28 36,68 50,92 Z" fill="#914D12" />
+            <path d="M 50,8 C 62,28 64,68 50,92 Z" fill="url(#logo-grad-header)" />
+            <line x1="50" y1="8" x2="50" y2="92" stroke="#FFFFFF" stroke-width="2" />
+            <line x1="44" y1="58" x2="56" y2="58" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
+            <line x1="43" y1="66" x2="57" y2="66" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
+          </g>
         </svg>
         <span class="brand-name">SURFBOARD</span>
       </a>
@@ -409,10 +530,11 @@
       <ul class="nav-menu">
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="home2.html" class="nav-link">Home 2</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
 
         <li><a href="services.html" class="nav-link active">Services</a></li>
-        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li><a href="workshops.html" class="nav-link">Workshops</a></li>
         <li><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
     </nav>
@@ -428,15 +550,16 @@
   <div class="mobile-nav">
     <a href="index.html" class="nav-link">Home</a>
     <a href="home2.html" class="nav-link">Home 2</a>
-        <a href="about.html" class="nav-link">About</a>
+    <a href="about.html" class="nav-link">About</a>
 
     <a href="services.html" class="nav-link active">Services</a>
-    <a href="blog.html" class="nav-link">Blog</a>
+    <a href="pricing.html" class="nav-link">Pricing</a>
+    <a href="workshops.html" class="nav-link">Workshops</a>
     <a href="contact.html" class="nav-link">Contact</a>
     <hr style="border-color:rgba(255,255,255,.15);">
     <div class="mobile-controls-row">
-        <button class="icon-btn" id="mobile-rtl-toggle">RTL</button>
-        <button class="icon-btn" id="mobile-theme-toggle"><i class="fas fa-moon theme-icon"></i></button>
+      <button class="icon-btn" id="mobile-rtl-toggle">RTL</button>
+      <button class="icon-btn" id="mobile-theme-toggle"><i class="fas fa-moon theme-icon"></i></button>
     </div>
     <a href="login.html" class="btn btn-primary" style="margin-top:8px;">Login</a>
   </div>
@@ -454,14 +577,45 @@
     <!-- Service Offerings -->
     <section class="animate-on-scroll">
       <h2>What We Do Best</h2>
-      <p class="section-subheading">From a first board to a competition gun — every service delivered with master-level craft.</p>
+      <p class="section-subheading">From a first board to a competition gun — every service delivered with master-level
+        craft.</p>
       <div class="service-grid">
+        <div class="service-card fade-in">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/5759b8fb20c64730ca99910f/1514698054260-AJG5AEXP2BDOO2230K44/fullsizeoutput_3b05.jpeg"
+            alt="Ding and Rail Repair">
+          <div class="service-body">
+            <h3>Rail Repair Workshps</h3>
+            <p>Expert rail rebuilds, crack glassing, and nose/tail impact restoration with professional color matching.
+              From $45.</p>
+            <a href="contact.html" class="btn btn-primary" style="margin-top:16px;">Book Worshop</a>
+          </div>
+        </div>
+        <div class="service-card fade-in">
+          <img src="https://www.thesurfboardwarehouse.com.au/cdn/shop/files/bottom-fins.png?v=1696318287"
+            alt="Fin Box Install">
+          <div class="service-body">
+            <h3>Fin Box Rebuilds</h3>
+            <p>Precision routing, structural foam reinjections, and seamless FCS II, Futures, or single fin box
+              replacements. From $85.</p>
+            <a href="contact.html" class="btn btn-primary" style="margin-top:16px;">Book Service</a>
+          </div>
+        </div>
+        <div class="service-card fade-in">
+          <img src="https://riverbreak.com/wp-content/uploads/How-to-fix-and-repair-a-surfboard-ding-620x350.jpg"
+            alt="Snapped Board Rebuild">
+          <div class="service-body">
+            <h3>Major Structural Rebuilds</h3>
+            <p>Dual-stringer reinforcement inserts, multi-layer fiberglass splices, and vacuum delamination
+              clamp-curing. From $150.</p>
+            <a href="contact.html" class="btn btn-primary" style="margin-top:16px;">Get Estimate</a>
+          </div>
+        </div>
         <div class="service-card fade-in">
           <img
             src="https://static.wixstatic.com/media/abd183_7d977354a0a34d259d220e5daf1f6212~mv2.jpg/v1/fill/w_568,h_440,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/abd183_7d977354a0a34d259d220e5daf1f6212~mv2.jpg"
             alt="Custom Board Shaping">
           <div class="service-body">
-            <i class="fas fa-pencil-ruler"></i>
             <h3>Custom Board Shaping</h3>
             <p>Work with our shapers to design a board tailored to your surf style, weight, and local break. Starting
               from $600.</p>
@@ -470,52 +624,18 @@
         </div>
         <div class="service-card fade-in">
           <img
-            src="https://images.squarespace-cdn.com/content/v1/5759b8fb20c64730ca99910f/1514698054260-AJG5AEXP2BDOO2230K44/fullsizeoutput_3b05.jpeg"
-            alt="Ding Repair">
-          <div class="service-body">
-            <i class="fas fa-hammer"></i>
-            <h3>Surfboard Repair</h3>
-            <p>Fast, expert ding repair with precision color matching. Minor repairs from $45. Board back in 48 hours.
-            </p>
-            <a href="contact.html" class="btn btn-primary" style="margin-top:16px;">Book Repair</a>
-          </div>
-        </div>
-        <div class="service-card fade-in">
-          <img src="https://cdn.shopify.com/s/files/1/0395/8151/5939/files/The_Surfboard_Studio_-_Contract_Glassing.jpg?v=1631598167"
+            src="https://cdn.shopify.com/s/files/1/0395/8151/5939/files/The_Surfboard_Studio_-_Contract_Glassing.jpg?v=1631598167"
             alt="Glassing Services">
           <div class="service-body">
-            <i class="fas fa-layer-group"></i>
             <h3>Glassing Services</h3>
-            <p>Professional fiberglass lamination, hotcoat, and glosscoat for new builds and re-glass jobs. From $200.
+            <p>Professional fiberglass lamination, hotcoat, and glosscoat for new builds and re-glass jobs. From $220.
             </p>
             <a href="contact.html" class="btn btn-primary" style="margin-top:16px;">Get a Quote</a>
           </div>
         </div>
         <div class="service-card fade-in">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiTnt9rpSkjiiEBkchVcmjh-kjDojn5mMz5A&s"
-            alt="Blank Selection">
+          <img src="https://i.pinimg.com/1200x/ab/7a/41/ab7a416299035062d6507ae57a8a972a.jpg" alt="Consultation">
           <div class="service-body">
-            <i class="fas fa-cube"></i>
-            <h3>Blank Consultation</h3>
-            <p>Not sure which blank to choose? Our experts will walk you through PU, EPS, and bio-epoxy options forever.</p>
-            <a href="contact.html" class="btn btn-primary" style="margin-top:16px;">Book Consult</a>
-          </div>
-        </div>
-        <div class="service-card fade-in">
-          <img src="https://www.thesurfboardwarehouse.com.au/cdn/shop/files/bottom-fins.png?v=1696318287"
-            alt="Fin Box Install">
-          <div class="service-body">
-            <i class="fas fa-cog"></i>
-            <h3>Fin Installation</h3>
-            <p>Single, twin, thruster, or quad — we install all fin systems with precision. From $80 per set property.</p>
-            <a href="contact.html" class="btn btn-primary" style="margin-top:16px;">Book Service</a>
-          </div>
-        </div>
-        <div class="service-card fade-in">
-          <img src="https://www.swellwake.com/cdn/shop/articles/swell_choosing_the_right_wakesurf_board_for_beginners.webp?v=1673892717"
-            alt="Consultation">
-          <div class="service-body">
-            <i class="fas fa-comments"></i>
             <h3>Board Consultation</h3>
             <p>In-person or virtual consultation with a master shaper. 1-hour session, $50 (credited toward your build).
             </p>
@@ -623,7 +743,7 @@
     </section>
 
     <!-- Case Studies -->
-    
+
 
 
 
@@ -640,29 +760,39 @@
               <div id="display-date"><i class="far fa-calendar"></i> Select a date</div>
               <div id="display-time"><i class="far fa-clock"></i> Select a time</div>
             </div>
-            <button id="confirm-booking" class="btn btn-primary" disabled style="width: 100%; margin-top: 24px;">Confirm Booking</button>
-            <p style="font-size: 0.75rem; margin-top: 16px; color: var(--gray);">* $50 deposit required to secure your spot.</p>
+            <button id="confirm-booking" class="btn btn-primary" disabled style="width: 100%; margin-top: 24px;">Confirm
+              Booking</button>
+            <p style="font-size: 0.75rem; margin-top: 16px; color: var(--gray);">* $50 deposit required to secure your
+              spot.</p>
           </div>
-          <div class="calendar-main">
-            <div class="calendar-nav">
-              <button id="prev-month" class="icon-btn"><i class="fas fa-chevron-left"></i></button>
-              <h4 id="month-display">May 2026</h4>
-              <button id="next-month" class="icon-btn"><i class="fas fa-chevron-right"></i></button>
-            </div>
-            <div class="calendar-grid-header">
-              <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
-            </div>
-            <div id="calendar-days" class="calendar-days">
-              <!-- Days injected by JS -->
-            </div>
-            <div id="time-selection" class="time-selection" style="display: none;">
-              <h5>Available Time Slots</h5>
-              <div class="time-grid">
-                <button class="time-slot">09:00 AM</button>
-                <button class="time-slot">10:30 AM</button>
-                <button class="time-slot">01:00 PM</button>
-                <button class="time-slot">02:30 PM</button>
-                <button class="time-slot">04:00 PM</button>
+
+          <!-- Calendar Popup Modal Overlay -->
+          <div class="calendar-modal-overlay" id="calendar-modal">
+            <div class="calendar-modal-content">
+              <button class="calendar-modal-close" id="close-calendar-modal" aria-label="Close Modal"><i
+                  class="fas fa-times"></i></button>
+              <div class="calendar-main">
+                <div class="calendar-nav">
+                  <button id="prev-month" class="icon-btn"><i class="fas fa-chevron-left"></i></button>
+                  <h4 id="month-display">May 2026</h4>
+                  <button id="next-month" class="icon-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar-grid-header">
+                  <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                </div>
+                <div id="calendar-days" class="calendar-days">
+                  <!-- Days injected by JS -->
+                </div>
+                <div id="time-selection" class="time-selection" style="display: none;">
+                  <h5>Available Time Slots</h5>
+                  <div class="time-grid">
+                    <button class="time-slot">09:00 AM</button>
+                    <button class="time-slot">10:30 AM</button>
+                    <button class="time-slot">01:00 PM</button>
+                    <button class="time-slot">02:30 PM</button>
+                    <button class="time-slot">04:00 PM</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -678,26 +808,29 @@
         <a href="index.html"
           style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; text-decoration: none;">
           <svg class="logo" viewBox="0 0 100 100" style="width: 52px; height: 52px; flex-shrink: 0;">
-              <defs>
-                  <linearGradient id="logo-grad-footer" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#C47A2C" />
-                      <stop offset="40%" stop-color="#DE9447" />
-                      <stop offset="100%" stop-color="#F9D29F" />
-                  </linearGradient>
-                  <filter id="shadow-footer" x="-20%" y="-20%" width="140%" height="140%">
-                      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.3"/>
-                  </filter>
-              </defs>
-              <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logo-grad-footer)" stroke-width="3" stroke-linecap="round" />
-              <path d="M 15,65 C 25,65 35,50 48,38 C 58,28 72,25 83,32 C 70,15 54,16 43,28 C 32,40 22,55 15,55 Z" fill="url(#logo-grad-footer)" filter="url(#shadow-footer)" />
-              <path d="M 22,75 C 32,75 42,62 52,50 C 62,38 74,34 82,39 C 71,25 58,26 49,38 C 40,50 30,65 22,65 Z" fill="url(#logo-grad-footer)" fill-opacity="0.45" />
-              <g transform="rotate(-20, 50, 50)" filter="url(#shadow-footer)">
-                  <path d="M 50,8 C 38,28 36,68 50,92 Z" fill="#914D12" />
-                  <path d="M 50,8 C 62,28 64,68 50,92 Z" fill="url(#logo-grad-footer)" />
-                  <line x1="50" y1="8" x2="50" y2="92" stroke="#FFFFFF" stroke-width="2" />
-                  <line x1="44" y1="58" x2="56" y2="58" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
-                  <line x1="43" y1="66" x2="57" y2="66" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
-              </g>
+            <defs>
+              <linearGradient id="logo-grad-footer" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#C47A2C" />
+                <stop offset="40%" stop-color="#DE9447" />
+                <stop offset="100%" stop-color="#F9D29F" />
+              </linearGradient>
+              <filter id="shadow-footer" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.3" />
+              </filter>
+            </defs>
+            <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logo-grad-footer)" stroke-width="3"
+              stroke-linecap="round" />
+            <path d="M 15,65 C 25,65 35,50 48,38 C 58,28 72,25 83,32 C 70,15 54,16 43,28 C 32,40 22,55 15,55 Z"
+              fill="url(#logo-grad-footer)" filter="url(#shadow-footer)" />
+            <path d="M 22,75 C 32,75 42,62 52,50 C 62,38 74,34 82,39 C 71,25 58,26 49,38 C 40,50 30,65 22,65 Z"
+              fill="url(#logo-grad-footer)" fill-opacity="0.45" />
+            <g transform="rotate(-20, 50, 50)" filter="url(#shadow-footer)">
+              <path d="M 50,8 C 38,28 36,68 50,92 Z" fill="#914D12" />
+              <path d="M 50,8 C 62,28 64,68 50,92 Z" fill="url(#logo-grad-footer)" />
+              <line x1="50" y1="8" x2="50" y2="92" stroke="#FFFFFF" stroke-width="2" />
+              <line x1="44" y1="58" x2="56" y2="58" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
+              <line x1="43" y1="66" x2="57" y2="66" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
+            </g>
           </svg>
           <span class="brand-name">SURFBOARD</span>
         </a>
@@ -716,7 +849,8 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="services.html">Our Services</a></li>
-          <li><a href="blog.html">Workshop Blog</a></li>
+          <li><a href="pricing.html">Repair Pricing</a></li>
+          <li><a href="workshops.html">Workshops</a></li>
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
       </div>
@@ -733,7 +867,7 @@
       <div class="footer-links">
         <h4>Contact Us</h4>
         <p style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> 123 Ocean
-          Drive, Malibu, CA</p>
+          Drive, Malibu</p>
         <p style="font-size: 0.9rem;"><i class="fas fa-envelope" style="margin-right: 8px;"></i>
           info@surfboard.com</p>
         <p style="font-size: 0.9rem;"><i class="fas fa-phone" style="margin-right: 8px;"></i> (555) 123-4567</p>
@@ -773,7 +907,7 @@
     // Calendar Logic
     const monthNames = ["January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"];
-    
+
     let currentDate = new Date();
     let selectedDate = null;
     let selectedTime = null;
@@ -781,46 +915,46 @@
     const renderCalendar = () => {
       const year = currentDate.getFullYear();
       const month = currentDate.getMonth();
-      
+
       const monthDisplay = document.getElementById('month-display');
       if (!monthDisplay) return;
 
       monthDisplay.textContent = `${monthNames[month]} ${year}`;
-      
+
       const firstDay = new Date(year, month, 1).getDay();
       const daysInMonth = new Date(year, month + 1, 0).getDate();
-      
+
       const calendarDays = document.getElementById('calendar-days');
       calendarDays.innerHTML = '';
-      
+
       // Empty slots for previous month
       for (let i = 0; i < firstDay; i++) {
         const emptyDiv = document.createElement('div');
         emptyDiv.classList.add('day', 'empty');
         calendarDays.appendChild(emptyDiv);
       }
-      
+
       const today = new Date();
-      today.setHours(0,0,0,0);
-      
+      today.setHours(0, 0, 0, 0);
+
       for (let i = 1; i <= daysInMonth; i++) {
         const dayDiv = document.createElement('div');
         dayDiv.classList.add('day');
         dayDiv.textContent = i;
-        
+
         const dateObj = new Date(year, month, i);
-        
+
         if (dateObj < today) {
           dayDiv.classList.add('disabled');
         } else {
           if (dateObj.toDateString() === today.toDateString()) {
             dayDiv.classList.add('today');
           }
-          
+
           if (selectedDate && dateObj.toDateString() === selectedDate.toDateString()) {
             dayDiv.classList.add('active');
           }
-          
+
           dayDiv.addEventListener('click', () => {
             selectedDate = dateObj;
             renderCalendar();
@@ -828,7 +962,7 @@
             updateBookingInfo();
           });
         }
-        
+
         calendarDays.appendChild(dayDiv);
       }
     };
@@ -838,16 +972,16 @@
       const calendarDays = document.getElementById('calendar-days');
       const calendarNav = document.querySelector('.calendar-nav');
       const calendarHeader = document.querySelector('.calendar-grid-header');
-      
+
       if (!timeSelection) return;
-      
+
       // Hide calendar parts to show "only" the time selection
       if (calendarDays) calendarDays.style.display = 'none';
       if (calendarNav) calendarNav.style.display = 'none';
       if (calendarHeader) calendarHeader.style.display = 'none';
-      
+
       timeSelection.style.display = 'block';
-      
+
       // Add a back button if it doesn't exist
       if (!document.getElementById('back-to-calendar')) {
         const backBtn = document.createElement('button');
@@ -871,12 +1005,16 @@
         if (selectedTime && slot.textContent === selectedTime) {
           slot.classList.add('active');
         }
-        
+
         slot.onclick = () => {
           slots.forEach(s => s.classList.remove('active'));
           slot.classList.add('active');
           selectedTime = slot.textContent;
           updateBookingInfo();
+
+          // Auto close modal on time selection
+          const modal = document.getElementById('calendar-modal');
+          if (modal) modal.classList.remove('active');
         };
       });
     };
@@ -885,11 +1023,11 @@
       const displayDate = document.getElementById('display-date');
       const displayTime = document.getElementById('display-time');
       const confirmBtn = document.getElementById('confirm-booking');
-      
+
       if (selectedDate) {
         displayDate.innerHTML = `<i class="far fa-calendar"></i> ${selectedDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`;
       }
-      
+
       if (selectedTime) {
         displayTime.innerHTML = `<i class="far fa-clock"></i> ${selectedTime}`;
         confirmBtn.disabled = false;
@@ -907,7 +1045,9 @@
         const calendarDays = document.getElementById('calendar-days');
         const calendarNav = document.querySelector('.calendar-nav');
         const calendarHeader = document.querySelector('.calendar-grid-header');
-        
+        const modal = document.getElementById('calendar-modal');
+
+        if (modal) modal.classList.add('active');
         if (timeSelection) timeSelection.style.display = 'none';
         if (calendarDays) calendarDays.style.display = 'grid';
         if (calendarNav) calendarNav.style.display = 'flex';
@@ -916,6 +1056,8 @@
 
       displayTimeEl.addEventListener('click', () => {
         if (selectedDate) {
+          const modal = document.getElementById('calendar-modal');
+          if (modal) modal.classList.add('active');
           showTimeSlots();
         } else {
           alert('Please select a date first!');
@@ -923,6 +1065,22 @@
       });
     }
 
+
+    // Close Modal Events
+    const closeModalBtn = document.getElementById('close-calendar-modal');
+    const modalOverlay = document.getElementById('calendar-modal');
+
+    if (closeModalBtn && modalOverlay) {
+      closeModalBtn.addEventListener('click', () => {
+        modalOverlay.classList.remove('active');
+      });
+
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+          modalOverlay.classList.remove('active');
+        }
+      });
+    }
 
     const prevBtn = document.getElementById('prev-month');
     const nextBtn = document.getElementById('next-month');

@@ -20,8 +20,8 @@
     --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
     --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.15);
     --radius: 20px;
-    --font-heading: 'Poppins', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Times New Roman', Times, serif;
+    --font-body: 'Times New Roman', Times, serif;
     --spacing: 8px;
 }
 
@@ -274,15 +274,15 @@ header {
 .hamburger {
     display: none;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
     background: none;
     border: none;
     cursor: pointer;
 }
 
 .hamburger span {
-    width: 30px;
-    height: 3px;
+    width: 24px;
+    height: 2px;
     background-color: var(--primary);
     border-radius: 2px;
     transition: var(--transition);
@@ -520,7 +520,7 @@ select {
     left: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    background: rgba(0, 0, 0, 0.6) !important; /* 60% opaque dark mask for perfect text legibility */
+    background: rgba(0, 0, 0, 0.45) !important; /* 45% opaque dark mask for perfect text legibility & pop */
     opacity: 1 !important;
     z-index: 1 !important; /* Low z-index under the children */
     pointer-events: none !important;
@@ -670,9 +670,36 @@ footer {
     }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1024px) {
     .footer-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        display: flex !important;
+        justify-content: space-between !important;
+        flex-direction: row !important;
+        gap: 30px !important;
+    }
+    
+    /* Column 1: Logo & Brand Description */
+    .footer-grid > :nth-child(1) {
+        flex: 0 1 280px !important;
+        width: 100%;
+    }
+    
+    /* Column 2: Quick Links (Narrow content) */
+    .footer-grid > :nth-child(2) {
+        flex: 0 1 130px !important;
+        width: 100%;
+    }
+    
+    /* Column 3: Newsletter Form */
+    .footer-grid > :nth-child(3) {
+        flex: 0 1 240px !important;
+        width: 100%;
+    }
+    
+    /* Column 4: Contact Us */
+    .footer-grid > :nth-child(4) {
+        flex: 0 1 200px !important;
+        width: 100%;
     }
 }
 
@@ -680,19 +707,23 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 16px;
     text-align: left;
+}
+
+.footer-logo a {
+    margin-bottom: 0 !important;
 }
 
 .footer-logo p {
     text-align: left;
-    margin: 0 0 24px 0;
+    margin: 0 !important;
     color: var(--text-light);
 }
 
 .footer-links h4 {
     color: var(--accent);
-    margin-bottom: 24px;
+    margin-bottom: 16px !important;
     text-align: left;
 }
 
@@ -703,7 +734,7 @@ footer {
 .social-links {
     display: flex;
     gap: 15px;
-    margin-top: 10px;
+    margin-top: 0 !important;
 }
 
 .social-link {
@@ -989,6 +1020,23 @@ footer {
     #testimonials .card-grid .card:last-child {
         grid-column: auto !important;
         width: 100% !important;
+    }
+
+    .back-to-top {
+        bottom: 20px !important;
+        right: 20px !important;
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 1.1rem !important;
+    }
+
+    [dir="rtl"] .back-to-top {
+        right: auto !important;
+        left: 20px !important;
+    }
+
+    .footer-bottom {
+        padding-bottom: 80px !important; /* Leave room for back-to-top button so it doesn't touch the copyright text line */
     }
 }
 
@@ -1608,9 +1656,9 @@ footer {
 
 .pricing-dark-features {
   list-style: none;
-  margin: 20px 0 30px;
+  margin: 20px auto 30px;
   text-align: left;
-  width: 100%;
+  display: inline-block;
 }
 
 .pricing-dark-features li {
@@ -1721,4 +1769,21 @@ section h2 {
 .ba-card h4,
 .recent-post-info a {
     color: var(--primary) !important; /* Premium rich deep charcoal for maximum authoritative presence on card titles */
+}
+
+/* Mobile brand logo & text optimization for extremely narrow screens */
+@media (max-width: 360px) {
+    html {
+        font-size: 104% !important; /* Proportionally scale up the entire website's typography very slightly */
+    }
+
+    .logo {
+        width: 42px !important;
+        height: 42px !important;
+    }
+    
+    .brand-name,
+    .auth-brand span {
+        font-size: 1.35rem !important;
+    }
 }
