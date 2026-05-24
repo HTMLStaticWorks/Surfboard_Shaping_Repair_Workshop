@@ -690,15 +690,15 @@ footer {
         width: 100%;
     }
     
-    /* Column 3: Newsletter Form */
+    /* Column 3: Contact Us */
     .footer-grid > :nth-child(3) {
-        flex: 0 1 240px !important;
+        flex: 0 1 200px !important;
         width: 100%;
     }
     
-    /* Column 4: Contact Us */
+    /* Column 4: Newsletter Form */
     .footer-grid > :nth-child(4) {
-        flex: 0 1 200px !important;
+        flex: 0 1 240px !important;
         width: 100%;
     }
 }
@@ -746,6 +746,25 @@ footer {
 .social-link:hover {
     color: var(--accent);
     transform: translateY(-3px);
+}
+
+.footer-logo .social-link {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: var(--transition);
+}
+
+.footer-logo .social-link:hover {
+    background: var(--primary);
+    color: #fff !important;
+    transform: translateY(-4px);
 }
 
 .footer-links p {
@@ -903,7 +922,7 @@ footer {
 }
 
 @media (min-width: 992px) {
-    .footer-links:last-child p {
+    .footer-links p {
         white-space: normal !important;
     }
 }
@@ -1197,8 +1216,12 @@ footer {
         justify-content: flex-start;
     }
 
-    .social-links {
+    .footer-logo .social-links {
         justify-content: flex-start !important;
+    }
+
+    .footer-bottom {
+        padding-bottom: 20px !important;
     }
 }
 
@@ -1785,5 +1808,34 @@ section h2 {
     .brand-name,
     .auth-brand span {
         font-size: 1.35rem !important;
+    }
+}
+
+/* Desktop (1440px) alone - index.html about section image size reduction for matching text height */
+@media (min-width: 1440px) {
+    #about .about-content > div:first-child img {
+        height: 330px !important;
+        object-fit: cover !important;
+        width: 100% !important;
+        max-width: 500px !important;
+        margin: 0 auto;
+    }
+    #about .about-content > div:last-child {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        height: 330px !important;
+    }
+    #about .about-content > div:last-child h3 {
+        font-size: 2.2rem !important;
+        margin-top: 0 !important;
+        margin-bottom: 16px !important;
+    }
+    #about .about-content > div:last-child p {
+        font-size: 1.15rem !important;
+        line-height: 1.7 !important;
+        margin-bottom: 24px !important;
+        max-width: 520px !important;
     }
 }

@@ -307,3 +307,18 @@ body[dir="rtl"] {
     right: auto !important;
     left: 30px !important;
 }
+
+/* ── Auth Pages (Login / Register) RTL Controls ── */
+/* Move the top-corner RTL+Theme buttons from right → left in RTL mode */
+[dir="rtl"] .auth-controls {
+    right: auto !important;
+    left: 24px !important;
+}
+
+@media (max-width: 480px) {
+    [dir="rtl"] .auth-controls {
+        left: 15px !important;
+        right: auto !important;
+    }
+}
+
