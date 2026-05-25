@@ -322,3 +322,31 @@ body[dir="rtl"] {
     }
 }
 
+/* Switch input icons (eye toggle) to the left side in RTL mode */
+[dir="rtl"] .input-icon {
+    right: auto !important;
+    left: 14px !important;
+}
+
+/* Swap input padding in RTL mode to prevent password text overlapping the eye icon */
+[dir="rtl"] .form-group .input-wrap input {
+    padding-left: 44px !important;
+    padding-right: 14px !important;
+}
+
+/* Prevent English sentence and punctuation scrambling in the login/register footers */
+[dir="rtl"] .auth-footer {
+    direction: ltr !important;
+    text-align: center !important;
+}
+
+/* Prevent question mark scrambling on forgot password link */
+[dir="rtl"] .forgot-link {
+    direction: ltr !important;
+}
+
+/* Keep Terms & Conditions checkbox group correctly structured in LTR text flow */
+[dir="rtl"] .terms-group {
+    direction: ltr !important;
+}
+
