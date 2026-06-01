@@ -19,9 +19,31 @@
     /* Service Cards */
     .service-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 32px;
       margin-top: 48px;
+    }
+
+    @media (max-width: 1024px) {
+      .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .service-grid .service-card:last-child:nth-child(odd) {
+        grid-column: 1 / span 2;
+        justify-self: center;
+        width: calc(50% - 16px);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+      .service-grid .service-card:last-child:nth-child(odd) {
+        grid-column: auto;
+        justify-self: stretch;
+        width: 100%;
+      }
     }
 
     .service-card {
@@ -587,10 +609,10 @@
             src="https://images.squarespace-cdn.com/content/v1/5759b8fb20c64730ca99910f/1514698054260-AJG5AEXP2BDOO2230K44/fullsizeoutput_3b05.jpeg"
             alt="Ding and Rail Repair">
           <div class="service-body">
-            <h3>Rail Repair Workshps</h3>
+            <h3>Rail Repair Workshops</h3>
             <p>Expert rail rebuilds, crack glassing, and nose/tail impact restoration with professional color matching.
               From $45.</p>
-            <a href="contact.html" class="btn btn-primary" style="margin-top:16px;">Book Worshop</a>
+            <a href="contact.html" class="btn btn-primary" style="margin-top:16px;">Book Workshop</a>
           </div>
         </div>
         <div class="service-card fade-in">

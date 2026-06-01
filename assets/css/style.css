@@ -563,9 +563,31 @@ select {
 /* Cards System */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 32px;
     margin-top: 40px;
+}
+
+@media (max-width: 1024px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .card-grid .card:last-child:nth-child(odd) {
+        grid-column: 1 / span 2;
+        justify-self: center;
+        width: calc(50% - 16px);
+    }
+}
+
+@media (max-width: 600px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+    .card-grid .card:last-child:nth-child(odd) {
+        grid-column: auto;
+        justify-self: stretch;
+        width: 100%;
+    }
 }
 
 .card {
